@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_marginTop="10dp"
+    android:background="@drawable/side_nav_bar"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.CardView
+
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        card_view:cardBackgroundColor="@color/colorAccent"
+        >
+
+        <TextView
+            android:id="@+id/preview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="About preview"
+            android:layout_gravity="left"
+            android:gravity="right"
+            android:textSize="16sp"
+            android:paddingLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+
+            />
+            <ImageView
+                android:id="@+id/righ"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/background"
+                android:layout_marginTop="5dp"
+                android:src="@android:drawable/ic_menu_revert"
+                android:layout_gravity="right"
+                android:gravity="right"
+
+
+                />
+    </android.support.v7.widget.CardView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/event_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+            <android.support.v7.widget.CardView
+
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                card_view:cardBackgroundColor="@color/colorAccent"
+               >
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorAccent"
+                        android:gravity="left"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/about_us"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="about"
+                            android:layout_gravity="center"
+                            android:gravity="left"
+                            android:textSize="16sp"
+                            android:paddingLeft="10dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/white"
+
+                            />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:src="@drawable/contactus"
+                        android:scaleType="fitXY"
+                        />
+
+
+                </LinearLayout>
+                <View
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/white"/>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                card_view:cardBackgroundColor="@color/colorAccent"
+                card_view:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorAccent"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Saloon Information"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:id="@+id/package_name"
+
+                            />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/Icon"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:src="@drawable/offersmain"
+                        android:scaleType="fitXY"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:background="@color/colorAccent"
+                            android:orientation="horizontal"
+                            android:gravity="left"
+                            android:layout_margin="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Saloon Information :: "
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:textSize="20sp"
+                                android:textColor="@color/black"
+                                android:textStyle="bold"
+
+                                />
+
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_marginBottom="10dp"
+                            android:background="@color/colorAccent"
+                            android:orientation="vertical"
+                            android:gravity="left"
+                            android:layout_marginLeft="20dp"
+                            android:padding="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Threading"
+                                android:id="@+id/ceo"
+                                android:textSize="16dp"
+                                android:textColor="@color/white"
+
+                                />
+
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+                <View
+
+                    android:id="@+id/lineView"
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/white"/>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+
+                        <LinearLayout
+                            android:background="@color/colorAccent"
+                            android:orientation="horizontal"
+                            android:gravity="left"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <ImageView
+                                android:layout_width="140dp"
+                                android:layout_height="180dp"
+                                android:src="@drawable/contactus"
+                                android:scaleType="fitXY"
+                                />
+                            <LinearLayout
+                                android:background="@color/colorAccent"
+                                android:orientation="vertical"
+                                android:gravity="left"
+                                android:layout_marginLeft="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="Our Team:: "
+                                android:textSize="16sp"
+                                android:textColor="@color/white"
+                                android:textStyle="bold"
+                                android:id="@+id/services"
+
+                                />
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:text="Team beatyglad we have a team of skilled and experenced artists who are ready topamper you.Everyday artist at beautyglad has at least three years of experence and has served 500+ orders "
+                                    android:textSize="16sp"
+                                    android:textColor="@color/white"
+                                    android:textStyle="bold"
+                                    android:id="@+id/team_info"
+                                    />
+                            </LinearLayout>
+                        </LinearLayout>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/white"/>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                card_view:cardBackgroundColor="@color/colorAccent"
+                card_view:cardElevation="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorAccent"
+                        android:orientation="horizontal"
+                        android:gravity="center_horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Our Gallery"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+
+                            />
+
+                    </LinearLayout>
+                <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorAccent"
+                    android:orientation="vertical"
+                    android:padding="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:padding="5dp"
+                        android:src="@drawable/offersmain"
+                        android:scaleType="fitXY"
+                        />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:padding="5dp"
+                        android:src="@drawable/contactus"
+                        android:scaleType="fitXY"
+                        />
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:padding="5dp"
+                        android:src="@drawable/contactus"
+                        android:scaleType="fitXY"
+                        />
+                </LinearLayout>
+                </LinearLayout>
+                <View
+
+
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/white"/>
+            </android.support.v7.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
