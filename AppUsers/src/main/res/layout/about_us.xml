@@ -31,42 +31,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-                    <LinearLayout
-                        android:layout_marginBottom="10dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/colorAccent"
-                        android:gravity="left"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/about_us"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:text="about"
-                            android:layout_gravity="center"
-                            android:gravity="left"
-                            android:textSize="16sp"
-                            android:paddingLeft="10dp"
-                            android:textStyle="bold"
-                            android:textColor="@color/white"
-
-                            />
-
-                    </LinearLayout>
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="160dp"
-                        android:src="@drawable/sallon_two"
-                        android:scaleType="fitXY"
-                        />
 
 
                 </LinearLayout>
                 <View
-
-
                     android:layout_width="match_parent"
                     android:layout_height="2px"
                     android:background="@color/white"/>
@@ -91,7 +59,7 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/colorAccent"
                         android:orientation="horizontal"
-                        android:gravity="center_horizontal"
+                        android:gravity="left"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
@@ -130,19 +98,6 @@
                             android:layout_margin="10dp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="Saloon Information :: "
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:textSize="20sp"
-                                android:textColor="@color/black"
-                                android:textStyle="bold"
-
-                                />
-
                         </LinearLayout>
                         <LinearLayout
                             android:layout_marginBottom="10dp"
@@ -194,8 +149,6 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-
-
                         <LinearLayout
                             android:background="@color/colorAccent"
                             android:orientation="horizontal"
@@ -232,7 +185,6 @@
                                     android:text="Team beatyglad we have a team of skilled and experenced artists who are ready topamper you.Everyday artist at beautyglad has at least three years of experence and has served 500+ orders "
                                     android:textSize="16sp"
                                     android:textColor="@color/white"
-                                    android:textStyle="bold"
                                     android:id="@+id/team_info"
                                     />
                             </LinearLayout>
@@ -242,6 +194,126 @@
                     android:layout_width="match_parent"
                     android:layout_height="2px"
                     android:background="@color/white"/>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                card_view:cardBackgroundColor="@color/colorAccent"
+                card_view:cardElevation="5dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/white"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorAccent"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Hours of Operation"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textSize="20dp"
+                            android:layout_margin="5sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Monday       09:30 am - 08:00 pm "
+                            android:textSize="16sp"
+                            android:layout_margin="10sp"
+                            android:textColor="@color/white"
+                            android:id="@+id/mon"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Tuesday       09:30 am - 08:00 pm"
+                            android:textSize="16sp"
+                            android:layout_margin="10sp"
+                            android:textColor="@color/white"
+                            android:id="@+id/tue"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Wednesday     09:30 am - 08:00 pm"
+                            android:textSize="16sp"
+                            android:layout_margin="10sp"
+                            android:textColor="@color/white"
+                            android:id="@+id/wed"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Thursday      09:30 am - 08:00 pm"
+                            android:textSize="16sp"
+                            android:layout_margin="10sp"
+                            android:textColor="@color/white"
+                            android:id="@+id/thu"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Friday        09:30 am - 08:00 pm"
+                            android:textSize="16sp"
+                            android:layout_margin="10sp"
+                            android:textColor="@color/white"
+                            android:id="@+id/fri"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Saturday     09:30 am - 08:00 pm"
+                            android:textSize="16sp"
+                            android:layout_margin="10sp"
+                            android:textColor="@color/white"
+                            android:id="@+id/sat"
+                            />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Sunday      09:30 am - 08:00 pm"
+                            android:textSize="16sp"
+                            android:layout_margin="10sp"
+                            android:textColor="@color/white"
+                            android:id="@+id/sun"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/colorAccent"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </LinearLayout>
+                </LinearLayout>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -264,16 +336,17 @@
                         android:layout_marginTop="10dp"
                         android:background="@color/colorAccent"
                         android:orientation="horizontal"
-                        android:gravity="center_horizontal"
+                        android:gravity="left"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:weightSum="1">
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Our Gallery"
-                            android:layout_gravity="center"
-                            android:gravity="center"
+                            android:id="@+id/gallery"
+                            android:gravity="left"
                             android:textSize="20dp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -281,41 +354,8 @@
                             />
 
                     </LinearLayout>
-                <LinearLayout
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/colorAccent"
-                    android:orientation="vertical"
-                    android:padding="5dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="160dp"
-                        android:padding="5dp"
-                        android:src="@drawable/new_launchesone"
-                        android:scaleType="fitXY"
-                        />
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="160dp"
-                        android:padding="5dp"
-                        android:src="@drawable/sallon_two"
-                        android:scaleType="fitXY"
-                        />
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="160dp"
-                        android:padding="5dp"
-                        android:src="@drawable/new_launches"
-                        android:scaleType="fitXY"
-                        />
-                </LinearLayout>
                 </LinearLayout>
                 <View
-
-
                     android:layout_width="match_parent"
                     android:layout_height="2px"
                     android:background="@color/white"/>

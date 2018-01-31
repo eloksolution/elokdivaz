@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_marginTop="50dp"
     android:background="@drawable/side_nav_bar"
     android:layout_height="match_parent"
     >
@@ -39,17 +38,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="BeatyGlad Basic Package - 899 /-"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-
-                        />
 
                 </LinearLayout>
 
@@ -76,7 +64,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="packages Includes :: "
+                            android:text="BeatyGlad Basic Package - 899 /-"
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -150,6 +138,21 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:id="@+id/call1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="right"
+                        android:layout_marginBottom="10dp"
+                        android:padding="5dip"
+                        android:text="Book Now"
+                        android:textAppearance="?textAppearanceLargePopupMenu"
+                        android:background="@drawable/circle"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        />
 
                 </LinearLayout>
             </LinearLayout>
@@ -175,29 +178,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-                <LinearLayout
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@color/white"
-                    android:orientation="horizontal"
-                    android:gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="BeatyGlad Basic Package - 899 /-"
-                        android:layout_gravity="center"
-                        android:gravity="center"
-                        android:textSize="20dp"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:id="@+id/package_name"
-
-                        />
-
-                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/Icon"
@@ -223,7 +203,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:text="packages Includes :: "
+                            android:text="BeatyGlad Best Package - 899 /-"
                             android:layout_gravity="center"
                             android:gravity="center"
                             android:textSize="20dp"
@@ -297,6 +277,20 @@
 
                     </LinearLayout>
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="right"
+                        android:layout_marginBottom="10dp"
+                        android:padding="5dip"
+                        android:text="Book Now"
+                        android:textAppearance="?textAppearanceLargePopupMenu"
+                        android:background="@drawable/circle"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        />
 
                 </LinearLayout>
             </LinearLayout>

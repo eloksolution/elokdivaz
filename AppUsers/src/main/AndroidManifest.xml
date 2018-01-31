@@ -54,7 +54,7 @@
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
 
         <activity
-            android:name=".activities.offersScreen"
+            android:name=".activities.OffersScreen"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
             android:name=".activities.AboutPreview"

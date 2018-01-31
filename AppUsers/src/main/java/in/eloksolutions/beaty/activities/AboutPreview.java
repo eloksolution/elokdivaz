@@ -15,7 +15,7 @@ import in.eloksolutions.beaty.R;
 public class AboutPreview extends AppCompatActivity{
 
     public static void showAlertDialog(Context context, String title, String message) {
-        final Dialog dialog = new Dialog(context);
+        final Dialog dialog = new Dialog(context,android.R.style.Theme_Light);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.dialog);

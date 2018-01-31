@@ -14,12 +14,12 @@ import in.eloksolutions.beaty.R;
  * Created by welcome on 12/22/2017.
  */
 
-public class offersScreen extends AppCompatActivity {
+public class OffersScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.offers_screen);
+        setContentView(R.layout.offers_screen_new);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayShowHomeEnabled(true);

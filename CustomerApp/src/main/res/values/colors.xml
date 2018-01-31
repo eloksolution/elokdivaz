@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorAccent">#c29f89</color>
-    <color name="colorPrimaryDark">#a51a55</color>
-    <color name="colorPrimary">#4a2d0f</color>
-    <color name="white">#FFF</color>
-    <color name="black">#131212</color>
-    <color name="background">#cecbcb</color>
-    <color name="green">#3b7924</color>
-    <color name="row_activated">#e0e0e0</color>
+    <color name="colorPrimary">#111</color>
+    <color name="colorPrimaryDark">#FFF</color>
+    <color name="colorAccent">#ea3732</color>
+    <color name="contact_name">#333333</color>
+    <color name="contact_number">#8c8c8c</color>
 </resources>

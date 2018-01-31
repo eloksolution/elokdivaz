@@ -19,7 +19,7 @@ public class ContactUs extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayShowHomeEnabled(true);
-        ab.setTitle("Beauty Parlour");
+        ab.setTitle("Contact us");
 
     }
     @Override

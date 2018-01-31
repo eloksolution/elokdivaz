@@ -1,13 +1,9 @@
 package in.eloksolutions.beaty;
 
-import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -20,11 +16,10 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 
 import in.eloksolutions.beaty.activities.AboutUs;
-import in.eloksolutions.beaty.activities.BookingAppointMent;
 import in.eloksolutions.beaty.activities.Consult;
 import in.eloksolutions.beaty.activities.ContactUs;
+import in.eloksolutions.beaty.activities.OffersScreen;
 import in.eloksolutions.beaty.activities.Packages;
-import in.eloksolutions.beaty.activities.ServiceList;
 import in.eloksolutions.beaty.activities.ServiceSOrRates;
 import in.eloksolutions.beaty.adapter.BeatyGridview;
 import in.eloksolutions.beaty.adapter.CheckInternet;
@@ -62,22 +57,17 @@ public class MainActivity extends AppCompatActivity
                 "Services/ Rates",
                 "Pakages",
                 "Book Now",
-                "Quick Book",
-                "Consult",
+                "Offers",
                 "Contact Us",
-                "About Us",
-                "Call Us"
+                "About Us"
         };
         int[] Images = {
                 R.drawable.services,
                 R.drawable.packages,
-                R.drawable.booknow,
-                R.drawable.quickbook,
-                R.drawable.consult,
-                R.drawable.contact,
+                R.drawable.callus,
                 R.drawable.about,
-                R.drawable.callus
-
+                R.drawable.contact,
+                R.drawable.about
         };
         BeatyGridview adapter = new BeatyGridview(MainActivity.this, Images, services);
         grid = (GridView) findViewById(R.id.grid_view_image_text);
@@ -111,20 +101,22 @@ public class MainActivity extends AppCompatActivity
                         }
                         break;
 
+
                     case 2:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, ServiceList.class);
+                            Intent intent = new Intent(MainActivity.this, Consult.class);
                             startActivity(intent);
                         } else
 
                         {
                             CheckInternet.showAlertDialog(MainActivity.this, "No Internet Connection",
-                                    "Please On your Mobile Data / WIFI .");
+                                    "Please On your Mobile Data / WIFI.");
                         }
                         break;
+
                     case 3:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, BookingAppointMent.class);
+                            Intent intent = new Intent(MainActivity.this, OffersScreen.class);
                             startActivity(intent);
                         } else
 
@@ -135,18 +127,6 @@ public class MainActivity extends AppCompatActivity
                         break;
                     case 4:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, Consult.class);
-                            startActivity(intent);
-                        } else
-
-                        {
-
-                            CheckInternet.showAlertDialog(MainActivity.this, "No Internet Connection",
-                                    "Please On your Mobile Data / WIFI .");
-                        }
-                        break;
-                    case 5:
-                        if (CheckInternet.checkInternetConenction(context)) {
                             Intent intent = new Intent(MainActivity.this, ContactUs.class);
                             startActivity(intent);
                         } else
@@ -156,8 +136,7 @@ public class MainActivity extends AppCompatActivity
                                     "Please On your Mobile Data / WIFI.");
                         }
                         break;
-
-                    case 6:
+                    case 5:
                         if (CheckInternet.checkInternetConenction(context)) {
                             Intent intent = new Intent(MainActivity.this, AboutUs.class);
                             startActivity(intent);
@@ -168,28 +147,7 @@ public class MainActivity extends AppCompatActivity
                                     "Please On your Mobile Data / WIFI .");
                         }
                         break;
-                    case 7:
-                        if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "9963851415"));
-                            if (ActivityCompat.checkSelfPermission(context, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                                // TODO: Consider calling
-                                //    ActivityCompat#requestPermissions
-                                // here to request the missing permissions, and then overriding
-                                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-                                //                                          int[] grantResults)
-                                // to handle the case where the user grants the permission. See the documentation
-                                // for ActivityCompat#requestPermissions for more details.
-                                return;
-                            }
-                            startActivity(intent);
-                        }
-                        else
 
-                        {
-                            CheckInternet.showAlertDialog(MainActivity.this, "No Internet Connection",
-                                    "Please On your Mobile Data / WIFI .");
-                        }
-                        break;
 
                     default:
                         break;
