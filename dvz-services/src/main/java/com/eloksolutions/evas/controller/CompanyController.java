@@ -31,7 +31,7 @@ public class CompanyController {
 			e.printStackTrace();
 			return 0;
 		}
-		  System.out.println("in insert id "+id);
+		  System.out.println("BEW in insert id "+id);
 		  return id;
 	  }
 	 

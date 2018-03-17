@@ -2,7 +2,7 @@ package com.eloksolutions.evas.util;
 
 import java.util.List;
 
-import com.eloksolutiions.evas.vo.Parlour;
+import com.eloksolutions.evas.vo.Parlour;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class ParlourFormattor {

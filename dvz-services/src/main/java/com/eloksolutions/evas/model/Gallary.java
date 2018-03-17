@@ -8,6 +8,19 @@ public class Gallary {
 	String description;
 	String category;
 	Date createDate;
+	public Gallary(){
+		
+	}
+	public Gallary(int id, String imagePath, String description, String category, int createDate) {
+		super();
+		this.id = id;
+		this.imagePath = imagePath;
+		this.description = description;
+		this.category = category;
+		//this.createDate = createDate;
+	}
+	
+	
 	public Integer getId() {
 		return id;
 	}

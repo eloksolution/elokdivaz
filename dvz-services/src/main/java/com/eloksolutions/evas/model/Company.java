@@ -87,12 +87,45 @@ public class Company {
 
 
 
-	public Company(Integer id, String name, String code, String schema) {
+	public Company(int id, String name, String code, String dbschema, String description, String office_phone,
+			String owner_phone, String status, String create_date, String updated_date, int updated_by, String address,
+			String address_1, String address_2, String city, String state, String latitude, String longitude,
+			String email, String first_name, String last_name, String password, String linkedin, String whatsapp,
+			String facebook, String para1, String para_2, String para_3, String img_path1, String img_path2,
+			String img_path3) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.schema = schema;
+		this.descriptioin = description;
 		this.code = code;
+		this.address = address;
+		this.officePhone = office_phone;
+		this.ownerPhone = owner_phone;
+		this.schema = dbschema;
+		this.status = status;
+		//this.createDate = create_date;
+		//this.updatedDate = updatedDate;
+		this.updatedBy = updated_by;
+		this.address_1 = address_1;
+		this.address_2 = address_2;
+		this.city = city;
+		this.state = state;
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.email = email;
+		this.firstName = first_name;
+		this.lastName = last_name;
+		this.password = password;
+		this.linkedin = linkedin;
+		this.facebook = facebook;
+		this.whatsapp = whatsapp;
+		this.para1 = para1;
+		this.para2 = para_2;
+		this.para3 = para_3;
+		this.imgPath1 = img_path1;
+		this.imgPath2 = img_path2;
+		this.imgPath3 = img_path3;
+		
 	}
 
 	public Integer getId() {

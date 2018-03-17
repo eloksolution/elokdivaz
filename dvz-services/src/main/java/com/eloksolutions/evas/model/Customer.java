@@ -3,7 +3,7 @@ package com.eloksolutions.evas.model;
 import java.util.Date;
 import java.util.List;
 
-import com.eloksolutiions.evas.vo.Parlour;
+import com.eloksolutions.evas.vo.Parlour;
 
 public class Customer {
     int id;

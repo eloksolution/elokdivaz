@@ -7,6 +7,22 @@ public class Packages {
 	Integer price;
 	String category;
 	String imagePath;
+	
+	public Packages(){
+		
+	}
+	
+	public Packages(int id, String name, String description, int price, String category, String imagePath) {
+		this.id=id;
+		this.name=name;
+		this.description=description;
+		this.price=price;
+		this.category=category;
+		this.imagePath=imagePath;
+		
+	}
+	
+	
 	public Integer getId() {
 		return id;
 	}

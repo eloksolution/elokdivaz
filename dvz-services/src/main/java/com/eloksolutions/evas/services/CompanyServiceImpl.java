@@ -38,4 +38,10 @@ public class CompanyServiceImpl implements CompanyService{
 	public boolean isCompanyCodeExist(String code) {
 		return !companyDAO.findByColumn("CODE", code, null).isEmpty();
 	}
+
+	@Override
+	public Company findById(Integer id, Context ctx) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

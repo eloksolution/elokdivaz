@@ -3,11 +3,11 @@ package com.eloksolutions.evas.model;
 import java.sql.Date;
 
 public class Service {
-	Integer id;
+	int id;
 	String name;
 	String description;
-	Integer price;
-	Integer discount;
+	int price;
+	int discount;
 	String imagePath;
 	String imageIcon;
 	Date createDate;

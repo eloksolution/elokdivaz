@@ -3,10 +3,27 @@ package com.eloksolutions.evas.model;
 public class PackageItem {
 	Integer id;
 	String name;
-	String description;
-	String price;
+	Integer item_id;
+	Integer price;
 	String category;
 	String imagePath;
+	
+	public PackageItem(){
+		
+	}
+	
+	
+	public PackageItem(int id, int item_id, String name, int price, String category, String imagePath) {
+		this.id=id;
+		this.item_id=item_id;
+		this.name=name;
+		this.price=price;
+		this.category=category;
+		this.imagePath=imagePath;
+		
+	}
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -19,16 +36,24 @@ public class PackageItem {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescription() {
-		return description;
+
+
+	public Integer getItem_id() {
+		return item_id;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+
+
+	public void setItem_id(Integer item_id) {
+		this.item_id = item_id;
 	}
-	public String getPrice() {
+
+
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+
+
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public String getCategory() {
@@ -45,8 +70,8 @@ public class PackageItem {
 	}
 	@Override
 	public String toString() {
-		return "PackageItem [id=" + id + ", name=" + name + ", description=" + description + ", price=" + price
-				+ ", category=" + category + ", imagePath=" + imagePath + "]";
+		return "PackageItem [id=" + id + ", name=" + name + ", item_id=" + item_id + ", price=" + price + ", category="
+				+ category + ", imagePath=" + imagePath + "]";
 	}
 	
 	
