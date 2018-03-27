@@ -14,14 +14,12 @@ public class PackageServiceImpl implements PackageService {
 private PackageDAO packageDAO;
 	@Override
 	public Integer add(Packages packages, Context ctx) throws Exception {
-		// TODO Auto-generated method stub
 		return packageDAO.add(packages, ctx);
 	}
 
 	@Override
 	public List<Packages> findNext(Integer noOfRecords, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return packageDAO.findNext(noOfRecords, ctx);
 	}
 
 	@Override
@@ -32,14 +30,12 @@ private PackageDAO packageDAO;
 
 	@Override
 	public Packages findById(Integer id, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return packageDAO.findById(id, ctx);
 	}
 
 	@Override
 	public Integer update(Packages model, Context ctx) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return packageDAO.update(model, ctx);
 	}
 
 	

@@ -1,10 +1,10 @@
 package com.eloksolutions.evas.model;
 
 public class Packages {
-	Integer id;
+	int id;
 	String name;
 	String description;
-	Integer price;
+	int price;
 	String category;
 	String imagePath;
 	
@@ -23,10 +23,10 @@ public class Packages {
 	}
 	
 	
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -41,10 +41,10 @@ public class Packages {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(Integer price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	public String getCategory() {

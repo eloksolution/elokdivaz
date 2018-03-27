@@ -20,8 +20,7 @@ public class GalleryServiceImpl implements GalleryService {
 
 	@Override
 	public List<Gallary> findNext(Integer noOfRecords, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return galleryDAO.findNext(noOfRecords, ctx);
 	}
 
 	@Override
@@ -32,14 +31,12 @@ public class GalleryServiceImpl implements GalleryService {
 
 	@Override
 	public Gallary findById(Integer id, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return galleryDAO.findById(id, ctx);
 	}
 
 	@Override
 	public Integer update(Gallary model, Context ctx) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return galleryDAO.update(model, ctx);
 	}
 
 }

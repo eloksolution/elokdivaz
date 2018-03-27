@@ -20,8 +20,7 @@ public class MessageServiceImpl implements MessagesServices{
 
 	@Override
 	public List<Message> findNext(Integer noOfRecords, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return messagesDao.findNext(noOfRecords,ctx);
 	}
 
 	@Override
@@ -32,14 +31,12 @@ public class MessageServiceImpl implements MessagesServices{
 
 	@Override
 	public Message findById(Integer id, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return messagesDao.findById(id, ctx);
 	}
 
 	@Override
 	public Integer update(Message model, Context ctx) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return messagesDao.update(model, ctx);
 	}
 	
 

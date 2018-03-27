@@ -85,7 +85,6 @@ public class GalleryDAOImpl implements GalleryDAO {
 
 	@Override
 	public Integer delete(Gallary model, Context ctx) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

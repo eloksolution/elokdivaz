@@ -53,6 +53,7 @@ public class Offer {
 		this.sCreatedDate = createdDate;
 	}
 
+	
 	public int getId() {
         return id;
     }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.eloksolutions.evas.model.Context;
 import com.eloksolutions.evas.model.Offer;
+import com.eloksolutions.evas.model.Service;
 
 @Repository("offersDAO")
 public class OffersDAOImpl implements OffersDAO{
@@ -29,20 +30,33 @@ public class OffersDAOImpl implements OffersDAO{
 
 	@Override
 	public List<Offer> findByColumn(String columnName, String columnValue, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query(
+                "SELECT ID,NAME,DESCRIPTION,OFFER_PRICE,BEFORE_OFFER_PRICE,IMG_PATH,START_DATE,END_DATE,CREATED_DATE FROM "+ctx.getSchema()+".offers"+ " WHERE "+columnName+" = '"+columnValue+"'",
+                (rs, rowNum) -> new Offer(rs.getInt("ID"),
+                        rs.getString("NAME"), rs.getString("DESCRIPTION"),
+                        rs.getInt("OFFER_PRICE"),rs.getInt("BEFORE_OFFER_PRICE"),rs.getString("IMG_PATH")
+                       ,rs.getString("START_DATE"),rs.getString("END_DATE"),rs.getString("CREATED_DATE")
+                        ));
 	}
 
 	@Override
 	public List<Offer> findNext(Integer noOfRecords, Context ctx) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Offer findById(Integer id, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.queryForObject(
+                "SELECT ID,NAME,DESCRIPTION,OFFER_PRICE,BEFORE_OFFER_PRICE,IMG_PATH,START_DATE,END_DATE,CREATED_DATE FROM "+ctx.getSchema()+".offers"
+                		+ " WHERE id=?",
+                		new Object[] { id },
+                		(rs, rowNum) -> new Offer(rs.getInt("ID"),
+                				 rs.getString("NAME"), rs.getString("DESCRIPTION"),
+                                 rs.getInt("OFFER_PRICE"),rs.getInt("BEFORE_OFFER_PRICE"),rs.getString("IMG_PATH")
+                                ,rs.getString("START_DATE"),rs.getString("END_DATE"),rs.getString("CREATED_DATE")
+                                )
+        );
+		
 	}
 
 	@Override
@@ -60,8 +74,14 @@ public class OffersDAOImpl implements OffersDAO{
 
 	@Override
 	public Integer update(Offer model, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.update(
+                "UPDATE "+ctx.getSchema()+".offers SET name = ?, description = ?, offer_price = ?, before_offer_price = ?, img_path = ?,start_date=?,"
+                		+ " end_date=? WHERE ID = ?",
+                new Object[] { model.getName(),model.getDescription(),model.getOfferPrice(),
+                		model.getBeforeOfferPrice(),model.getImgePath(), model.getStartDate(),
+                		model.getEndDate(),model.getId()
+                }
+        );
 	}
 
 	@Override

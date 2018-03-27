@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.eloksolutions.evas.model.Context;
 import com.eloksolutions.evas.model.Message;
+import com.eloksolutions.evas.model.Offer;
 
 @Repository("messagesDao")
 public class MessagesDAOImpl implements MessagesDAO{
@@ -29,20 +30,32 @@ public class MessagesDAOImpl implements MessagesDAO{
 
 	@Override
 	public List<Message> findByColumn(String columnName, String columnValue, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return jdbcTemplate.query(
+                "SELECT ID,SUBJECT,DESCRIPTION,IMG_PATH,CREATE_DATE,TYPE FROM "+ctx.getSchema()+".messages"+ " WHERE "+columnName+" = '"+columnValue+"'",
+                (rs, rowNum) -> new Message(rs.getInt("ID"),
+                        rs.getString("SUBJECT"), rs.getString("DESCRIPTION"),
+                        rs.getString("IMG_PATH"),rs.getInt("CREATE_DATE"),rs.getString("TYPE")
+                       
+                        ));
 	}
 
 	@Override
 	public List<Message> findNext(Integer noOfRecords, Context ctx) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Message findById(Integer id, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.queryForObject(
+                "SELECT ID,SUBJECT,DESCRIPTION,IMG_PATH,CREATE_DATE,TYPE FROM "+ctx.getSchema()+".messages"
+                		+ " WHERE id=?",
+                		new Object[] { id },
+                		 (rs, rowNum) -> new Message(rs.getInt("ID"),
+                                 rs.getString("SUBJECT"), rs.getString("DESCRIPTION"),
+                                 rs.getString("IMG_PATH"),rs.getInt("CREATE_DATE"),rs.getString("TYPE")
+                                
+                                 ));
 	}
 
 	@Override
@@ -60,13 +73,16 @@ public class MessagesDAOImpl implements MessagesDAO{
 
 	@Override
 	public Integer update(Message model, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.update(
+                "UPDATE "+ctx.getSchema()+".messages SET subject = ?, description = ?, img_path = ? , type = ? WHERE ID = ?",
+                new Object[] { model.getSubject(),model.getDescription(),model.getImg_path(),
+                		model.getType(),model.getId()
+                }
+        );
 	}
 
 	@Override
 	public Integer delete(Message model, Context ctx) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

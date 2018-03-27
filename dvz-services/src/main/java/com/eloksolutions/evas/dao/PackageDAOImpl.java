@@ -25,20 +25,29 @@ private JdbcTemplate jdbcTemplate;
 
 	@Override
 	public List<Packages> findByColumn(String columnName, String columnValue, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.query(
+                "SELECT ID,NAME, DESCRIPTION, PRICE, CATEGORY, IMAGE_PATH FROM "+ctx.getSchema()+".package"+ " WHERE "+columnName+" = '"+columnValue+"'",
+                (rs, rowNum) -> new Packages(rs.getInt("ID"),
+                        rs.getString("NAME"), rs.getString("DESCRIPTION"),
+                        rs.getInt("PRICE"),rs.getString("CATEGORY"),rs.getString("IMAGE_PATH")
+                        ));
 	}
 
 	@Override
 	public List<Packages> findNext(Integer noOfRecords, Context ctx) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public Packages findById(Integer id, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.queryForObject(
+                "SELECT ID,NAME, DESCRIPTION, PRICE, CATEGORY, IMAGE_PATH FROM "+ctx.getSchema()+".package"
+                		+ " WHERE id=?",
+                		new Object[] { id },
+                		 (rs, rowNum) -> new Packages(rs.getInt("ID"),
+                                 rs.getString("NAME"), rs.getString("DESCRIPTION"),
+                                 rs.getInt("PRICE"),rs.getString("CATEGORY"),rs.getString("IMAGE_PATH")
+                                 ));
 	}
 
 	@Override
@@ -56,13 +65,17 @@ private JdbcTemplate jdbcTemplate;
 
 	@Override
 	public Integer update(Packages model, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return jdbcTemplate.update(
+                "UPDATE "+ctx.getSchema()+".package SET name = ?, description = ?, price = ?, category = ?, image_path = ?  WHERE ID = ?",
+                		
+                new Object[] { model.getName(),model.getDescription(),model.getPrice(),
+                		model.getCategory(),model.getImagePath(), model.getId()
+                }
+        );
 	}
 
 	@Override
 	public Integer delete(Packages model, Context ctx) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
