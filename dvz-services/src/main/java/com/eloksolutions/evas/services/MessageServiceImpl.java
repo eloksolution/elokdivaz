@@ -1,37 +1,21 @@
-package in.eloksolutions.evas.services;
+package com.eloksolutions.evas.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import in.eloksolutions.evas.dao.CompanyCustomerDAO;
-import in.eloksolutions.evas.dao.MessagesDAO;
-import in.eloksolutions.evas.messaging.SendNotification;
-import in.eloksolutions.evas.model.Context;
-import in.eloksolutions.evas.model.Customer;
-import in.eloksolutions.evas.model.Message;
+import com.eloksolutions.evas.dao.MessagesDAO;
+import com.eloksolutions.evas.model.Context;
+import com.eloksolutions.evas.model.Message;
 @Repository("messageService")
 public class MessageServiceImpl implements MessagesServices{
 	@Autowired
     private MessagesDAO messagesDao;
-	
-	@Autowired
-    private CompanyCustomerDAO companyCustomerDAO;
-	
 	@Override
 	public Integer add(Message message, Context ctx) throws Exception {
-		Integer id= messagesDao.add(message, ctx);
-		if(id>0){
-			try {
-				List<Customer> customers=companyCustomerDAO.getCustomers(ctx);
-				SendNotification.sendOfferMessageToUsers(customers, message.getDescription(), message.getSubject());
-			} catch (Exception e) {
-				System.out.println("Error while sending message "+e.getMessage());
-				e.printStackTrace();
-			}
-		}
-		return id;
+		
+		return messagesDao.add(message, ctx);
 	}
 
 	@Override
