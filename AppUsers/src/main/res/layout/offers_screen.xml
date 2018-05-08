@@ -14,16 +14,14 @@
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="@dimen/cardview_default_elevation" >
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:ripple="http://schemas.android.com/apk/res-auto"
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/top_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:background="@color/white"
         android:orientation="horizontal"
-        android:padding="5dp" >
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/product_thumb"

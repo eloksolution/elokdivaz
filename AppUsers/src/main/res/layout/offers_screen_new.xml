@@ -22,7 +22,6 @@
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:ripple="http://schemas.android.com/apk/res-auto"
             android:id="@+id/top_view"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -79,6 +78,22 @@
                     android:text=" Item description"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/date2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/item_short_desc"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:freezesText="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:text="Mar 12 2018"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
 
                 <TextView
@@ -137,7 +152,6 @@
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:ripple="http://schemas.android.com/apk/res-auto"
             android:id="@+id/top_view1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -194,7 +208,22 @@
                     android:text=" Item description"
                     android:textColor="@android:color/darker_gray"
                     android:textSize="15sp" />
-
+                <TextView
+                    android:id="@+id/date_t"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:layout_below="@+id/item_short_desc1"
+                    android:focusableInTouchMode="true"
+                    android:freezesText="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:text="nov 11 2018"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/item_price1"
@@ -250,16 +279,14 @@
         card_view:cardCornerRadius="4dp"
         card_view:cardElevation="@dimen/cardview_default_elevation" >
 
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:ripple="http://schemas.android.com/apk/res-auto"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/top_view2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:padding="5dp" >
+            android:padding="5dp">
 
             <ImageView
                 android:id="@+id/product_thumb2"
@@ -328,6 +355,23 @@
                     android:textColor="@android:color/background_dark"
                     android:textSize="15sp"
                     android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/item_short_desc2"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:freezesText="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:text="feb 22 2018"
+                    android:textColor="@android:color/background_dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
 
                 <TextView
                     android:id="@+id/call2"

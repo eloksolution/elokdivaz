@@ -25,7 +25,10 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
         this.arrayList = android;
         this.mcontext = context;
     }
+    public AndroidDataAdapter(Context context) {
 
+        this.mcontext = context;
+    }
 
     @Override
     public void onBindViewHolder(AndroidDataAdapter.ViewHolder holder, int i) {
@@ -36,7 +39,7 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
     @Override
     public AndroidDataAdapter.ViewHolder onCreateViewHolder(ViewGroup vGroup, int i) {
 
-        View view = LayoutInflater.from(vGroup.getContext()).inflate(R.layout.services_list, vGroup, false);
+        View view = LayoutInflater.from(vGroup.getContext()).inflate(R.layout.gridview_layout, vGroup, false);
         return new ViewHolder(view);
     }
 
@@ -53,8 +56,8 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
         public ViewHolder(View v) {
             super(v);
 
-            textView = (TextView) v.findViewById(R.id.text);
-            imageView = (ImageView) v.findViewById(R.id.image);
+            textView = (TextView) v.findViewById(R.id.services);
+            imageView = (ImageView) v.findViewById(R.id.Icon);
         }
     }
 

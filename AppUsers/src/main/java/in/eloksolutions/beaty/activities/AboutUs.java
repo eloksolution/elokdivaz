@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ import in.eloksolutions.beaty.MainActivity;
 import in.eloksolutions.beaty.R;
 import in.eloksolutions.beaty.adapter.AndroidDataAdapter;
 import in.eloksolutions.beaty.adapter.AndroidVersion;
+import in.eloksolutions.beaty.adapter.GalleryDataAdapter;
 import in.eloksolutions.beaty.listeners.RecyclerItemClickListener;
 
 
@@ -36,11 +38,11 @@ public class AboutUs extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayShowHomeEnabled(true);
-        ab.setTitle("Contact us");
+        ab.setTitle("About us");
      //   TextView about_us=(TextView) findViewById(R.id.about_us);
        // about_us.setText("Green Trends offers trendy haircuts and color services, complete skin care solutions and bridal packages, at affordable rates. Equipped with the knowledge on a wide variety of professional hair & skin care products, our well trained professional stylists provide friendly service. Conveniently close, we're located right in your neighbourhood. You can also find your favorite world class hair care brands, like L'Oreal, Matrix, Wella, Schwarzkopf and many more at Green Trends.");
         TextView ceo=(TextView) findViewById(R.id.ceo);
-        TextView our=(TextView) findViewById(R.id.gallery);
+        LinearLayout our=(LinearLayout) findViewById(R.id.image_layout);
         ceo.setText("Green Trends offers trendy haircuts and color services, complete skin care solutions and bridal packages, at affordable rates. Equipped with the knowledge on a wide variety of professional hair & skin care products, our well trained professional stylists provide friendly service. Conveniently close, we're located right in your neighbourhood. You can also find your favorite world class hair care brands, like L'Oreal, Matrix, Wella, Schwarzkopf and many more at Green Trends.");
 
         our.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +76,7 @@ public class AboutUs extends AppCompatActivity {
                 new LinearLayoutManager(dialog.getContext(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         ArrayList<AndroidVersion> av = prepareData();
-        AndroidDataAdapter movies = new AndroidDataAdapter(dialog.getContext(), av);
+        GalleryDataAdapter movies = new GalleryDataAdapter(dialog.getContext(), av);
         mRecyclerView.setAdapter(movies);
 
         mRecyclerView.addOnItemTouchListener(

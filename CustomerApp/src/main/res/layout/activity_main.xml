@@ -1,25 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="info.androidhive.recyclerviewsearch.MainActivity">
-
-    <android.support.design.widget.AppBarLayout
+    xmlns:sl="http://schemas.android.com/tools"
+    android:id="@+id/group_view_layout"
+    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/colorAccent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardlist_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginTop="2dp"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:orientation="vertical"
+        card_view:cardBackgroundColor="@android:color/white"
+        card_view:cardCornerRadius="4dp"
+        card_view:cardElevation="@dimen/cardview_default_elevation" >
+        <ImageView
+            android:id="@+id/padi_image_list"
+            android:layout_width="fill_parent"
+            android:layout_height="230dp"
+            android:src="@drawable/contact"
+            android:gravity="center_vertical" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@android:color/white"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+    </android.support.v7.widget.CardView>
+    <SearchView
+        android:id="@+id/mySearchView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/bg_white_background"
+        android:iconifiedByDefault="false" />
 
-    </android.support.design.widget.AppBarLayout>
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="search"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/mySearchView"
+        android:layout_alignEnd="@+id/mySearchView"
+        android:layout_marginEnd="97dp"
+        android:layout_marginTop="17dp" />
 
-    <include layout="@layout/content_main" />
-
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>

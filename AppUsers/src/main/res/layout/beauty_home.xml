@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:ripple="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
      android:background="@color/white"
     android:orientation="vertical"
     android:padding="5dp" >
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    <SearchView
+        android:id="@+id/mySearchView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/side_nav_bar"
+        android:iconifiedByDefault="false" />
+
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/cardlist_item"
     android:layout_width="match_parent"
@@ -21,10 +29,8 @@
     card_view:cardBackgroundColor="@android:color/white"
     card_view:cardCornerRadius="4dp"
     card_view:cardElevation="@dimen/cardview_default_elevation" >
-
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:ripple="http://schemas.android.com/apk/res-auto"
         android:id="@+id/top_view"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -137,7 +143,6 @@
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:ripple="http://schemas.android.com/apk/res-auto"
             android:id="@+id/top_view2"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -250,7 +255,6 @@
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:ripple="http://schemas.android.com/apk/res-auto"
             android:id="@+id/top_view3"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -360,16 +364,14 @@
         card_view:cardCornerRadius="4dp"
         card_view:cardElevation="@dimen/cardview_default_elevation" >
 
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:ripple="http://schemas.android.com/apk/res-auto"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/top_view4"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:background="@color/white"
             android:orientation="horizontal"
-            android:padding="5dp" >
+            android:padding="5dp">
 
             <ImageView
                 android:id="@+id/padi_image_list4"

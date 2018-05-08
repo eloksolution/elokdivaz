@@ -16,8 +16,8 @@ import java.util.ArrayList;
 
 import in.eloksolutions.beaty.MainActivity;
 import in.eloksolutions.beaty.R;
-import in.eloksolutions.beaty.adapter.AndroidDataAdapter;
-import in.eloksolutions.beaty.adapter.AndroidVersion;
+import in.eloksolutions.beaty.adapter.ServiceDataAdapter;
+import in.eloksolutions.beaty.dtoclasses.ServiceDTO;
 import in.eloksolutions.beaty.listeners.RecyclerItemClickListener;
 
 public class ServiceList extends AppCompatActivity
@@ -48,7 +48,7 @@ GridView grid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.services_list_activity);
+        setContentView(R.layout.app_bar_service);
         context=this;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar ab = getSupportActionBar();
@@ -64,8 +64,8 @@ GridView grid;
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        ArrayList<AndroidVersion> av = prepareData();
-        AndroidDataAdapter services = new AndroidDataAdapter(getApplicationContext(), av);
+        ArrayList<ServiceDTO> av = prepareData();
+        ServiceDataAdapter services = new ServiceDataAdapter(getApplicationContext(), av);
         mRecyclerView.setAdapter(services);
         final Context ctx=this;
         mRecyclerView.addOnItemTouchListener(
@@ -75,40 +75,40 @@ GridView grid;
                         switch (i) {
                             case 0:
 
-                                Intent intent = new Intent(ServiceList.this,ServiceList.class);
+                                Intent intent = new Intent(ServiceList.this,OrderView.class);
 
                                 startActivity(intent);
                                 break;
                             case 1:
 
 
-                                Intent intent1 = new Intent(ServiceList.this,ServiceList.class);
+                                Intent intent1 = new Intent(ServiceList.this,OrderView.class);
 
                                 startActivity(intent1);
                                 break;
                             case 2:
 
-                                Intent intent2 = new Intent(ServiceList.this,ServiceList.class);
+                                Intent intent2 = new Intent(ServiceList.this,OrderView.class);
 
                                 startActivity(intent2);
                                 break;
                             case 3:
 
-                                Intent intent3 = new Intent(ServiceList.this,ServiceList.class);
+                                Intent intent3 = new Intent(ServiceList.this,OrderView.class);
 
                                 startActivity(intent3);
                                 break;
                             case 4:
 
 
-                                Intent intent4 = new Intent(ServiceList.this,ServiceList.class);
+                                Intent intent4 = new Intent(ServiceList.this,OrderView.class);
 
                                 startActivity(intent4);
                                 break;
                             case 5:
 
 
-                                Intent intent5 = new Intent(ServiceList.this,ServiceList.class);
+                                Intent intent5 = new Intent(ServiceList.this,OrderView.class);
 
                                 startActivity(intent5);
                                 break;
@@ -119,15 +119,15 @@ GridView grid;
         );
 
     }
-    private ArrayList<AndroidVersion> prepareData() {
+    private ArrayList<ServiceDTO> prepareData() {
 
 
-        ArrayList<AndroidVersion> av = new ArrayList<>();
+        ArrayList<ServiceDTO> av = new ArrayList<>();
         for (int i = 0; i < services.length; i++) {
-            AndroidVersion mAndroidVersion = new AndroidVersion();
-            mAndroidVersion.setAndroidVersionName(services[i]);
-            mAndroidVersion.setrecyclerViewImage(Images[i]);
-            av.add(mAndroidVersion);
+            ServiceDTO serviceDTO = new ServiceDTO();
+           // serviceDTO.setAndroidVersionName(services[i]);
+           // serviceDTO.setrecyclerViewImage(Images[i]);
+            av.add(serviceDTO);
         }
         return av;
     }

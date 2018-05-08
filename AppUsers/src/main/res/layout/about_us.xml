@@ -148,6 +148,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Our Team Information"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textSize="20dp"
+                        android:layout_margin="5sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:layout_margin="10sp"
+                        android:background="@color/background"/>
 
                         <LinearLayout
                             android:background="@color/colorAccent"
@@ -334,9 +351,10 @@
                     <LinearLayout
                         android:layout_marginBottom="10dp"
                         android:layout_marginTop="10dp"
+                        android:id="@+id/image_layout"
                         android:background="@color/colorAccent"
-                        android:orientation="horizontal"
-                        android:gravity="left"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:weightSum="1">
@@ -352,6 +370,16 @@
                             android:textColor="@color/black"
 
                             />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:layout_margin="10sp"
+                            android:background="@color/background"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/beaty"
+                            android:id="@+id/galle"/>
 
                     </LinearLayout>
                 </LinearLayout>

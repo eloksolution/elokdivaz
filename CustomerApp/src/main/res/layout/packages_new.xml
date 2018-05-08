@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorAccent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/about_us"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Packages"
+                android:layout_gravity="left|center_horizontal"
+                android:gravity="left|center_horizontal"
+                android:textSize="16sp"
+                android:paddingLeft="10dp"
+                android:textColor="@color/white"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="50sp"
+                    android:layout_height="50sp"
+                    android:id="@+id/close"
+                    android:layout_gravity="right"
+                    android:gravity="right"
+                    android:src="@android:drawable/btn_dialog"
+                    android:scaleType="fitXY"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <android.support.v7.widget.CardView
+
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardElevation="2sp">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:padding="10dp"
+            android:id="@+id/create_offer"
+            android:src="@drawable/offersmain"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Basic package - 899"
+                android:id="@+id/package_name"
+                android:textColor="@color/black"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Shahnaaz Gold Facial"
+                android:id="@+id/one"
+                android:textSize="14sp"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Anti TAN Pedicure"
+                android:id="@+id/two"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Anti TAN Manicure"
+                android:id="@+id/three"
+                android:src="@drawable/offersmain"/>
+            <TextView
+                android:id="@+id/call1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="5dip"
+                android:text="Book Now"
+                android:textAppearance="?textAppearanceLargePopupMenu"
+                android:background="@drawable/circle"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardElevation="2sp">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:padding="10dp"
+                android:id="@+id/create_offers"
+                android:src="@drawable/offersmain"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Best package - 699"
+                android:id="@+id/texts"
+                android:textColor="@color/black"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Hair Trim and Blow Dry"
+                android:id="@+id/ones"
+                android:textSize="14sp"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Waxing Full Legs"
+                android:id="@+id/twos"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Hair SPA"
+                android:id="@+id/threes"
+                android:src="@drawable/offersmain"/>
+            <TextView
+                android:id="@+id/book"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="5dip"
+                android:text="Book Now"
+                android:textAppearance="?textAppearanceLargePopupMenu"
+                android:background="@drawable/circle"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+
+</android.support.v7.widget.CardView>
+    </LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+        <android.support.v7.widget.CardView
+
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardElevation="2sp">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:padding="10dp"
+                android:id="@+id/create_offersa"
+                android:src="@drawable/offersmain"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Daily package - 999"
+                android:id="@+id/textsa"
+                android:textColor="@color/black"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Hair Trim and Blow Dry"
+                android:id="@+id/onesa"
+                android:textSize="14sp"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Waxing Full Legs"
+                android:id="@+id/twosa"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Hair SPA"
+                android:id="@+id/threesa"
+                android:src="@drawable/offersmain"/>
+            <TextView
+                android:id="@+id/cal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="5dip"
+                android:text="Book Now"
+                android:textAppearance="?textAppearanceLargePopupMenu"
+                android:background="@drawable/circle"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardElevation="2sp">
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            <ImageView
+                android:layout_width="180dp"
+                android:layout_height="180dp"
+                android:padding="10dp"
+                android:id="@+id/create_offerss"
+                android:src="@drawable/offersmain"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Month package - 899"
+                android:id="@+id/textss"
+                android:textColor="@color/black"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Hair Trim and Blow Dry"
+                android:id="@+id/oness"
+                android:textSize="14sp"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Waxing Full Legs"
+                android:id="@+id/twoss"
+                android:src="@drawable/offersmain"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5sp"
+                android:text="Hair SPA"
+                android:id="@+id/threess"
+                android:src="@drawable/offersmain"/>
+            <TextView
+                android:id="@+id/call"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:padding="5dip"
+                android:text="Book Now"
+                android:textAppearance="?textAppearanceLargePopupMenu"
+                android:background="@drawable/circle"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                />
+
+        </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+</LinearLayout>
+    </ScrollView>

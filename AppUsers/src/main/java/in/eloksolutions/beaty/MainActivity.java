@@ -18,9 +18,9 @@ import android.widget.GridView;
 import in.eloksolutions.beaty.activities.AboutUs;
 import in.eloksolutions.beaty.activities.Consult;
 import in.eloksolutions.beaty.activities.ContactUs;
-import in.eloksolutions.beaty.activities.OffersScreen;
-import in.eloksolutions.beaty.activities.Packages;
-import in.eloksolutions.beaty.activities.ServiceSOrRates;
+import in.eloksolutions.beaty.activities.OffersList;
+import in.eloksolutions.beaty.activities.PackagesList;
+import in.eloksolutions.beaty.activities.ServiceLists;
 import in.eloksolutions.beaty.adapter.BeatyGridview;
 import in.eloksolutions.beaty.adapter.CheckInternet;
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     GridView grid;
     Context context;
-
+    String companyId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });*/
-
+        companyId = getIntent().getStringExtra("companyId");
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -80,7 +80,8 @@ public class MainActivity extends AppCompatActivity
                 switch (position) {
                     case 0:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, ServiceSOrRates.class);
+                            Intent intent = new Intent(MainActivity.this, ServiceLists.class);
+                            intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
@@ -91,7 +92,8 @@ public class MainActivity extends AppCompatActivity
                         break;
                     case 1:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, Packages.class);
+                            Intent intent = new Intent(MainActivity.this, PackagesList.class);
+                            intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
@@ -105,6 +107,7 @@ public class MainActivity extends AppCompatActivity
                     case 2:
                         if (CheckInternet.checkInternetConenction(context)) {
                             Intent intent = new Intent(MainActivity.this, Consult.class);
+                            intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
@@ -116,7 +119,8 @@ public class MainActivity extends AppCompatActivity
 
                     case 3:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, OffersScreen.class);
+                            Intent intent = new Intent(MainActivity.this, OffersList.class);
+                            intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
@@ -128,6 +132,7 @@ public class MainActivity extends AppCompatActivity
                     case 4:
                         if (CheckInternet.checkInternetConenction(context)) {
                             Intent intent = new Intent(MainActivity.this, ContactUs.class);
+                            intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
@@ -139,6 +144,7 @@ public class MainActivity extends AppCompatActivity
                     case 5:
                         if (CheckInternet.checkInternetConenction(context)) {
                             Intent intent = new Intent(MainActivity.this, AboutUs.class);
+                            intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 

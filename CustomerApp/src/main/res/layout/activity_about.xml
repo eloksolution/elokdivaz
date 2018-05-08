@@ -1,0 +1,137 @@
+<?xml version="1.5.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="5dp"
+        android:gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:background="@color/white"
+        android:paddingRight="5dp"
+        >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@drawable/email"/>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_layout_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_margin="10sp"
+                android:inputType="textEmailAddress"
+                android:hint="Enter Email" />
+        </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@drawable/phone"/>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/input_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="phone"
+                android:hint="Enter Phone Number" />
+        </android.support.design.widget.TextInputLayout>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@drawable/browcer"/>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/website"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/website_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:hint="Enter WebSite Url" />
+        </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10sp"
+            android:layout_width="50sp"
+            android:layout_height="50sp"
+            android:src="@drawable/whatsapp"/>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/what"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/whats_app_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:inputType="phone"
+                android:hint="Enter whatsapp Number" />
+        </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_margin="10sp"
+                android:layout_width="50sp"
+                android:layout_height="50sp"
+                android:src="@drawable/facebook"/>
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/face_book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/face_books"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="phone"
+                    android:hint="Face Book Contacts" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

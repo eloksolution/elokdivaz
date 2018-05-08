@@ -29,10 +29,9 @@
             android:orientation="vertical" >
         <ImageView
             android:layout_width="180dp"
-            android:layout_height="180dp"
-            android:padding="10dp"
+            android:layout_height="250dp"
             android:id="@+id/create_offer"
-            android:src="@drawable/offersmain"/>
+            android:src="@drawable/sallon_two"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,22 +41,7 @@
                 android:textColor="@color/black"
                 android:src="@drawable/offersmain"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5sp"
-                android:text="Shahnaaz Gold Facial"
-                android:id="@+id/one"
-                android:textSize="14sp"
-                android:src="@drawable/offersmain"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5sp"
-                android:text="Anti TAN Pedicure"
-                android:id="@+id/two"
-                android:src="@drawable/offersmain"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,10 +85,9 @@
             android:orientation="vertical" >
             <ImageView
                 android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:padding="10dp"
-                android:id="@+id/create_offers"
-                android:src="@drawable/offersmain"/>
+                android:layout_height="250dp"
+                android:id="@+id/create_offer2"
+                android:src="@drawable/sallon_two"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -123,21 +106,6 @@
                 android:textSize="14sp"
                 android:src="@drawable/offersmain"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5sp"
-                android:text="Waxing Full Legs"
-                android:id="@+id/twos"
-                android:src="@drawable/offersmain"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5sp"
-                android:text="Hair SPA"
-                android:id="@+id/threes"
-                android:src="@drawable/offersmain"/>
             <TextView
                 android:id="@+id/book"
                 android:layout_width="wrap_content"
@@ -179,10 +147,9 @@
             android:orientation="vertical" >
             <ImageView
                 android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:padding="10dp"
-                android:id="@+id/create_offersa"
-                android:src="@drawable/offersmain"/>
+                android:layout_height="250dp"
+                android:id="@+id/create_offer3"
+                android:src="@drawable/sallon_two"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -201,21 +168,6 @@
                 android:textSize="14sp"
                 android:src="@drawable/offersmain"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5sp"
-                android:text="Waxing Full Legs"
-                android:id="@+id/twosa"
-                android:src="@drawable/offersmain"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5sp"
-                android:text="Hair SPA"
-                android:id="@+id/threesa"
-                android:src="@drawable/offersmain"/>
             <TextView
                 android:id="@+id/cal"
                 android:layout_width="wrap_content"
@@ -251,10 +203,9 @@
             android:orientation="vertical" >
             <ImageView
                 android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:padding="10dp"
-                android:id="@+id/create_offerss"
-                android:src="@drawable/offersmain"/>
+                android:layout_height="250dp"
+                android:id="@+id/create_offer4"
+                android:src="@drawable/sallon_two"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -273,21 +224,7 @@
                 android:textSize="14sp"
                 android:src="@drawable/offersmain"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5sp"
-                android:text="Waxing Full Legs"
-                android:id="@+id/twoss"
-                android:src="@drawable/offersmain"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5sp"
-                android:text="Hair SPA"
-                android:id="@+id/threess"
-                android:src="@drawable/offersmain"/>
             <TextView
                 android:id="@+id/call"
                 android:layout_width="wrap_content"
