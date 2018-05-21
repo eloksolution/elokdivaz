@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:id="@+id/csearch_card"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    app:cardElevation="0dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Button
+        android:id="@+id/search"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:onClick="searchMethod"
+        android:text="Search"
+        android:layout_margin="10sp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_gravity="right|center"
+        />
+
+    <EditText
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_margin="10sp"
+        android:minHeight="45dp"
+        android:drawableLeft="@android:drawable/ic_menu_search"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="16sp"
+        android:id="@+id/search_name"
+        android:gravity="left|center"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:hint="Search for Parlour"
+        android:maxLength="100"
+        />
+</android.support.v7.widget.CardView>

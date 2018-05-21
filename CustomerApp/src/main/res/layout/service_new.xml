@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="0dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    card_view:cardBackgroundColor="@color/white"
+    card_view:cardElevation="2sp">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="180dp"
+            android:padding="10dp"
+            android:id="@+id/service_img"
+            android:src="@drawable/offersmain"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="Basic package - 899"
+            android:id="@+id/service_name"
+            android:textColor="@color/black"
+            android:src="@drawable/offersmain"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5sp"
+            android:text="Shahnaaz Gold Facial"
+            android:id="@+id/one"
+            android:textSize="14sp"
+            android:src="@drawable/offersmain"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5sp"
+            android:text="Anti TAN Pedicure"
+            android:id="@+id/two"
+            android:src="@drawable/offersmain"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="5sp"
+            android:text="Anti TAN Manicure"
+            android:id="@+id/three"
+            android:src="@drawable/offersmain"/>
+        <TextView
+            android:id="@+id/call1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:padding="5dip"
+            android:text="Book Now"
+            android:textAppearance="?textAppearanceLargePopupMenu"
+            android:background="@drawable/circle"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            />
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

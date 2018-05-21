@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:src="@drawable/name"/>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/first_name"
+            android:layout_width="match_parent"
+            android:layout_margin="10sp"
+            android:layout_height="50dp">
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:singleLine="true"
+                android:hint="Enter Your name" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:src="@drawable/email"/>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/email_input"
+            android:layout_width="match_parent"
+            android:layout_margin="10sp"
+            android:layout_height="50dp">
+            <EditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:singleLine="true"
+                android:inputType="textEmailAddress"
+                android:hint="Email" />
+        </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10sp"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:src="@drawable/phone"/>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/phone_input"
+            android:layout_width="match_parent"
+            android:layout_margin="10sp"
+            android:layout_height="50dp">
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:hint="Phone"
+        android:id="@+id/phone"
+        android:inputType="phone" />
+        </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10sp"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/time"/>
+
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="150sp"
+            android:textSize="18sp"
+            android:layout_height="match_parent"
+            android:singleLine="true"
+            android:gravity="center|left"
+            android:textColor="@color/black"
+            android:text="sat, 19 may 2018" />
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="center|left"
+            android:text="12:40 AM" />
+
+
+    </LinearLayout>
+
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/background"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_margin="10sp"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:src="@drawable/bservice"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/pick_image"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            android:gravity="left"
+            android:textSize="18sp"
+            android:text="Pick a Services"
+            android:inputType="textMultiLine"
+            android:singleLine="false"
+            android:padding="5dp" />
+        </LinearLayout>
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+</LinearLayout>
+    <View
+
+        android:id="@+id/lineView"
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/background"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="top"
+        android:textSize="18sp"
+        android:id="@+id/services"
+        android:text=""
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:padding="5dp" />
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/background"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="top"
+        android:textSize="18sp"
+        android:id="@+id/services_price"
+        android:text=""
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:padding="5dp" />
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/background"/>
+
+
+
+</LinearLayout>
+
+</ScrollView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
+        android:textSize="22sp"
+        android:id="@+id/book_appointment"
+        android:background="@color/lightcolorPrimaryDark"
+        android:text="Book Appointment"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:padding="5dp" />
+
+</RelativeLayout>
