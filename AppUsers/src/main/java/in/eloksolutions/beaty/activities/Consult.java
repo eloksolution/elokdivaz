@@ -1,6 +1,7 @@
 package in.eloksolutions.beaty.activities;
 
 import android.Manifest;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.ContentResolver;
@@ -25,9 +26,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 
@@ -37,21 +41,26 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 import in.eloksolutions.beaty.MainActivity;
 import in.eloksolutions.beaty.R;
 import in.eloksolutions.beaty.adapter.AndroidDataAdapterDynamic;
 import in.eloksolutions.beaty.adapter.CheckInternet;
 import in.eloksolutions.beaty.dtoclasses.BookingDTO;
+import in.eloksolutions.beaty.helpers.BookingHelper;
 import in.eloksolutions.beaty.helpers.GetServicesDailogHelpers;
 import in.eloksolutions.beaty.util.Config;
 
 public class Consult extends AppCompatActivity implements View.OnClickListener{
-TextView date,time,serviName,servicePric;
+    TextView date,time,serviName,servicePric;
     EditText personName,email,phoneNumber;
     public Dialog dialog;
+    Spinner timeHours,timeSecounds;
     String IseviceName,IservicePrice;
-    String companyId,companymail;
+    String companyId;
+    private static final int Date_id = 0;
+    private static final int Time_id = 1;
     String suserName,suserId,suserMail,suserPhone;
     public AndroidDataAdapterDynamic servicesAdapter;
     private static final int PERMISSION_REQUEST_CODE = 1;
@@ -85,35 +94,57 @@ TextView date,time,serviName,servicePric;
         ab.setDisplayShowHomeEnabled(true);
         ab.setTitle("Appointment");
         SharedPreferences preference=getSharedPreferences(Config.APP_PREFERENCES, Context.MODE_PRIVATE);
-        suserId= preference.getString("userId","null");
+        suserId= preference.getString("userId","11");
         suserPhone= preference.getString("phone","null");
         suserMail= preference.getString("email","null");
         suserName= preference.getString("firstName","null");
         Log.i(TAG,"The Shared Preferences Values is ::: "+suserId+suserMail+suserName+suserPhone);
         IseviceName=getIntent().getStringExtra("serviceName");
         IservicePrice=getIntent().getStringExtra("servicprice");
-         cr = getContentResolver();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        cr = getContentResolver();
+        SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy");
         Date dates = new Date();
         System.out.println(formatter.format(dates));
         uri = CalendarContract.Calendars.CONTENT_URI;
         date = (TextView) findViewById(R.id.date);
-        date.setText("" + formatter.format(dates));
-        Date currentTime = Calendar.getInstance().getTime();
-        time = (TextView) findViewById(R.id.time);
-        time.setText(""+currentTime);
+
+        date.setText("" +formatter.format(dates) );
+      String currentTime=  new SimpleDateFormat("HH:mm aa").format(dates);
+          time = (TextView) findViewById(R.id.time);
+        time.setText(""+currentTime.toUpperCase());
         date.setOnClickListener(this);
-        time.setOnClickListener(this);
+       time.setOnClickListener(this);
         personName=(EditText) findViewById(R.id.name);
         email=(EditText) findViewById(R.id.email);
         phoneNumber=(EditText) findViewById(R.id.phone);
         servicePric=(TextView) findViewById(R.id.services_price);
-         serviName = (TextView) findViewById(R.id.services);
+        serviName = (TextView) findViewById(R.id.services);
+        /*String[] timesHours = new String[]{"00","01","02","03","04","05","06","07","08","09","10","11","12","13","14","15","16","17","18","19","20","21","22","23"};
+        timeHours = (Spinner) findViewById(R.id.time_hours);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item, timesHours);
+        timeHours.setAdapter(adapter);
+
+        String[] timesecound = new String[]{"00","30"};
+        timeSecounds = (Spinner) findViewById(R.id.time_secounds);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_dropdown_item, timesecound);
+        timeSecounds.setAdapter(adapter1);*/
 
         if (IseviceName!=null || IservicePrice!=null) {
             serviName.setText(  "Service Name  : "+IseviceName);
             servicePric.setText("Service Price : "+IservicePrice);
         }
+
+
+        TextView appointBooking=(TextView) findViewById(R.id.book_appointment);
+        appointBooking.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveBookingDetails();
+            }
+
+        });
 
        /* RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.listView);
         mRecyclerView.setHasFixedSize(true);
@@ -185,6 +216,53 @@ TextView date,time,serviName,servicePric;
             }
         });
     }
+
+    protected Dialog onCreateDialog(int id) {
+
+        // Get the calander
+        Calendar c = Calendar.getInstance();
+
+        // From calander get the year, month, day, hour, minute
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int hour = c.get(Calendar.HOUR_OF_DAY);
+        int minute = c.get(Calendar.MINUTE);
+
+        switch (id) {
+            case Date_id:
+
+                // Open the datepicker dialog
+                return new DatePickerDialog(Consult.this, date_listener, year,
+                        month, day);
+            case Time_id:
+
+                // Open the timepicker dialog
+                return new TimePickerDialog(Consult.this, time_listener, hour,
+                        minute, false);
+
+        }
+        return null;
+    }
+    DatePickerDialog.OnDateSetListener date_listener = new DatePickerDialog.OnDateSetListener() {
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int day) {
+            // store the data in one string and set it to text
+            String date1 = String.valueOf(month) + "-" + String.valueOf(day)
+                    + "-" + String.valueOf(year);
+            date.setText(date1);
+        }
+    };
+    TimePickerDialog.OnTimeSetListener time_listener = new TimePickerDialog.OnTimeSetListener() {
+
+        @Override
+        public void onTimeSet(TimePicker view, int hour, int minute) {
+            // store the data in one string and set it to text
+            String time1 = String.valueOf(hour) + ":" + String.valueOf(minute);
+            time.setText(time1);
+        }
+    };
     public  void serviceDialog(final Consult context) {
         dialog = new Dialog(context,android.R.style.Theme_Light);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -234,22 +312,22 @@ TextView date,time,serviName,servicePric;
 
 
 
-       BookingDTO bookingDTO=buildDTOObject();
+        BookingDTO bookingDTO=buildDTOObject();
         if (checkValidation()) {
             if (CheckInternet.checkInternetConenction(Consult.this)) {
 
                 String gurl = Config.SERVER_URL + "booking/add";
-              //  try {
-                    String json=buildJson(bookingDTO);
-                    sendCalender(bookingDTO.getApointMentDate(),bookingDTO.getCustomerName(),bookingDTO.getEmail(),bookingDTO.getCustomerPhone());
-                  //  String gId = new BookingHelper(json,bookingDTO, gurl,this).execute().get();
-                  //  return gId;
+                  try {
+                String json=buildJson(bookingDTO);
+                sendCalender(bookingDTO.getApointMentDate(),bookingDTO.getCustomerName(),bookingDTO.getEmail(),bookingDTO.getCustomerPhone());
+                  String gId = new BookingHelper(json,bookingDTO, gurl,this).execute().get();
+                  return gId;
 
-                /*} catch (InterruptedException e) {
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (ExecutionException e) {
                     e.printStackTrace();
-                }*/
+                }
             } else {
                 CheckInternet.showAlertDialog(Consult.this, "No Internet Connection",
                         "You don't have internet connection.");
@@ -262,7 +340,7 @@ TextView date,time,serviName,servicePric;
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == MY_PERMISSIONS_REQUEST_READ_CONTACTS) {
-          //  readCal(cr, uri, selection, selectionArgs);
+            //  readCal(cr, uri, selection, selectionArgs);
             readCal(cr, uri, selection, selectionArgs);
             Log.i("tag","Request permissions of Calender Allow");
         }else {
@@ -282,13 +360,14 @@ TextView date,time,serviName,servicePric;
             Calendar endTime = Calendar.getInstance();
             endTime.setTime(new Date(date.getTime()+1800000));
             endMillis = endTime.getTimeInMillis();
+
             Log.i(TAG,"endMillis :: endTime "+endMillis+"startMillis :: "+startMillis);
             ContentResolver cr = getContentResolver();
             ContentValues values = new ContentValues();
             values.put(CalendarContract.Events.DTSTART, startMillis);
             values.put(CalendarContract.Events.DTEND, endMillis);
             values.put(CalendarContract.Events.TITLE, IseviceName);
-            values.put(CalendarContract.Events.DESCRIPTION, "name :: "+name+"\n Service Name :: "+IseviceName+"\n Time :: "+date+" to "+date+"\n Phone Number :: "+phoneNumber);
+            values.put(CalendarContract.Events.DESCRIPTION, "name :: "+name+"\n Service Name :: "+IseviceName+"\n Phone Number :: "+phoneNumber);
             values.put(CalendarContract.Events.CALENDAR_ID, calID);
             values.put(CalendarContract.Events.EVENT_TIMEZONE, "Asia/Calcutta");
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
@@ -316,7 +395,7 @@ TextView date,time,serviName,servicePric;
             e.printStackTrace();
         }
         System.out.println("added attendees");
-       return  "success";
+        return  "success";
     }
 
     private String buildJson(BookingDTO bookingDTO) {
@@ -339,12 +418,13 @@ TextView date,time,serviName,servicePric;
         String Names= personName.getText().toString();
         bookingDTO.setCustomerName(Names);
         bookingDTO.setEmail(email.getText().toString());
+        bookingDTO.setCustomerId("11");
         bookingDTO.setCustomerPhone(phoneNumber.getText().toString());
         String apointMentdates= date.getText().toString()+" "+time.getText().toString();
         bookingDTO.setOrderDate(apointMentdates);
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yyyy hh:mm");
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yyyy HH:mm");
         try {
-            apointMentdates=apointMentdates.substring(0,apointMentdates.length()-3);
+            //apointMentdates=apointMentdates.substring(0,apointMentdates.length()-3);
             Log.i(TAG,"After Simple Date formating ::"+apointMentdates);
             Date date=simpleDateFormat.parse(apointMentdates);
             bookingDTO.setApointMentDate(date);
@@ -369,11 +449,11 @@ TextView date,time,serviName,servicePric;
     public void onClick(View v) {
 
         if (v == date) {
-            DateAndTimePicker.datePickerDialog(this, date);
+            showDialog(Date_id);
         }
+
         if (v == time) {
-            showToTimePicker();
-        }
+            showToTimePicker();      }
 
     }
     private void showToTimePicker() {
@@ -388,7 +468,7 @@ TextView date,time,serviName,servicePric;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.save_menu, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
 
         return true;
     }

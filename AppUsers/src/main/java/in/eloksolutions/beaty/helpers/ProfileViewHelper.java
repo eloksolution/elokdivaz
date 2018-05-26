@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import java.net.URL;
 
-import in.eloksolutions.beaty.activities.AboutNew;
+import in.eloksolutions.beaty.activities.ProfileView;
 import in.eloksolutions.beaty.util.RestServices;
 
 
@@ -13,22 +13,22 @@ import in.eloksolutions.beaty.util.RestServices;
  * Created by welcome on 7/6/2017.
  */
 
-public class CompanyUpdateHelper {
+public class ProfileViewHelper {
 
-    private AboutNew mcontext;
+    private ProfileView mcontext;
+    String companyId="2";
 
-    public CompanyUpdateHelper(AboutNew mcontext) {
+    public ProfileViewHelper(ProfileView mcontext) {
         this.mcontext = mcontext;
     }
 
-    public class ServiceUpdateTask extends AsyncTask<String, String, String> {
+    public class ProfileUpdateTask extends AsyncTask<String, String, String> {
         // Call after onPreExecute method
         URL url;
         String surl;
         private ProgressDialog progress;
-        String companyId;
 
-        public ServiceUpdateTask(String surl) {
+        public ProfileUpdateTask(String surl) {
             this.surl = surl;
         }
 
@@ -45,7 +45,7 @@ public class CompanyUpdateHelper {
                 url = new URL(surl);
             } catch (Exception e) {
             }
-            return RestServices.GET(url, companyId);
+            return RestServices.GET(url,companyId);
         }
 
         protected void onPostExecute(String result) {
@@ -53,12 +53,11 @@ public class CompanyUpdateHelper {
             if (result != null) {
                 mcontext.setValuesToTextFields(result);
             }
-            System.out.println("Company  from CompanyView" + result);
+            System.out.println("ProflleView Updatded" + result);
             progress.dismiss();
 
         }
     }
-
 
 }
 

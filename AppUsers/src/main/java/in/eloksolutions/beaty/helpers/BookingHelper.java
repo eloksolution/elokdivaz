@@ -66,6 +66,7 @@ public class BookingHelper extends AsyncTask<String, Void, String> {
         progress.dismiss();
         int newResult=Integer.parseInt(result);
         if (newResult == 1) {
+            Log.i(tag, "result Response send bookingDTO.getApointMentDate() Tag helper is ::  " + bookingDTO);
             booking.sendCalender(bookingDTO.getApointMentDate(),bookingDTO.getCustomerName(),bookingDTO.getEmail(),bookingDTO.getCustomerPhone());
             if (ContextCompat.checkSelfPermission(booking, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(booking, new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_CODE);

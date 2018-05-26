@@ -407,8 +407,8 @@ String offerId;
             OfferDTO fromJsonn = gson.fromJson(result, OfferDTO.class);
             offerName.setText(fromJsonn.getName());
             offerDescription.setText(fromJsonn.getName());
-            offerPrice.setText(fromJsonn.getOfferPrice());
-            beforeOfferPrice.setText(fromJsonn.getBeforeOfferPrice());
+            offerPrice.setText("₹ "+fromJsonn.getOfferPrice());
+            beforeOfferPrice.setText("₹ "+fromJsonn.getBeforeOfferPrice());
 
             if(fromJsonn.getImgePath()!=null) {
                 imagePath=fromJsonn.getImgePath();

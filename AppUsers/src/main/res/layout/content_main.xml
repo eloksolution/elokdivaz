@@ -12,14 +12,22 @@
     android:background="@drawable/side_nav_bar"
     tools:showIn="@layout/app_bar_main">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/service_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"/>
+
+
     <GridView
         android:id="@+id/grid_view_image_text"
+        android:layout_marginTop="10sp"
         android:background="@drawable/side_nav_bar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:verticalSpacing="5dp"
+        android:layout_below="@+id/service_list"
         android:horizontalSpacing="5dp"
         android:stretchMode="columnWidth"
         android:numColumns="2"/>
-
 </RelativeLayout>

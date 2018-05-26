@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import in.eloksolutions.beaty.R;
@@ -33,8 +35,8 @@ public class CompanyList extends AppCompatActivity {
         GetCompanyHelpers getGroups=new GetCompanyHelpers(context,url,services,noData);
         System.out.println("url for Company list"+url);
         getGroups.execute();
-
-
+        LinearLayout cardView=(LinearLayout) findViewById(R.id.search_linear);
+        cardView.setVisibility(View.VISIBLE);
 
     }
     @Override

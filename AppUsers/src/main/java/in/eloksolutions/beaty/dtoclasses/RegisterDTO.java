@@ -22,6 +22,7 @@ public class RegisterDTO {
     String toLastName;
     String requestSent;
     String connected;
+    String phone;
 
     public double getLongi() {
         return longi;
@@ -160,6 +161,14 @@ public class RegisterDTO {
         this.connected = connected;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public String toString() {
         return "RegisterDTO{" +
@@ -179,6 +188,7 @@ public class RegisterDTO {
                 ", toFirstName='" + toFirstName + '\'' +
                 ", toLastName='" + toLastName + '\'' +
                 ", requestSent='" + requestSent + '\'' +
+                ", phone='" + phone + '\'' +
                 ", connected='" + connected + '\'' +
                 '}';
     }

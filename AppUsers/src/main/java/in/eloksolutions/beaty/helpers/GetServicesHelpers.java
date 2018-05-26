@@ -74,7 +74,7 @@ public class GetServicesHelpers extends AsyncTask<String, Void, String> {
            }
             if (!results.isEmpty()) {
 
-                MyRecyclerViewServices mAdapter = new MyRecyclerViewServices(results, mcontext);
+                MyRecyclerViewServices mAdapter = new MyRecyclerViewServices(results, mcontext,rvGroups);
                 rvGroups.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }else{

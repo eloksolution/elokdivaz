@@ -386,7 +386,7 @@ public class PackagesView extends AppCompatActivity {
             ServiceDTO fromJsonn = gson.fromJson(result, ServiceDTO.class);
             pName.setText(fromJsonn.getName());
             pDescription.setText(fromJsonn.getDescription());
-            pRate.setText(fromJsonn.getPrice());
+            pRate.setText("₹ "+fromJsonn.getPrice());
             if(fromJsonn.getImgePath()!=null) {
                 imagePath=fromJsonn.getImgePath();
                 glide.with(PackagesView.this).load(Config.IMG_AWS +fromJsonn.getImgePath()).diskCacheStrategy(DiskCacheStrategy.ALL).into(packImage);

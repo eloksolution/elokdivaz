@@ -26,10 +26,10 @@ public class ServiceLists extends AppCompatActivity {
         context=this;
         companyId = getIntent().getStringExtra("companyId");
         System.out.println("companyId is "+companyId);
-        getSupportActionBar().setTitle("Service List");
+        getSupportActionBar().setTitle("Services");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
          noData=(TextView) findViewById(R.id.tv_no_data);
-        RecyclerView services = (RecyclerView) findViewById(R.id.service_list);
+        final RecyclerView services = (RecyclerView) findViewById(R.id.service_list);
         services.setHasFixedSize(true);
         LinearLayoutManager lmPadi = new LinearLayoutManager(this);
         services.setLayoutManager(lmPadi);

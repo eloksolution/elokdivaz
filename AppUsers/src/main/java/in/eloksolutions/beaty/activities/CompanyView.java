@@ -45,7 +45,6 @@ import java.io.File;
 
 import in.eloksolutions.beaty.R;
 import in.eloksolutions.beaty.dtoclasses.CompanyDTO;
-import in.eloksolutions.beaty.helpers.CompanyUpdateHelper;
 import in.eloksolutions.beaty.util.Config;
 
 
@@ -113,7 +112,7 @@ String messageId;
         credentialsProvider();
         // callback method to call the setTransferUtility method
         setTransferUtility();
-        CompanyUpdateHelper getGroupsValue=new CompanyUpdateHelper(this);
+       /* CompanyUpdateHelper getGroupsValue=new CompanyUpdateHelper(this);
         String surl = Config.SERVER_URL+"messages/messages/"+messageId;
         System.out.println("url for services list"+surl);
         try {
@@ -122,7 +121,7 @@ String messageId;
             setValuesToTextFields(output);
         }catch (Exception e){
             e.printStackTrace();
-        }
+        }*/
 
 
     }

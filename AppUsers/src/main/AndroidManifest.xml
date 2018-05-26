@@ -93,6 +93,18 @@
         <activity
             android:name=".activities.PackagesView"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".activities.ProfileView"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".activities.AppointMents"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".activities.RecentParlours"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
+            android:name=".activities.AboutNew"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

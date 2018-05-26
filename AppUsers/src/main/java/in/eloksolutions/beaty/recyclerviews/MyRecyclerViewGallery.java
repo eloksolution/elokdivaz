@@ -29,8 +29,8 @@ import in.eloksolutions.beaty.dataobjects.ServiceOBJ;
 import in.eloksolutions.beaty.util.Config;
 
 
-public class MyRecyclerViewServices extends RecyclerView
-        .Adapter<MyRecyclerViewServices
+public class MyRecyclerViewGallery extends RecyclerView
+        .Adapter<MyRecyclerViewGallery
         .DataObjectHolder> {
     private static String LOG_TAG = "MyRecyclerViewAdapter";
     private ArrayList<ServiceOBJ> mDataset;
@@ -44,7 +44,7 @@ public class MyRecyclerViewServices extends RecyclerView
     Glide glide;
 
 
-    public MyRecyclerViewServices(ArrayList<ServiceOBJ> myDataset, ServiceLists context,RecyclerView rvGroups) {
+    public MyRecyclerViewGallery(ArrayList<ServiceOBJ> myDataset, ServiceLists context, RecyclerView rvGroups) {
         mDataset = myDataset;
         this.context = context;
 this.rvGroups=rvGroups;

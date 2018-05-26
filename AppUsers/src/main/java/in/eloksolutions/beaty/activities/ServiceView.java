@@ -384,7 +384,7 @@ String serviceId;
             Gson gson = new Gson();
             ServiceDTO fromJsonn = gson.fromJson(result, ServiceDTO.class);
             name.setText(fromJsonn.getName());
-            serviceRate.setText(fromJsonn.getPrice());
+            serviceRate.setText("₹ "+fromJsonn.getPrice());
             imagePath=fromJsonn.getImgePath();
             if(fromJsonn.getImgePath()!=null) {
                 glide.with(ServiceView.this).load(Config.IMG_AWS +fromJsonn.getImgePath()).diskCacheStrategy(DiskCacheStrategy.ALL).into(serviceimg);

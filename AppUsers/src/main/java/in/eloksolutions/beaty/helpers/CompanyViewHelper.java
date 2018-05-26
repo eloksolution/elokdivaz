@@ -5,7 +5,7 @@ import android.os.AsyncTask;
 
 import java.net.URL;
 
-import in.eloksolutions.beaty.activities.AboutNew;
+import in.eloksolutions.beaty.MainActivity;
 import in.eloksolutions.beaty.util.RestServices;
 
 
@@ -13,11 +13,11 @@ import in.eloksolutions.beaty.util.RestServices;
  * Created by welcome on 7/6/2017.
  */
 
-public class CompanyUpdateHelper {
+public class CompanyViewHelper {
 
-    private AboutNew mcontext;
+    private MainActivity mcontext;
 
-    public CompanyUpdateHelper(AboutNew mcontext) {
+    public CompanyViewHelper(MainActivity mcontext) {
         this.mcontext = mcontext;
     }
 
