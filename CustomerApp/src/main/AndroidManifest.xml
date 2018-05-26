@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="in.eloksolutions.beaty">
+    package="in.eloksolutions.divaz">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -17,10 +15,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".activities.SpalshScreenActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme">
+        <activity android:name=".activities.OwnerApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,86 +23,82 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.OrderView"
-            android:theme="@style/AppTheme.NoActionBar"
-             />
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-
-            android:name=".activities.ServiceList"
+            android:name=".activities.MainActivity"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activities.ServiceSOrRates"
+            android:name=".activities.Services"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.Registartion"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.OwnerMenu"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.ContactUs"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activities.Packages"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
-        <activity
-            android:name=".activities.Registartion"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
-        <activity
-            android:name=".activities.BookingAppointMent"
-            android:label="BookingAppointMent"
-            android:theme="@style/AppTheme"></activity>
-        <activity
-            android:name=".activities.ContactUs"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
-        <activity
-            android:name=".activities.AboutUs"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
-        <activity
-            android:name=".activities.Consult"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activities.OffersScreen"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activities.AboutPreview"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:name=".activities.MessageScreen"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activities.CompanyView"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:name=".activities.Gallery"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activities.Home"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:name=".activities.AboutUs"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activities.CompanyList"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:name=".activities.CreateOffer"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activities.ServiceLists"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:name=".activities.MessageCreate"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.ServiceList"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activities.OffersList"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.MesagesList"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.MessageUpdate"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".activities.ServiceUpdate"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity android:name=".activities.Main2Activity"></activity>
+        <activity
+            android:name=".activities.OfferUpdate"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activities.PackagesList"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activities.ServiceView"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:name=".activities.PackagesUpdate"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activities.OfferView"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".activities.PackagesView"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activities.ProfileView"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+            android:name=".activities.ServiceView"
+            android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".activities.AppointMents"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
-        <activity
-            android:name=".activities.RecentParlours"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
-        <activity
-            android:name=".activities.AboutNew"
-            android:windowSoftInputMode="stateAlwaysHidden"></activity>
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:label="Crop Image"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <service
+            android:name="com.amazonaws.mobileconnectors.s3.transferutility.TransferService"
+            android:enabled="true" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 <?xml version="1.5.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,7 +22,7 @@
                 android:layout_margin="10sp"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:src="@drawable/name"/>
+                android:src="@drawable/email"/>
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/first_name"
                 android:layout_width="match_parent"
@@ -40,25 +41,22 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
             <ImageView
                 android:layout_margin="10sp"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:src="@drawable/email"
-                android:id="@+id/imageView2" />
-
+                android:src="@drawable/email"/>
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_name"
                 android:layout_width="match_parent"
                 android:layout_margin="10sp"
                 android:layout_height="50dp">
                 <EditText
-                    android:id="@+id/email"
+                    android:id="@+id/parlour_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:singleLine="true"
-                    android:hint="Enter Email" />
+                    android:hint="Enter Parlour Name" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
@@ -70,7 +68,7 @@
                 android:layout_margin="10sp"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:src="@drawable/phone"/>
+                android:src="@drawable/whatsapp"/>
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_email"
                 android:layout_margin="10sp"
@@ -94,7 +92,7 @@
                 android:layout_margin="10sp"
                 android:layout_width="40sp"
                 android:layout_height="40sp"
-                android:src="@drawable/location"/>
+                android:src="@drawable/email"/>
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/input_layout_description"
                 android:layout_width="match_parent"
@@ -102,46 +100,19 @@
                 android:layout_height="50dp">
 
                 <EditText
-                    android:id="@+id/location"
+                    android:id="@+id/email_a"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textEmailAddress"
                     android:drawablePadding="@dimen/activity_vertical_margin"
-                    android:hint="secundera bad vishnupuri colony" />
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <ImageView
-                android:layout_margin="10sp"
-                android:layout_width="40sp"
-                android:layout_height="40sp"
-                android:src="@drawable/city"/>
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/city"
-                android:layout_width="match_parent"
-                android:layout_margin="10sp"
-                android:layout_height="50dp">
-
-                <EditText
-                    android:id="@+id/et_city"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="textEmailAddress"
-                    android:drawablePadding="@dimen/activity_vertical_margin"
-                    android:hint="Hyderabad" />
+                    android:hint="Enter Email" />
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
-
-        <Button
+<Button
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/submit"
-            android:textColor="@color/white"
-            android:background="@color/colorPrimaryDark"
     android:text="submit"/>
 
     </LinearLayout>
