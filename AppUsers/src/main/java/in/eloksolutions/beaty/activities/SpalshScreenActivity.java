@@ -52,7 +52,7 @@ public class SpalshScreenActivity extends AppCompatActivity {
         iv.clearAnimation();
         iv.startAnimation(anim);
         SharedPreferences preference=getSharedPreferences(Config.APP_PREFERENCES, Context.MODE_PRIVATE);
-        id= preference.getString("email",DEFAULT);
+        id= preference.getString("userId",DEFAULT);
 
         System.out.println("id in splash"+id);
         new Handler().postDelayed(new Runnable() {

@@ -13,7 +13,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.github.aakira.expandablelayout.ExpandableLayout;
-import com.github.aakira.expandablelayout.ExpandableRelativeLayout;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -35,6 +34,7 @@ public class AboutNew extends AppCompatActivity {
  ExpandableLayout expandableLayout;
     TextView hoursOfOperation;
     TextView name,location;
+    String companyId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,8 +43,9 @@ public class AboutNew extends AppCompatActivity {
         hoursOfOperation=(TextView) findViewById(R.id.text);
         name=(TextView) findViewById(R.id.company_name);
         location=(TextView) findViewById(R.id.company_location);
+        companyId=getIntent().getStringExtra("companyId");
         CompanyUpdateHelper getGroupsValue=new CompanyUpdateHelper(this);
-        String surl = Config.SERVER_URL+"company/1";
+        String surl = Config.SERVER_URL+"company/"+companyId;
         System.out.println("url for services list"+surl);
         try {
             String output=getGroupsValue.new ServiceUpdateTask(surl).execute().get();
@@ -62,11 +63,8 @@ public class AboutNew extends AppCompatActivity {
 
 
     }
-    public void expandableButton(View view) {
-        expandableLayout = (ExpandableRelativeLayout) findViewById(R.id.expandableLayout);
-        hoursOfOperation.setText("mon - sat 9:00 am - 10:00 pm");
-        expandableLayout.toggle(); // toggle expand and collapse
-    }
+
+
     public static void showAlertDialog(Context context) {
         final Dialog dialog = new Dialog(context,android.R.style.Theme_Light);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);

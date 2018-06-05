@@ -10,10 +10,10 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import org.json.JSONObject;
 
@@ -22,8 +22,8 @@ import java.util.Locale;
 import java.util.concurrent.ExecutionException;
 
 import in.eloksolutions.beaty.R;
-import in.eloksolutions.beaty.dtoclasses.CompanyDTO;
 import in.eloksolutions.beaty.adapter.CheckInternet;
+import in.eloksolutions.beaty.dtoclasses.CompanyDTO;
 import in.eloksolutions.beaty.helpers.CreateRegistration;
 import in.eloksolutions.beaty.util.Config;
 
@@ -48,7 +48,7 @@ public class Registartion extends AppCompatActivity {
         phone = (EditText) findViewById(R.id.mobile);
         name = (EditText) findViewById(R.id.et_city);
         email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.location);
+        //password = (EditText) findViewById(R.id.location);
         loc = (EditText) findViewById(R.id.location);
         city = (EditText) findViewById(R.id.et_city);
        Button preview = (Button) findViewById(R.id.submit);
@@ -100,8 +100,8 @@ public class Registartion extends AppCompatActivity {
             jsonObject.accumulate("state", registerDto.getState());
             jsonObject.accumulate("phone", registerDto.getOfficePhone());
             //jsonObject.accumulate("imagePath", registerDto.getPassword());
-            jsonObject.accumulate("longitude", longi);
-            jsonObject.accumulate("latitude", latti);
+            jsonObject.accumulate("longitude", ""+longi);
+            jsonObject.accumulate("latitude", ""+latti);
             //  jsonObject.accumulate("loc",registerDto.getLati());
             String json = jsonObject.toString();
             System.out.println("Json is" + json);
@@ -123,8 +123,8 @@ public class Registartion extends AppCompatActivity {
         registerDto.setEmail(rEmail);
         String phones = phone.getText().toString();
         registerDto.setOfficePhone(phones);
-        String pass=password.getText().toString();
-        registerDto.setPassword(pass);
+        //String pass=password.getText().toString();
+        registerDto.setPassword("1234");
         String citys = city.getText().toString();
         registerDto.setCity(citys);
         String locs=loc.getText().toString();
@@ -171,13 +171,11 @@ public class Registartion extends AppCompatActivity {
                         sb.append(address.getPostalCode()).append("\n");
                         sb.append(address.getCountryName());
                         result = sb.toString();
-                        // area.setText(result); +address.getSubAdminArea()address.getAddressLine(0)+"\n"+
+                        loc.setText(result);
+                        city.setText(address.getLocality());
 
-                        loc.setText(address.getLocality()+","+address.getSubLocality());
-                        city.setText(address.getLocality()+","+address.getSubLocality());
-                        Log.i("tag","The location value is "+result);
                     }else {
-                        loc.
+                        ((TextView) findViewById(R.id.textView)).
                                 setText("Unable to find current location . Try again later");
                     }
 

@@ -1,4 +1,4 @@
-package in.eloksolutions.beaty;
+package in.eloksolutions.beaty.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -23,26 +23,16 @@ import com.google.gson.Gson;
 
 import java.util.ArrayList;
 
-import in.eloksolutions.beaty.activities.AboutNew;
-import in.eloksolutions.beaty.activities.AppointMents;
-import in.eloksolutions.beaty.activities.CompanyList;
-import in.eloksolutions.beaty.activities.Consult;
-import in.eloksolutions.beaty.activities.ContactUs;
-import in.eloksolutions.beaty.activities.MainActivityThemeChange;
-import in.eloksolutions.beaty.activities.OffersList;
-import in.eloksolutions.beaty.activities.PackagesList;
-import in.eloksolutions.beaty.activities.ProfileView;
-import in.eloksolutions.beaty.activities.RecentParlours;
-import in.eloksolutions.beaty.activities.ServiceLists;
+import in.eloksolutions.beaty.R;
 import in.eloksolutions.beaty.adapter.AndroidVersion;
 import in.eloksolutions.beaty.adapter.BeatyGridview;
 import in.eloksolutions.beaty.adapter.CheckInternet;
 import in.eloksolutions.beaty.adapter.GalleryDataAdapter;
 import in.eloksolutions.beaty.dtoclasses.CompanyDTO;
-import in.eloksolutions.beaty.helpers.CompanyViewHelper;
+import in.eloksolutions.beaty.helpers.CompanyViewHelperTheme;
 import in.eloksolutions.beaty.util.Config;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivityThemeChange extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     GridView grid;
     Context context;
@@ -68,7 +58,7 @@ public class MainActivity extends AppCompatActivity
             }
         });*/
         companyId = getIntent().getStringExtra("companyId");
-        CompanyViewHelper getGroupsValue=new CompanyViewHelper(this);
+        CompanyViewHelperTheme getGroupsValue=new CompanyViewHelperTheme(MainActivityThemeChange.this);
         String surl = Config.SERVER_URL+"company/"+companyId;
         System.out.println("url for services list"+surl);
         try {
@@ -136,7 +126,7 @@ public class MainActivity extends AppCompatActivity
                 R.drawable.contact,
                 R.drawable.about
         };
-        BeatyGridview adapter = new BeatyGridview(MainActivity.this, Images, services);
+        BeatyGridview adapter = new BeatyGridview(MainActivityThemeChange.this, Images, services);
         grid = (GridView) findViewById(R.id.grid_view_image_text);
         grid.setAdapter(adapter);
         grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -147,25 +137,25 @@ public class MainActivity extends AppCompatActivity
                 switch (position) {
                     case 0:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, ServiceLists.class);
+                            Intent intent = new Intent(MainActivityThemeChange.this, ServiceLists.class);
                             intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
                         {
-                            CheckInternet.showAlertDialog(MainActivity.this, "No Internet Connection",
+                            CheckInternet.showAlertDialog(MainActivityThemeChange.this, "No Internet Connection",
                                     "Please On your Mobile Data / WIFI.");
                         }
                         break;
                     case 1:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, PackagesList.class);
+                            Intent intent = new Intent(MainActivityThemeChange.this, PackagesList.class);
                             intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
                         {
-                            CheckInternet.showAlertDialog(MainActivity.this, "No Internet Connection",
+                            CheckInternet.showAlertDialog(MainActivityThemeChange.this, "No Internet Connection",
                                     "Please On your Mobile Data / WIFI.");
                         }
                         break;
@@ -173,50 +163,50 @@ public class MainActivity extends AppCompatActivity
 
                     case 2:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, Consult.class);
+                            Intent intent = new Intent(MainActivityThemeChange.this, Consult.class);
                             intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
                         {
-                            CheckInternet.showAlertDialog(MainActivity.this, "No Internet Connection",
+                            CheckInternet.showAlertDialog(MainActivityThemeChange.this, "No Internet Connection",
                                     "Please On your Mobile Data / WIFI.");
                         }
                         break;
 
                     case 3:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, OffersList.class);
+                            Intent intent = new Intent(MainActivityThemeChange.this, OffersList.class);
                             intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
                         {
-                            CheckInternet.showAlertDialog(MainActivity.this, "No Internet Connection",
+                            CheckInternet.showAlertDialog(MainActivityThemeChange.this, "No Internet Connection",
                                     "Please On your Mobile Data / WIFI .");
                         }
                         break;
                     case 4:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, ContactUs.class);
+                            Intent intent = new Intent(MainActivityThemeChange.this, ContactUs.class);
                             intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
                         {
-                            CheckInternet.showAlertDialog(MainActivity.this, "No Internet Connection",
+                            CheckInternet.showAlertDialog(MainActivityThemeChange.this, "No Internet Connection",
                                     "Please On your Mobile Data / WIFI.");
                         }
                         break;
                     case 5:
                         if (CheckInternet.checkInternetConenction(context)) {
-                            Intent intent = new Intent(MainActivity.this, AboutNew.class);
+                            Intent intent = new Intent(MainActivityThemeChange.this, AboutNew.class);
                             intent.putExtra("companyId", companyId);
                             startActivity(intent);
                         } else
 
                         {
-                            CheckInternet.showAlertDialog(MainActivity.this, "No Internet Connection",
+                            CheckInternet.showAlertDialog(MainActivityThemeChange.this, "No Internet Connection",
                                     "Please On your Mobile Data / WIFI .");
                         }
                         break;
@@ -241,7 +231,12 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
 
 
 
@@ -252,16 +247,16 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.home) {
-            Intent intent=new Intent(MainActivity.this, CompanyList.class);
+            Intent intent=new Intent(MainActivityThemeChange.this, CompanyList.class);
             startActivity(intent);
         } else if (id == R.id.recent) {
-            Intent intent=new Intent(MainActivity.this, RecentParlours.class);
+            Intent intent=new Intent(MainActivityThemeChange.this, RecentParlours.class);
             startActivity(intent);
         } else if (id == R.id.profile) {
-            Intent intent=new Intent(MainActivity.this, ProfileView.class);
+            Intent intent=new Intent(MainActivityThemeChange.this, ProfileView.class);
             startActivity(intent);
         } else if (id == R.id.appointment) {
-            Intent intent=new Intent(MainActivity.this, AppointMents.class);
+            Intent intent=new Intent(MainActivityThemeChange.this, AppointMents.class);
             startActivity(intent);
         }
 
@@ -289,29 +284,4 @@ public class MainActivity extends AppCompatActivity
 
         }
     }
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_theme, menu);
-
-        return true;
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()) {
-            case android.R.id.home:
-               Intent intent=new Intent(MainActivity.this, MainActivityThemeChange.class);
-                startActivity(intent);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
 }

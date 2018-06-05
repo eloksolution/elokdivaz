@@ -10,6 +10,12 @@
         android:layout_height="wrap_content"
         android:background="@drawable/side_nav_bar"
         android:orientation="vertical">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200sp"
+            android:scaleType="fitXY"
+            android:src="@drawable/consult"/>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="2px"
@@ -28,15 +34,16 @@
                 android:orientation="horizontal">
      <ImageView
          android:layout_margin="10sp"
-    android:layout_width="50sp"
-    android:layout_height="50sp"
+    android:layout_width="40sp"
+    android:layout_height="40sp"
     android:src="@drawable/email"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10sp"
-                android:text="EmailId:\nsiribeauty@gmail.com"
-                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:text="EmailId: siribeauty@gmail.com"
+                android:textSize="16sp"
                 android:autoLink="email"
                 android:textStyle="bold" />
             </LinearLayout>
@@ -59,14 +66,15 @@
                 android:orientation="horizontal">
             <ImageView
                 android:layout_margin="10sp"
-                android:layout_width="50sp"
-                android:layout_height="50sp"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
                 android:src="@drawable/browcer"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="WebSite:  \n siribeauty.in"
-                android:textSize="20sp"
+                android:text="WebSite: siribeauty.in"
+                android:textSize="16sp"
+                android:layout_gravity="center"
                 android:layout_margin="10sp"
                 android:autoLink="web"
                 android:textStyle="bold" />
@@ -89,17 +97,20 @@
                 android:orientation="horizontal">
             <ImageView
                 android:layout_margin="10sp"
-                android:layout_width="50sp"
-                android:layout_height="50sp"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
                 android:src="@drawable/phone"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mobile No: \n 9985963750 "
-                android:textSize="20sp"
-                android:layout_margin="10sp"
-                android:autoLink="phone"
-                android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mobile No:9985963750 "
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+                    android:layout_margin="10sp"
+                    android:autoLink="phone"
+                    android:textStyle="bold"
+                    android:id="@+id/textView2" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
         <View
@@ -118,14 +129,15 @@
                 android:orientation="horizontal">
             <ImageView
                 android:layout_margin="10sp"
-                android:layout_width="50sp"
-                android:layout_height="50sp"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
                 android:src="@drawable/whatsapp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="WhatsApp  \n 9985963750"
-                android:textSize="20sp"
+                android:text="WhatsApp : 9985963750"
+                android:textSize="16sp"
+                android:layout_gravity="center"
                 android:layout_margin="10sp"
                 android:autoLink="phone"
                 android:textStyle="bold" />

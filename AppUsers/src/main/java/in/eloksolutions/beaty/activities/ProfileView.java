@@ -1,13 +1,13 @@
 package in.eloksolutions.beaty.activities;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -56,7 +56,7 @@ String serviceId;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_view);
-        getSupportActionBar().setTitle("");
+        getSupportActionBar().setTitle("Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
       //  userId=getIntent().getStringExtra("userId");
         Log.i(tag, "serviceId for serviceUpdate is"+serviceId);
@@ -64,7 +64,14 @@ String serviceId;
         email=(TextView) findViewById(R.id.email);
         number=(TextView) findViewById(R.id.mobile);
         imgView=(ImageView) findViewById(R.id.profile_image_view);
-
+        ImageView edit=(ImageView) findViewById(R.id.edit);
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ProfileView.this,ProfileUpdate.class);
+                startActivity(intent);
+            }
+        });
         ProfileViewHelper getGroupsValue=new ProfileViewHelper(this);
         String surl = Config.SERVER_URL+"customer/"+userId;
         System.out.println("url for services list"+surl);
@@ -75,9 +82,6 @@ String serviceId;
         }catch (Exception e){
             e.printStackTrace();
         }
-        final Context ctx = this;
-
-
 
 
 

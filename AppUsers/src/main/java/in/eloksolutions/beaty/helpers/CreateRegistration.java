@@ -61,7 +61,7 @@ public class CreateRegistration extends AsyncTask<String, Void, String> {
                 Log.i("Registration", "result is registerDto " +registerDto);
                 Log.i("Registration", "registerDto.setId(result)"+result);
                 registerDto.setId(result);
-                Util.setPreferances(mcontext, registerDto);
+                Util.setPreferances(mcontext, registerDto,result);
                 Log.i("Registration", "result is registerDto " +registerDto);
             }else{
                 Toast.makeText(mcontext, "Not able to Registered", Toast.LENGTH_LONG).show();

@@ -13,7 +13,7 @@ import in.eloksolutions.beaty.dtoclasses.CompanyDTO;
  */
 
 public class Util {
-    public static void setPreferances(Context mcontext, CompanyDTO registerDto){
+    public static void setPreferances(Context mcontext, CompanyDTO registerDto,String result){
         SharedPreferences sharedPreferences = mcontext.getSharedPreferences(Config.APP_PREFERENCES, mcontext.MODE_PRIVATE);
         SharedPreferences.Editor edit = sharedPreferences.edit();
         edit.putString("firstName", registerDto.getName());
@@ -21,7 +21,7 @@ public class Util {
         edit.putString("loc", registerDto.getEmail());
         edit.putString("lat", registerDto.getAddress_1()+"");
         edit.putString("long",registerDto.getLatitude()+"");
-        edit.putString("userId", registerDto.getId());
+        edit.putString("userId", result);
         edit.putString("phone", registerDto.getOfficePhone());
         edit.putString("email", registerDto.getEmail());
         edit.commit();

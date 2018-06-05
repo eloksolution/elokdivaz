@@ -135,9 +135,10 @@
                                 android:background="@drawable/btn"
                                 android:textSize="20sp"
                                 android:padding="10sp"
-                                android:gravity="center"
+                                android:gravity="right"
+                                android:layout_gravity="right"
                                 android:textColor="@color/white"
-                                android:text="Add to WisList"/>
+                                android:text="My Parlour"/>
 
 
                         </LinearLayout>
@@ -175,8 +176,7 @@
                     android:textSize="16sp"
                     android:text="Excellent(41.6%)"
                     android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
-                    android:textColor="@color/black_light"
+                    android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />
@@ -190,7 +190,6 @@
                     android:textSize="16sp"
                     android:text="Good(10.6%)"
                     android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -205,7 +204,6 @@
                     android:textSize="16sp"
                     android:text="Average(10.6%)	"
                     android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -221,7 +219,6 @@
                     android:textSize="16sp"
                     android:text="Poor(1.6%)	"
                     android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -268,7 +265,6 @@
                     android:textSize="16sp"
                     android:text="Cash"
                     android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -283,7 +279,6 @@
                     android:textSize="16sp"
                     android:text="Debit Cards"
                     android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -298,7 +293,6 @@
                     android:textSize="16sp"
                     android:text="Cheques"
                     android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -313,7 +307,6 @@
                     android:textSize="16sp"
                     android:text="American Express Card"
                     android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -328,7 +321,6 @@
                     android:textSize="16sp"
                     android:text="Credit Card"
                     android:layout_gravity="center_horizontal"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -351,40 +343,6 @@
                 android:paddingBottom="20dp"
                 android:orientation="vertical"
                 android:weightSum="1">
-                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                <Button
-                    android:id="@+id/expandableButton1"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableRight="@android:drawable/arrow_down_float"
-                    android:onClick="expandableButton"
-                    android:paddingRight="10dp"
-                    android:text="mon-sat 9:00 am to 10:00 pm"
-                    android:textColor="#fff" />
-
-                <com.github.aakira.expandablelayout.ExpandableRelativeLayout
-                    android:id="@+id/expandableLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/expandableButton1"
-                    android:padding="16dp"
-                    app:ael_duration="400"
-                    app:ael_expanded="false"
-                    app:ael_interpolator="bounce"
-                    app:ael_orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:id="@+id/text"
-                        android:layout_height="wrap_content"
-                        android:text="mon-sat 9:00 am to 10:00 pm
-                        mon to sat 9:00 to 10:00pm" />
-                </com.github.aakira.expandablelayout.ExpandableRelativeLayout>
-                </RelativeLayout>
                 <TextView
                     android:id="@+id/time_hours"
                     android:padding="@dimen/padding"
@@ -407,7 +365,6 @@
                     android:textSize="16sp"
                     android:text="Monday Open 24 Hrs"
                     android:layout_gravity="left"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -422,7 +379,6 @@
                     android:textSize="16sp"
                     android:text="Tuesday Open 24 Hrs"
                     android:layout_gravity="left"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -436,7 +392,6 @@
                     android:padding="@dimen/padding"
                     android:textSize="16sp"
                     android:text="Wednesday Open 24 Hrs"
-                    android:textStyle="bold"
                     android:layout_gravity="left"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
@@ -453,7 +408,6 @@
                     android:layout_gravity="left"
                     android:text="Thursday Open 24 Hrs"
 
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -468,7 +422,6 @@
                     android:textSize="16sp"
                     android:text="Friday Open 24 Hrs"
                     android:layout_gravity="left"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -483,7 +436,6 @@
                     android:textSize="16sp"
                     android:text="Saturday Open 24 Hrs"
                     android:layout_gravity="left"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -498,7 +450,6 @@
                     android:textSize="16sp"
                     android:text="Sunday Open 24 Hrs"
                     android:layout_gravity="left"
-                    android:textStyle="bold"
                     android:textColor="@color/black"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
