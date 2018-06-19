@@ -24,19 +24,6 @@
                     android:orientation="vertical"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/about_us"
-                        android:layout_width="fill_parent"
-                        android:layout_height="match_parent"
-                        android:text="Gallery"
-                        android:background="@color/colorPrimaryDark"
-                        android:layout_gravity="center_horizontal"
-                        android:gravity="center_horizontal"
-                        android:textSize="22sp"
-                        android:padding="10dp"
-                        android:textColor="@color/white"
-
-                        />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/images_recycler"

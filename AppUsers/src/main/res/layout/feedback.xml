@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_margin="10sp"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:src="@drawable/name"/>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/first_name"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10sp"
+                    android:layout_height="50dp">
+
+                    <EditText
+                        android:id="@+id/name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:singleLine="true"
+                        android:hint="Enter Your name" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_margin="10sp"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:src="@drawable/email"/>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/email_input"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10sp"
+                    android:layout_height="50dp">
+                    <EditText
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:singleLine="true"
+                        android:inputType="textEmailAddress"
+                        android:hint="Email" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_margin="10sp"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:src="@drawable/phone"/>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/phone_input"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10sp"
+                    android:layout_height="50dp">
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:hint="Phone"
+                        android:id="@+id/phone"
+                        android:inputType="phone" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/background"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_margin="10sp"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:src="@drawable/email"/>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10sp"
+                    android:layout_height="50dp">
+
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:hint="Enter a Title"
+                        android:id="@+id/et_title"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/background"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_margin="10sp"
+                    android:layout_width="30sp"
+                    android:layout_height="30sp"
+                    android:src="@drawable/email"/>
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_margin="10sp"
+                    android:layout_height="50dp">
+
+                    <EditText
+                        android:layout_width="280dp"
+                        android:layout_height="match_parent"
+                        android:backgroundTint="@color/colorPrimaryDark"
+                        android:hint="Description"
+                        android:id="@+id/et_description"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:gravity="top"
+                android:textSize="18sp"
+                android:id="@+id/services_price"
+                android:text=""
+                android:inputType="textMultiLine"
+                android:singleLine="false"
+                android:padding="5dp" />
+            <View
+
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/background"/>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50sp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="bottom"
+        android:textSize="22sp"
+        android:id="@+id/book_appointment"
+        android:background="@color/lightcolorPrimaryDark"
+        android:text="Sent"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:padding="5dp" />
+
+</RelativeLayout>

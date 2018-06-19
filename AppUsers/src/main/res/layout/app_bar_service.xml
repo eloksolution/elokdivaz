@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="in.eloksolutions.beaty.MainActivity">
+    tools:context="in.eloksolutions.divaz.in.eloksolutions.divaz.MainActivity">
 
     <include layout="@layout/content_service" />
 
