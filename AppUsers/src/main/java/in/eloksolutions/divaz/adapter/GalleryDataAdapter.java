@@ -36,7 +36,7 @@ public class GalleryDataAdapter extends RecyclerView.Adapter<GalleryDataAdapter.
     @Override
     public GalleryDataAdapter.ViewHolder onCreateViewHolder(ViewGroup vGroup, int i) {
 
-        View view = LayoutInflater.from(vGroup.getContext()).inflate(R.layout.gallery_grid, vGroup, false);
+        View view = LayoutInflater.from(vGroup.getContext()).inflate(R.layout.gallery_scrol, vGroup, false);
         return new ViewHolder(view);
     }
 

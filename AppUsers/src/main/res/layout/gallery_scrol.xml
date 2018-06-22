@@ -27,7 +27,7 @@
                 <ImageView
                     android:id="@+id/Icon"
                     android:layout_width="fill_parent"
-                    android:layout_height="450sp"
+                    android:layout_height="200sp"
                     android:scaleType="fitXY"
                     />
 

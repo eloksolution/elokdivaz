@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1069381256503",
+    "firebase_url": "https://divaz-9c15b.firebaseio.com",
+    "project_id": "divaz-9c15b",
+    "storage_bucket": "divaz-9c15b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1069381256503:android:a7fd4d4a1a3dbec2",
+        "android_client_info": {
+          "package_name": "in.eloksolutions.divaz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1069381256503-5kp1b1o0hqhvlhvfp0i74krg8f89be5s.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "1069381256503-5kp1b1o0hqhvlhvfp0i74krg8f89be5s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmBhvEzIhQ7KUXVl_0i1ay1dpTwZG0pfA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

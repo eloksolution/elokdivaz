@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity
     TextView name,location;
     Toolbar toolbar;
     Intent mainIntent;
+    String suserName,suserId,suserMail,suserPhone;
     public static final String[] movies =  {"", "", "", "", "",""};
     public static int [] moviesImages ={R.drawable.services,R.drawable.packages,R.drawable.about,R.drawable.beaty,R.drawable.booknow,R.drawable.quickbook,R.drawable.gallerybeauty};
 
@@ -70,6 +71,11 @@ public class MainActivity extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });*/
+        SharedPreferences preference=getSharedPreferences(Config.APP_PREFERENCES, Context.MODE_PRIVATE);
+        suserId= preference.getString("userId","");
+        suserPhone= preference.getString("phone","null");
+        suserMail= preference.getString("email","null");
+        suserName= preference.getString("firstName","null");
         companyId = getIntent().getStringExtra("companyId");
         CompanyViewHelper getGroupsValue=new CompanyViewHelper(this);
         String surl = Config.SERVER_URL+"company/"+companyId;
@@ -89,6 +95,7 @@ public class MainActivity extends AppCompatActivity
         final ArrayList<AndroidVersion> av = prepareData();
         GalleryDataAdapter movies = new GalleryDataAdapter(getApplicationContext(), av);
         mRecyclerView.setAdapter(movies);
+
         final int speedScroll = 3000;
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
@@ -271,6 +278,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
         } else if (id == R.id.appointment) {
             Intent intent=new Intent(MainActivity.this, AppointMents.class);
+            intent.putExtra("userId",suserId);
             startActivity(intent);
         }
 

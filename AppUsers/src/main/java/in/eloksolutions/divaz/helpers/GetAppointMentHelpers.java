@@ -68,7 +68,7 @@ public class GetAppointMentHelpers extends AsyncTask<String, Void, String> {
             ArrayList<CompanyOBJ> results = new ArrayList<CompanyOBJ>();
              for (CompanyDTO company : fromJson) {
 
-                 CompanyOBJ obj = new CompanyOBJ(company.getId(),company.getName(),company.getAddress());
+                 CompanyOBJ obj = new CompanyOBJ(company.getId(),company.getName(),company.getAddress(),company.getImgPath1());
                 results.add(obj);
            }
             if (!results.isEmpty()) {

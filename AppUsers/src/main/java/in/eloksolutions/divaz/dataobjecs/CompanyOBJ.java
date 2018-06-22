@@ -37,10 +37,11 @@ public class CompanyOBJ {
 	String imgPath3;
 	String team;
 
-	public CompanyOBJ(String id, String name, String address){
+	public CompanyOBJ(String id, String name, String address,String imgPath1){
 		this.id = id;
 		this.name = name;
 		this.address=address;
+		this.imgPath1=imgPath1;
 	}
 	public CompanyOBJ(String id, String name, String descriptioin, String code, String address, String officePhone, String ownerPhone, String schema, String status, Date createDate, Date updatedDate, Integer updatedBy, String address_1, String address_2, String city, String state, String latitude, String longitude, String email, String firstName, String lastName, String password, String linkedin, String facebook, String whatsapp, String para1, String para2, String para3, String imgPath1, String imgPath2, String imgPath3, String team) {
 		this.id = id;

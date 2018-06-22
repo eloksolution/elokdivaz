@@ -38,13 +38,16 @@ public class AppointMents extends AppCompatActivity {
         services.setLayoutManager(lmPadi);
         SharedPreferences preference=context.getSharedPreferences(Config.APP_PREFERENCES, Context.MODE_PRIVATE);
         userId= preference.getString("userId","");
-        String url= Config.SERVER_URL+"booking/myBookings/"+userId;
-        GetAppointMentHelpers getGroups=new GetAppointMentHelpers(context,url,services,noData);
-        System.out.println("url for Company list"+url);
-        getGroups.execute();
-        CardView cardView=(CardView) findViewById(R.id.csearch_card);
-        cardView.setVisibility(View.VISIBLE);
-
+        if(userId!=null && !userId.isEmpty()) {
+            String url = Config.SERVER_URL + "booking/myBookings/" + userId;
+            GetAppointMentHelpers getGroups = new GetAppointMentHelpers(context, url, services, noData);
+            System.out.println("url for Company list" + url);
+            getGroups.execute();
+            CardView cardView = (CardView) findViewById(R.id.csearch_card);
+            cardView.setVisibility(View.VISIBLE);
+        }else {
+            startActivity(new Intent(AppointMents.this,Registartion.class));
+        }
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

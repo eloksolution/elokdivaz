@@ -19,9 +19,9 @@ import java.util.ArrayList;
 
 import in.eloksolutions.divaz.R;
 import in.eloksolutions.divaz.adapter.AndroidVersion;
-import in.eloksolutions.divaz.adapter.GalleryDataAdapter;
 import in.eloksolutions.divaz.dtoclasses.CompanyDTO;
 import in.eloksolutions.divaz.helpers.CompanyUpdateHelper;
+import in.eloksolutions.divaz.helpers.GetGalleryHelpers;
 import in.eloksolutions.divaz.util.Config;
 
 /**
@@ -57,7 +57,7 @@ public class AboutNew extends AppCompatActivity {
         myGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showAlertDialog(AboutNew.this);
+                showAlertDialog(AboutNew.this,companyId);
             }
         });
 
@@ -65,14 +65,14 @@ public class AboutNew extends AppCompatActivity {
     }
 
 
-    public static void showAlertDialog(Context context) {
+    public static void showAlertDialog(Context context,String companyId) {
         final Dialog dialog = new Dialog(context,android.R.style.Theme_Light);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.about_dailog);
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
         lp.copyFrom(dialog.getWindow().getAttributes());
-        lp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        lp.width = WindowManager.LayoutParams.FILL_PARENT;
         lp.height = WindowManager.LayoutParams.MATCH_PARENT;
         /*TextView text = (TextView) dialog.findViewById(R.id.email_d);
         text.setText(emailD);
@@ -82,15 +82,27 @@ public class AboutNew extends AppCompatActivity {
         wha.setText(whatsapp);
         TextView webs = (TextView) dialog.findViewById(R.id.website_d);
         webs.setText(websitD);*/
-        RecyclerView mRecyclerView = (RecyclerView) dialog.findViewById(R.id.images_recycler);
+        /*RecyclerView mRecyclerView = (RecyclerView) dialog.findViewById(R.id.images_recycler);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(dialog.getContext(),LinearLayoutManager.HORIZONTAL,true));
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(dialog.getContext(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
         ArrayList<AndroidVersion> av = prepareData();
         GalleryDataAdapter movies = new GalleryDataAdapter(dialog.getContext(), av);
-        mRecyclerView.setAdapter(movies);
 
+        mRecyclerView.setAdapter(movies);*/
+        RecyclerView services = (RecyclerView) dialog.findViewById(R.id.images_recycler);
+        services.setLayoutManager(new LinearLayoutManager(dialog.getContext(),LinearLayoutManager.HORIZONTAL,true));
+        RecyclerView.LayoutManager mLayoutManager =
+                new LinearLayoutManager(dialog.getContext(), LinearLayoutManager.HORIZONTAL, false);
+        services.setHasFixedSize(true);
+        LinearLayoutManager lmPadi = new LinearLayoutManager(context);
+        services.setLayoutManager(mLayoutManager);
+        services.setLayoutManager(lmPadi);
+        String url= Config.SERVER_URL+"gallery/getAll";
+        GetGalleryHelpers getGroups=new GetGalleryHelpers(context,url,services,companyId);
+        System.out.println("url for Company list"+url);
+        getGroups.execute();
         /*mRecyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(dialog.getContext(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override

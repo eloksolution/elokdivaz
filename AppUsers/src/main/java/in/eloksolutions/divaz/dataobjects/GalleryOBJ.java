@@ -11,6 +11,13 @@ public class GalleryOBJ {
     String category;
     String createDate;
 
+    public GalleryOBJ(String id, String imagePath, String category, String description) {
+        this.id=id;
+        this.imagePath=imagePath;
+        this.category=category;
+        this.description=description;
+    }
+
     public String getId() {
         return id;
     }

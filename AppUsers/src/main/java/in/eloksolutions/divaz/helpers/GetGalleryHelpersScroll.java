@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -15,9 +14,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.eloksolutions.divaz.dataobjecs.CompanyOBJ;
-import in.eloksolutions.divaz.dtoclasses.CompanyDTO;
-import in.eloksolutions.divaz.recyclerviews.MyRecyclerViewCompany;
+import in.eloksolutions.divaz.dataobjects.GalleryOBJ;
+import in.eloksolutions.divaz.dtoclasses.GalleryDTO;
+import in.eloksolutions.divaz.recyclerviews.MyRecyclerCompanyGallery;
 import in.eloksolutions.divaz.util.RestServices;
 
 
@@ -25,7 +24,7 @@ import in.eloksolutions.divaz.util.RestServices;
  * Created by welcome on 6/30/2017.
  */
 
-public class GetCompanyHelpers extends AsyncTask<String, Void, String> {
+public class GetGalleryHelpersScroll extends AsyncTask<String, Void, String> {
     private Context mcontext;
     private ProgressDialog progress;
     String surl;
@@ -33,11 +32,11 @@ public class GetCompanyHelpers extends AsyncTask<String, Void, String> {
     TextView noData;
     String companyId;
 
-    public GetCompanyHelpers(Context mcontext, String surl, RecyclerView rvGroups, TextView noData) {
+    public GetGalleryHelpersScroll(Context mcontext, String surl, RecyclerView rvGroups, String companyId) {
         this.mcontext = mcontext;
         this.surl=surl;
         this.rvGroups=rvGroups;
-        this.noData=noData;
+        this.companyId=companyId;
     }
     @Override
     protected void onPreExecute() {
@@ -59,25 +58,24 @@ public class GetCompanyHelpers extends AsyncTask<String, Void, String> {
     }
 
     protected void onPostExecute(String result) {
-        System.out.println("Get Service Result is "+result);
+        System.out.println("Get Gallry Result is "+result);
         progress.dismiss();
         if (result!=null && result.trim().length()>0) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<CompanyDTO>>() { }.getType();
-            List<CompanyDTO> fromJson = gson.fromJson(result, type);
-            ArrayList<CompanyOBJ> results = new ArrayList<CompanyOBJ>();
-             for (CompanyDTO company : fromJson) {
+            Type type = new TypeToken<List<GalleryDTO>>() { }.getType();
+            List<GalleryDTO> fromJson = gson.fromJson(result, type);
+            ArrayList<GalleryOBJ> results = new ArrayList<GalleryOBJ>();
+             for (GalleryDTO company : fromJson) {
 
-                 CompanyOBJ obj = new CompanyOBJ(company.getId(),company.getName(),company.getAddress(),company.getImgPath1());
+                 GalleryOBJ obj = new GalleryOBJ(company.getId(),company.getImagePath(),company.getCategory(),company.getDescription());
                 results.add(obj);
            }
             if (!results.isEmpty()) {
 
-                MyRecyclerViewCompany mAdapter = new MyRecyclerViewCompany(results, mcontext);
+                MyRecyclerCompanyGallery mAdapter = new MyRecyclerCompanyGallery(results, mcontext);
                 rvGroups.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }else{
-                noData.setVisibility(View.VISIBLE);
             }
         }
     }
