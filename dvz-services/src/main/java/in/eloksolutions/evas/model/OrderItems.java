@@ -11,6 +11,21 @@ public class OrderItems {
 		this.orderItems=orderItems;
 	}
 	
+	@Override
+	public String toString() {
+		return "OrderItems [orderItems=" + orderItems + "]";
+	}
+	
+	public String toJSON() {
+		StringBuilder sb=new StringBuilder();
+		sb.append("\"orderItems\" :[");
+		for(OrderItem o:orderItems){
+			sb.append(o.toJSON()+",");
+		}
+		String json=sb.substring(0,sb.length()-1);
+		return json+"]";
+	}
+
 public List<OrderItem> getOrderItems() {
 		return orderItems;
 	}
@@ -40,6 +55,10 @@ public OrderItems(){
 		@Override
 		public String toString() {
 			return "OrderItem [id=" + id + ", serviceName=" + serviceName + "]";
+		}
+		
+		public String toJSON() {
+			return "{\"id\" :" + id + ", \"serviceName\" : " + serviceName + "}";
 		}
 		
 	}

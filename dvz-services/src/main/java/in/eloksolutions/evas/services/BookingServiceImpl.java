@@ -17,6 +17,8 @@ public class BookingServiceImpl implements BookingService {
     private BookingsDAO bookingDAO;
 	@Autowired
     private CompanyCustomerDAO companyCustomerDAO;
+	@Autowired
+    private CustomerService customerService;
 	
 	@Override
 	public Integer add(Booking booking, Context ctx) throws Exception {
@@ -26,6 +28,8 @@ public class BookingServiceImpl implements BookingService {
 			try {
 				CompanyCustomer cc=new CompanyCustomer(0, booking.getCustomerId(), booking.getCustomerName(), ctx.getCompanyId(), booking.getCompanyName());
 				companyCustomerDAO.add(cc, ctx);
+				customerService.updateMyRecentParlours( booking.getCustomerId(), ctx.getCompanyId(), booking.getCompanyName(),ctx);
+				System.out.println("Updated company customer and my parlours");
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -51,6 +55,11 @@ public class BookingServiceImpl implements BookingService {
 	@Override
 	public Integer update(Booking model, Context ctx) throws Exception {
 		return bookingDAO.update(model, ctx);
+	}
+
+	@Override
+	public List<Booking> myBookings(Integer custId, Context ctx) {
+		return bookingDAO.myBookings(custId, ctx);
 	}
 
 }

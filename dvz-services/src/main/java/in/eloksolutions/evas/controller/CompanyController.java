@@ -2,6 +2,8 @@ package in.eloksolutions.evas.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -67,5 +69,11 @@ public class CompanyController {
 		 List<Company> companies=companyService.findAll(null);
 		  System.out.println("in insert companies "+companies);
 		  return companies;
+	  }
+	 
+	 @RequestMapping(value = "/{companyId}", method = RequestMethod.GET)
+	  public  Company getCompany(@PathVariable("companyId") Integer companyId,HttpServletRequest request) throws Exception {
+		 System.out.println("getCompany ");
+		return companyService.findById(companyId, null);
 	  }
 }

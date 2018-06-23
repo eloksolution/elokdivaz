@@ -13,6 +13,7 @@ public class Service {
 	Date createDate;
 	Date updateDate;
 	int rating;
+	int noOfRating;
 	
 	public Service(){
 		
@@ -20,9 +21,10 @@ public class Service {
 			
 	public Service(int id, String name, String description, String imagePath, int price, 
 			int discount, String imageIcon,
-			Date createDate, Date updateDate) {
+			Date createDate, Date updateDate,int rating,int noOfRating) {
 		this.id=id;
 		this.name=name;
+		this.description=description;
 		this.imagePath=imagePath;
 		this.price=price;
 		this.discount=discount;
@@ -30,6 +32,8 @@ public class Service {
 		this.imageIcon=imageIcon;
 		this.createDate=createDate;
 		this.updateDate=updateDate;
+		this.rating=rating;
+		this.noOfRating=noOfRating;
 	}
 	public Integer getId() {
 		return id;
@@ -104,6 +108,14 @@ public class Service {
 
 	public void setDiscount(int discount) {
 		this.discount = discount;
+	}
+
+	public int getNoOfRating() {
+		return noOfRating;
+	}
+
+	public void setNoOfRating(int noOfRating) {
+		this.noOfRating = noOfRating;
 	}
 
 	@Override

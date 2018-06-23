@@ -25,12 +25,14 @@ public class SevicesDAOImpl implements ServicesDAO{
 	public List<Service> findAll(Context ctx) {
 		System.out.println("Context "+ctx);
 		return jdbcTemplate.query(
-                "SELECT ID,NAME,DESCRIPTION,IMG_PATH,PRICE,DISCOUNT,IMG_ICON,CREATE_DATE,UPDATE_DATE FROM "+ctx.getSchema()+".services",
+                "SELECT ID,NAME,DESCRIPTION,IMG_PATH,PRICE,DISCOUNT,IMG_ICON,CREATE_DATE,UPDATE_DATE,RATING/NO_OF_RATINGS RATE,NO_OF_RATINGS FROM "+ctx.getSchema()+".services",
                 (rs, rowNum) -> new Service(rs.getInt("ID"),
                         rs.getString("NAME"), rs.getString("DESCRIPTION"),
                         rs.getString("IMG_PATH"),rs.getInt("PRICE"),
                         rs.getInt("DISCOUNT"),rs.getString("IMG_ICON"),
-                        rs.getDate("CREATE_DATE"),rs.getDate("UPDATE_DATE")
+                        rs.getDate("CREATE_DATE"),rs.getDate("UPDATE_DATE"),
+                        rs.getInt("RATE"),
+                        rs.getInt("NO_OF_RATINGS")
                         )
         );
 	}
@@ -38,13 +40,16 @@ public class SevicesDAOImpl implements ServicesDAO{
 	@Override
 	public List<Service> findByColumn(String columnName, String columnValue, Context ctx) {
 		return jdbcTemplate.query(
-                "SELECT ID,NAME,DESCRIPTION,IMG_PATH,PRICE,DISCOUNT,IMG_ICON,CREATE_DATE,UPDATE_DATE FROM "+ctx.getSchema()+".services"
+                "SELECT ID,NAME,DESCRIPTION,IMG_PATH,PRICE,DISCOUNT,IMG_ICON,CREATE_DATE,UPDATE_DATE,RATING/NO_OF_RATINGS RATE,NO_OF_RATINGS FROM "+ctx.getSchema()+".services"
                 		+ " WHERE "+columnName+" = '"+columnValue+"'",
                         (rs, rowNum) -> new Service(rs.getInt("ID"),
                                 rs.getString("NAME"), rs.getString("DESCRIPTION"),
                                 rs.getString("IMG_PATH"),rs.getInt("PRICE"),
                                 rs.getInt("DISCOUNT"),rs.getString("IMG_ICON"),
-                                rs.getDate("CREATE_DATE"),rs.getDate("UPDATE_DATE")
+                                rs.getDate("CREATE_DATE"),rs.getDate("UPDATE_DATE"),
+                                rs.getInt("RATE"),
+                                rs.getInt("NO_OF_RATINGS")
+                                
                                 )
         );
 	}
@@ -57,14 +62,17 @@ public class SevicesDAOImpl implements ServicesDAO{
 	@Override
 	public Service findById(Integer id, Context ctx) {
 		return jdbcTemplate.queryForObject(
-                "SELECT ID,NAME,DESCRIPTION,IMG_PATH,PRICE,DISCOUNT,IMG_ICON,CREATE_DATE,UPDATE_DATE FROM "+ctx.getSchema()+".services"
+                "SELECT ID,NAME,DESCRIPTION,IMG_PATH,PRICE,DISCOUNT,IMG_ICON,CREATE_DATE,UPDATE_DATE,RATING/NO_OF_RATINGS RATE,NO_OF_RATINGS FROM "+ctx.getSchema()+".services"
                 		+ " WHERE id=?",
                 		new Object[] { id },
                 		(rs, rowNum) -> new Service(rs.getInt("ID"),
                                 rs.getString("NAME"), rs.getString("DESCRIPTION"),
                                 rs.getString("IMG_PATH"),rs.getInt("PRICE"),
                                 rs.getInt("DISCOUNT"),rs.getString("IMG_ICON"),
-                                rs.getDate("CREATE_DATE"),rs.getDate("UPDATE_DATE")
+                                rs.getDate("CREATE_DATE"),rs.getDate("UPDATE_DATE"),
+                                rs.getInt("RATE"),
+                                rs.getInt("NO_OF_RATINGS")
+                                
                                 )
         );
 	}
@@ -115,8 +123,8 @@ public class SevicesDAOImpl implements ServicesDAO{
 	@Override
 	public Integer updateRating(Service model, Context ctx) {
 		return jdbcTemplate.update(
-                "UPDATE "+ctx.getSchema()+".services SET RATIING = ?, UPDATE_DATE=? WHERE ID = ?",
-                new Object[] { model.getRating(), new java.sql.Timestamp((new Date().getTime())),model.getId()
+                "UPDATE "+ctx.getSchema()+".services SET RATIING = ?, UPDATE_DATE=NOW(),NO_OF_RATNGS=NO_OF_RATNGS+1 WHERE ID = ?",
+                new Object[] { model.getRating(),model.getId()
                 }
         );
 	}

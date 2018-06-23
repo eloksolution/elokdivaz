@@ -30,9 +30,9 @@ public class CompanyDAOImpl implements CompanyDAO{
 				 PreparedStatement statement = con.prepareStatement("INSERT INTO elokevasdb.company (NAME, DESCRIPTION, CODE, OFFICE_PHONE, OWNER_PHONE, "
 						+ "DBSCHEMA, STATUS,CREATE_DATE, UPDATED_DATE, UPDATED_BY, ADDRESS, ADDRESS_1, ADDRESS_2,"
 						+ "CITY, STATE, LATITUDE,LONGITUDE, EMAIL, FIRST_NAME, LAST_NAME, PASSWORD, LINKEDIN,"
-						+ " WHATSAPP, FACEBOOK, PARA1, PARA_2,PARA_3, IMG_PATH1, IMG_PATH2, IMG_PATH3) "
+						+ " WHATSAPP, FACEBOOK, PARA1, PARA_2,PARA_3, IMG_PATH1, IMG_PATH2, IMG_PATH3, IMG_PATH4, IMG_PATH5) "
 						+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, "
-						+ "?, ?, ?, ?, ?, ?, ?, ?) ", Statement.RETURN_GENERATED_KEYS);
+						+ "?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ", Statement.RETURN_GENERATED_KEYS);
 			        statement.setString(1, company.getName());
 			        statement.setString(2, company.getDescriptioin());
 			        statement.setString(3, company.getCode());
@@ -63,6 +63,8 @@ public class CompanyDAOImpl implements CompanyDAO{
 			        statement.setString(28, company.getImgPath1());
 			        statement.setString(29, company.getImgPath2());
 			        statement.setString(30, company.getImgPath3());
+			        statement.setString(31, company.getImgPath4());
+			        statement.setString(32, company.getImgPath5());
 			        return statement;
 			}
 		},holder);
@@ -77,7 +79,7 @@ public class CompanyDAOImpl implements CompanyDAO{
 						+ "OWNER_PHONE,STATUS,CREATE_DATE,UPDATED_DATE,UPDATED_BY,ADDRESS,ADDRESS_1,"
 						+ "ADDRESS_2,CITY,STATE,LATITUDE,LONGITUDE,EMAIL,FIRST_NAME,LAST_NAME,"
 						+ "PASSWORD,LINKEDIN,WHATSAPP,FACEBOOK,PARA1,PARA_2,PARA_3,IMG_PATH1,"
-						+ "IMG_PATH2,IMG_PATH3 FROM elokevasdb.company WHERE STATUS='Y'"
+						+ "IMG_PATH2,IMG_PATH3,IMG_PATH2,IMG_PATH3 FROM elokevasdb.company WHERE STATUS='Y'"
 						+ " LIMIT 10 OFFSET ?",
 						new Object[] { noOfRecords },
 						(rs, rowNum) -> new Company(rs.getInt("ID"), rs.getString("NAME")
@@ -87,7 +89,7 @@ public class CompanyDAOImpl implements CompanyDAO{
 								,rs.getString("LONGITUDE"),rs.getString("EMAIL"),rs.getString("FIRST_NAME"),rs.getString("LAST_NAME")
 								,rs.getString("PASSWORD"),rs.getString("LINKEDIN"),rs.getString("WHATSAPP"),rs.getString("FACEBOOK")
 								,rs.getString("PARA1"),rs.getString("PARA_2"),rs.getString("PARA_3"),rs.getString("IMG_PATH1")
-								,rs.getString("IMG_PATH2"),rs.getString("IMG_PATH3")));
+								,rs.getString("IMG_PATH2"),rs.getString("IMG_PATH3"),rs.getString("IMG_PATH4"),rs.getString("IMG_PATH5")));
 	}
 	
 	@Override
@@ -98,7 +100,7 @@ public class CompanyDAOImpl implements CompanyDAO{
 						+ " UPDATED_BY = ?, ADDRESS = ?, ADDRESS_1 = ?, ADDRESS_2 = ?, CITY = ?, STATE = ?, "
 						+ "LATITUDE = ?, LONGITUDE = ?, EMAIL = ?, FIRST_NAME = ?, LAST_NAME = ?, PASSWORD = ?, "
 						+ "LINKEDIN = ?, WHATSAPP = ?, FACEBOOK = ?, PARA1 = ?, PARA_2 = ?, PARA_3 = ?, "
-						+ "IMG_PATH1 = ?, IMG_PATH2 = ?, IMG_PATH3 = ? WHERE ID = ?",
+						+ "IMG_PATH1 = ?, IMG_PATH2 = ?, IMG_PATH3 = ?, IMG_PATH4 = ?, IMG_PATH5 = ? WHERE ID = ?",
 						new Object[] { company.getName(),
 								company.getDescriptioin(), company.getCode(),
 								company.getOfficePhone(),
@@ -109,7 +111,7 @@ public class CompanyDAOImpl implements CompanyDAO{
 								company.getLongitude(),company.getEmail(),company.getFirstName(),company.getLastName(),
 								company.getPassword(),company.getLinkedin(),company.getWhatsapp(),company.getFacebook(),
 								company.getPara1(),company.getPara2(),company.getPara3(),company.getImgPath1(),
-								company.getImgPath2(),company.getImgPath3(),company.getId()});
+								company.getImgPath2(),company.getImgPath3(),company.getImgPath4(),company.getImgPath5(),company.getId()});
 				
 	}
 	@Override
@@ -120,7 +122,7 @@ public class CompanyDAOImpl implements CompanyDAO{
 	@Override
 	public List<Company> findAll(Context  ctx) {
 		return jdbcTemplate
-				.query("SELECT ID,NAME,CODE,DBSCHEMA,DESCRIPTION,OFFICE_PHONE,OWNER_PHONE,STATUS,CREATE_DATE,UPDATED_DATE,UPDATED_BY,ADDRESS,ADDRESS_1,ADDRESS_2,CITY,STATE,LATITUDE,LONGITUDE,EMAIL,FIRST_NAME,LAST_NAME,PASSWORD,LINKEDIN,WHATSAPP,FACEBOOK,PARA1,PARA_2,PARA_3,IMG_PATH1,IMG_PATH2,IMG_PATH3 FROM elokevasdb.company WHERE STATUS='Y' ",
+				.query("SELECT ID,NAME,CODE,DBSCHEMA,DESCRIPTION,OFFICE_PHONE,OWNER_PHONE,STATUS,CREATE_DATE,UPDATED_DATE,UPDATED_BY,ADDRESS,ADDRESS_1,ADDRESS_2,CITY,STATE,LATITUDE,LONGITUDE,EMAIL,FIRST_NAME,LAST_NAME,PASSWORD,LINKEDIN,WHATSAPP,FACEBOOK,PARA1,PARA_2,PARA_3,IMG_PATH1,IMG_PATH2,IMG_PATH3,IMG_PATH4,IMG_PATH5 FROM elokevasdb.company WHERE STATUS='Y' ",
 						(rs, rowNum) -> new Company(rs.getInt("ID"), rs.getString("NAME")
 								, rs.getString("CODE"),rs.getString("DBSCHEMA"),rs.getString("DESCRIPTION"),rs.getString("OFFICE_PHONE"),rs.getString("OWNER_PHONE"),rs.getString("STATUS"),rs.getString("CREATE_DATE"),
 								rs.getString("UPDATED_DATE"),rs.getInt("UPDATED_BY"),rs.getString("ADDRESS"),rs.getString("ADDRESS_1")
@@ -128,13 +130,13 @@ public class CompanyDAOImpl implements CompanyDAO{
 								,rs.getString("LONGITUDE"),rs.getString("EMAIL"),rs.getString("FIRST_NAME"),rs.getString("LAST_NAME")
 								,rs.getString("PASSWORD"),rs.getString("LINKEDIN"),rs.getString("WHATSAPP"),rs.getString("FACEBOOK")
 								,rs.getString("PARA1"),rs.getString("PARA_2"),rs.getString("PARA_3"),rs.getString("IMG_PATH1")
-								,rs.getString("IMG_PATH2"),rs.getString("IMG_PATH3")));
+								,rs.getString("IMG_PATH2"),rs.getString("IMG_PATH3"),rs.getString("IMG_PATH4"),rs.getString("IMG_PATH5")));
 	}
 
 	@Override
 	public List<Company> findByColumn(String columnName, String columnValue,Context ctx) {
 		return jdbcTemplate
-				.query("SELECT ID,NAME,CODE,DBSCHEMA,DESCRIPTION,OFFICE_PHONE,OWNER_PHONE,STATUS,CREATE_DATE,UPDATED_DATE,UPDATED_BY,ADDRESS,ADDRESS_1,ADDRESS_2,CITY,STATE,LATITUDE,LONGITUDE,EMAIL,FIRST_NAME,LAST_NAME,PASSWORD,LINKEDIN,WHATSAPP,FACEBOOK,PARA1,PARA_2,PARA_3,IMG_PATH1,IMG_PATH2,IMG_PATH3 FROM elokevasdb.company WHERE STATUS='Y' AND "
+				.query("SELECT ID,NAME,CODE,DBSCHEMA,DESCRIPTION,OFFICE_PHONE,OWNER_PHONE,STATUS,CREATE_DATE,UPDATED_DATE,UPDATED_BY,ADDRESS,ADDRESS_1,ADDRESS_2,CITY,STATE,LATITUDE,LONGITUDE,EMAIL,FIRST_NAME,LAST_NAME,PASSWORD,LINKEDIN,WHATSAPP,FACEBOOK,PARA1,PARA_2,PARA_3,IMG_PATH1,IMG_PATH2,IMG_PATH3,IMG_PATH4,IMG_PATH5 FROM elokevasdb.company WHERE STATUS='Y' AND "
 						+ columnName + "='" + columnValue + "'",
 						(rs, rowNum) -> new Company(rs.getInt("ID"), rs.getString("NAME")
 								, rs.getString("CODE"),rs.getString("DBSCHEMA"),rs.getString("DESCRIPTION"),rs.getString("OFFICE_PHONE"),rs.getString("OWNER_PHONE"),rs.getString("STATUS"),rs.getString("CREATE_DATE"),
@@ -143,7 +145,22 @@ public class CompanyDAOImpl implements CompanyDAO{
 								,rs.getString("LONGITUDE"),rs.getString("EMAIL"),rs.getString("FIRST_NAME"),rs.getString("LAST_NAME")
 								,rs.getString("PASSWORD"),rs.getString("LINKEDIN"),rs.getString("WHATSAPP"),rs.getString("FACEBOOK")
 								,rs.getString("PARA1"),rs.getString("PARA_2"),rs.getString("PARA_3"),rs.getString("IMG_PATH1")
-								,rs.getString("IMG_PATH2"),rs.getString("IMG_PATH3")));
+								,rs.getString("IMG_PATH2"),rs.getString("IMG_PATH3"),rs.getString("IMG_PATH4"),rs.getString("IMG_PATH5")));
+	}
+	
+	@Override
+	public List<Company> findByCodeOrName(String searchToken,Context ctx) {
+		return jdbcTemplate
+				.query("SELECT ID,NAME,CODE,DBSCHEMA,DESCRIPTION,OFFICE_PHONE,OWNER_PHONE,STATUS,CREATE_DATE,UPDATED_DATE,UPDATED_BY,ADDRESS,ADDRESS_1,ADDRESS_2,CITY,STATE,LATITUDE,LONGITUDE,EMAIL,FIRST_NAME,LAST_NAME,PASSWORD,LINKEDIN,WHATSAPP,FACEBOOK,PARA1,PARA_2,PARA_3,IMG_PATH1,IMG_PATH2,IMG_PATH3,IMG_PATH4,IMG_PATH5 FROM elokevasdb.company WHERE STATUS='Y' AND "
+						+" CODE "+ "='" + searchToken + "' OR NAME LIKE %'"+searchToken+"%'",
+						(rs, rowNum) -> new Company(rs.getInt("ID"), rs.getString("NAME")
+								, rs.getString("CODE"),rs.getString("DBSCHEMA"),rs.getString("DESCRIPTION"),rs.getString("OFFICE_PHONE"),rs.getString("OWNER_PHONE"),rs.getString("STATUS"),rs.getString("CREATE_DATE"),
+								rs.getString("UPDATED_DATE"),rs.getInt("UPDATED_BY"),rs.getString("ADDRESS"),rs.getString("ADDRESS_1")
+								,rs.getString("ADDRESS_2"),rs.getString("CITY"),rs.getString("STATE"),rs.getString("LATITUDE")
+								,rs.getString("LONGITUDE"),rs.getString("EMAIL"),rs.getString("FIRST_NAME"),rs.getString("LAST_NAME")
+								,rs.getString("PASSWORD"),rs.getString("LINKEDIN"),rs.getString("WHATSAPP"),rs.getString("FACEBOOK")
+								,rs.getString("PARA1"),rs.getString("PARA_2"),rs.getString("PARA_3"),rs.getString("IMG_PATH1")
+								,rs.getString("IMG_PATH2"),rs.getString("IMG_PATH3"),rs.getString("IMG_PATH4"),rs.getString("IMG_PATH5")));
 	}
 
 	@Override
@@ -152,8 +169,8 @@ public class CompanyDAOImpl implements CompanyDAO{
 				.queryForObject("SELECT ID,NAME,DESCRIPTION,CODE,OFFICE_PHONE,OWNER_PHONE,DBSCHEMA,STATUS,"
 						+ "CREATE_DATE,UPDATED_DATE,UPDATED_BY,ADDRESS,ADDRESS_1,ADDRESS_2,CITY,STATE,"
 						+ "LATITUDE,LONGITUDE,EMAIL,FIRST_NAME,LAST_NAME,PASSWORD,LINKEDIN,WHATSAPP,"
-						+ "FACEBOOK,PARA1,PARA_2,PARA_3,IMG_PATH1,IMG_PATH2,IMG_PATH3 FROM "
-						+ "elokevasdb.company;  WHERE ID = ?",
+						+ "FACEBOOK,PARA1,PARA_2,PARA_3,IMG_PATH1,IMG_PATH2,IMG_PATH3,IMG_PATH4,IMG_PATH5 FROM "
+						+ "elokevasdb.company  WHERE ID = ?",
 						new Object[] { id },
 						(rs, rowNum) -> new Company(rs.getInt("ID"), rs.getString("NAME")
 								,rs.getString("DESCRIPTION"),rs.getString("CODE")
@@ -169,7 +186,8 @@ public class CompanyDAOImpl implements CompanyDAO{
 								,rs.getString("WHATSAPP"),rs.getString("PARA1")
 								,rs.getString("PARA_2"),rs.getString("PARA_3")
 								,rs.getString("IMG_PATH1"),rs.getString("IMG_PATH2")
-								,rs.getString("IMG_PATH3")
+								,rs.getString("IMG_PATH3"),rs.getString("IMG_PATH4")
+								,rs.getString("IMG_PATH5")
 								));
 	}
 }

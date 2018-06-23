@@ -16,20 +16,28 @@ public class Booking extends CommonVO{
 	String strOrderItems;
 	String strOrderDate;
 	int totalPrice;
-	Date orderDate;
-	java.sql.Date sqlOrderDate;
+	Date orderDate=new Date();
+	java.sql.Timestamp sqlOrderDate;
 	OrderItems orderItems;
+	String email;
+	String phone;
+	String status;
+	String statusInt;
+	Date updatedDate=new Date();
+	String calEventiD;
 	
 	public Booking(){
 		orderDate=new Date();
 	}
 	public Booking(int id, String customerName, int customerId, String strOrderItems, int totalPrice,
-			java.sql.Date sqlOrderDate) {
+			java.sql.Timestamp sqlOrderDate,String email,String phone) {
 		super();
 		this.id = id;
 		this.customerName = customerName;
 		this.customerId = customerId;
 		this.strOrderItems = strOrderItems;
+		this.email=email;
+		this.phone=phone;
 		try {
 			;
 			orderItems=new OrderItems();
@@ -43,7 +51,7 @@ public class Booking extends CommonVO{
 		this.sqlOrderDate = sqlOrderDate;
 		if(sqlOrderDate!=null) {
 			orderDate=new Date(sqlOrderDate.getTime());
-			strOrderDate=new SimpleDateFormat("dd/MM/yyyy").format(orderDate);
+			strOrderDate=new SimpleDateFormat("E, dd MMM yyyy HH:mm").format(orderDate);
 		}
 	}
 	public int getId() {
@@ -95,6 +103,48 @@ public class Booking extends CommonVO{
 	}
 	public void setStrOrderDate(String strOrderDate) {
 		this.strOrderDate = strOrderDate;
+	}
+	public java.sql.Timestamp getSqlOrderDate() {
+		return sqlOrderDate;
+	}
+	public void setSqlOrderDate(java.sql.Timestamp sqlOrderDate) {
+		this.sqlOrderDate = sqlOrderDate;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public String getStatusInt() {
+		return statusInt;
+	}
+	public void setStatusInt(String statusInt) {
+		this.statusInt = statusInt;
+	}
+	public Date getUpdatedDate() {
+		return updatedDate;
+	}
+	public void setUpdatedDate(Date updatedDate) {
+		this.updatedDate = updatedDate;
+	}
+	public String getCalEventiD() {
+		return calEventiD;
+	}
+	public void setCalEventiD(String calEventiD) {
+		this.calEventiD = calEventiD;
 	}
 	@Override
 	public String toString() {

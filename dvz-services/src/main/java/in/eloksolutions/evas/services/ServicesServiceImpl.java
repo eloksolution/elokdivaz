@@ -30,7 +30,14 @@ public class ServicesServiceImpl implements ServicesService {
 
 	@Override
 	public Service findById(Integer id, Context ctx) {
-		return serviceDAO.findById(id, ctx);
+		Service s=null;
+		try {
+			s= serviceDAO.findById(id, ctx);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("Error while fetching the records");
+		}
+		return s;
 	}
 
 	@Override

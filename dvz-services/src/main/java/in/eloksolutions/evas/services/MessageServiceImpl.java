@@ -24,8 +24,7 @@ public class MessageServiceImpl implements MessagesServices{
 		Integer id= messagesDao.add(message, ctx);
 		if(id>0){
 			try {
-				List<Customer> customers=companyCustomerDAO.getCustomers(ctx);
-				SendNotification.sendOfferMessageToUsers(customers, message.getDescription(), message.getSubject());
+				SendNotification.sendMessageToUser(message,ctx.getCompanyId());
 			} catch (Exception e) {
 				System.out.println("Error while sending message "+e.getMessage());
 				e.printStackTrace();

@@ -54,6 +54,10 @@ public class BookingController {
 	 @RequestMapping(value = "/update", method = RequestMethod.POST)
 	  public Integer update(@RequestBody Booking booking, HttpServletRequest  request) throws Exception {
 		 System.out.println("Booking "+booking+" id is "+booking.getCompanyId());
+		 if( booking.getId()==0){
+			 System.out.println("No id for booking is passed");
+			 return 0;
+		 }
 		 Company c=getCompany(request);
 		 System.out.println("Cache company is"+c);
 		 Context ctx=new Context(null,c.getSchema());
@@ -96,5 +100,14 @@ public class BookingController {
 		 System.out.println("Cache company is"+c);
 		 Context ctx=new Context(null,c.getSchema());
 		return bokingService.findById(bookingId, ctx);
+	  }
+	 
+	 @RequestMapping(value = "/myBookings/{custId}", method = RequestMethod.GET)
+	  public  List<Booking> getMyBookings(@PathVariable("custId") Integer custId,HttpServletRequest request) throws Exception {
+		 System.out.println("findAll ");
+		 Company c=getCompany( request);
+		 System.out.println("Cache company is"+c);
+		 Context ctx=new Context(null,c.getSchema());
+		return bokingService.myBookings(custId, ctx);
 	  }
 }

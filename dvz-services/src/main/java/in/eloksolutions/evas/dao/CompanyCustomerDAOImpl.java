@@ -116,7 +116,8 @@ public class CompanyCustomerDAOImpl implements CompanyCustomerDAO{
 								,rs.getString("LONGITUDE"),rs.getString("EMAIL"),rs.getString("FIRST_NAME"),rs.getString("LAST_NAME")
 								,rs.getString("PASSWORD"),rs.getString("LINKEDIN"),rs.getString("WHATSAPP"),rs.getString("FACEBOOK")
 								,rs.getString("PARA1"),rs.getString("PARA_2"),rs.getString("PARA_3"),rs.getString("IMG_PATH1")
-								,rs.getString("IMG_PATH2"),rs.getString("IMG_PATH3")));
+								,rs.getString("IMG_PATH2"),rs.getString("IMG_PATH3")
+								,rs.getString("IMG_PATH4"),rs.getString("IMG_PATH5")));
 	}
 
 }

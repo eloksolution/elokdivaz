@@ -35,6 +35,8 @@ public class Company {
 	String imgPath1;
 	String imgPath2;
 	String imgPath3;
+	String imgPath4;
+	String imgPath5;
 	
 	public Company(){
 		
@@ -50,7 +52,7 @@ public class Company {
 			String latitude, String longitude, String email, String firstName,
 			String lastName, String password, String linkedin, String facebook,
 			String whatsapp, String para1, String para2, String para3,
-			String imgPath1, String imgPath2, String imgPath3) {
+			String imgPath1, String imgPath2, String imgPath3, String imgPath4, String imgPath5) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -83,6 +85,8 @@ public class Company {
 		this.imgPath1 = imgPath1;
 		this.imgPath2 = imgPath2;
 		this.imgPath3 = imgPath3;
+		this.imgPath4 = imgPath4;
+		this.imgPath5 = imgPath5;
 	}
 
 
@@ -92,7 +96,8 @@ public class Company {
 			String address_1, String address_2, String city, String state, String latitude, String longitude,
 			String email, String first_name, String last_name, String password, String linkedin, String whatsapp,
 			String facebook, String para1, String para_2, String para_3, String img_path1, String img_path2,
-			String img_path3) {
+			String img_path3, String img_path4,
+			String img_path5) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -125,6 +130,8 @@ public class Company {
 		this.imgPath1 = img_path1;
 		this.imgPath2 = img_path2;
 		this.imgPath3 = img_path3;
+		this.imgPath4 = img_path4;
+		this.imgPath5 = img_path5;
 		
 	}
 
@@ -375,6 +382,30 @@ public class Company {
 	public void setImgPath3(String imgPath3) {
 		this.imgPath3 = imgPath3;
 	}
+
+	public String getImgPath4() {
+		return imgPath4;
+	}
+
+
+
+	public void setImgPath4(String imgPath4) {
+		this.imgPath4 = imgPath4;
+	}
+
+
+
+	public String getImgPath5() {
+		return imgPath5;
+	}
+
+
+
+	public void setImgPath5(String imgPath5) {
+		this.imgPath5 = imgPath5;
+	}
+
+
 
 	@Override
 	public String toString() {

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import in.eloksolutions.evas.Application;
 import in.eloksolutions.evas.dao.CompanyDAO;
 import in.eloksolutions.evas.model.Company;
 import in.eloksolutions.evas.model.Context;
@@ -19,7 +20,8 @@ public class CompanyServiceImpl implements CompanyService{
 		String dbSchema="dbName";
 		company.setSchema(dbSchema);
 		Integer id= companyDAO.add(company,ctx);
-	
+		List<Company> companies=companyDAO.findAll(null);
+		Application.loadCompanies(companies);
 		return id;
 	}
 
@@ -45,7 +47,6 @@ public class CompanyServiceImpl implements CompanyService{
 
 	@Override
 	public Company findById(Integer id, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return companyDAO.findById(id, ctx);
 	}
 }

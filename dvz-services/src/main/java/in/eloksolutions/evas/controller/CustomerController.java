@@ -38,6 +38,21 @@ public class CustomerController {
 		  return id;
 	  }
 	 
+	 @RequestMapping(value = "/update", method = RequestMethod.POST)
+	  public Integer update(@RequestBody Customer customer) throws Exception {
+		 System.out.println("Company "+customer);
+		  Integer id;
+		try {
+			id = customerService.update(customer,null);
+		} catch (Exception e) {
+			System.out.println("Error while saving customer "+customer);
+			e.printStackTrace();
+			throw new Exception("Unable to save Customer, Please contact customer support. "+e.getMessage());
+		}
+		  System.out.println("BEW in insert id "+id);
+		  return id;
+	  }
+	 
 	 @RequestMapping("/getCustomers")
 	  public List<Customer> findAll(HttpServletRequest request) throws Exception {
 		 Company c=getCompany(request);
@@ -63,4 +78,10 @@ public class CustomerController {
 			}
 			 return c;
 		}
+	 
+	 @RequestMapping(value = "/{custId}", method = RequestMethod.GET)
+	  public  Customer getCustomer(@PathVariable("custId") Integer custId,HttpServletRequest request) throws Exception {
+		 System.out.println("getCompany ");
+		return customerService.findById(custId, null);
+	  }
 }

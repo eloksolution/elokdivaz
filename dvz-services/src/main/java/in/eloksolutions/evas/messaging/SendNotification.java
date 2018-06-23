@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import in.eloksolutions.evas.http.RestServices;
 import in.eloksolutions.evas.model.Customer;
+import in.eloksolutions.evas.model.Message;
 
 
 public class SendNotification {
@@ -23,16 +24,45 @@ public class SendNotification {
 		}
 	}
 
+	public static String sendMessageToUser(Message message, Integer companyId) {
+		String json=getJSONMessage(message,companyId);
+		System.out.println("Sending json "+json);
+		try {
+			RestServices.postJSON(FCM_URL, json);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "success";
+	}
+
+	private static String getJSONMessage(Message msg, Integer companyId) {
+		return "{\"to\":\"/topics/company-"+companyId+"\",\"data\" : {"
+				+ " \"subject\" :\""+msg.getSubject()+"\","
+						+ "\"description\" : \""+msg.getDescription()+"\","
+								+ "\"img_path\" : \""+msg.getImg_path()+"\"}}";
+				
+	}
+
+	private static String buildUserJSON(Message message) {
+		return messageToJSON(message); 
+	}
+
+	private static String messageToJSON(Message message) {
+		try {
+			 ObjectMapper mapper = new ObjectMapper();
+			 return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(message);
+       } catch (Exception e) {
+           e.printStackTrace();
+       }
+		return "";
+	}
 
 	private static String buildUserJSON(String token, String body, String title) {
 		Notification n=new Notification();
 		n.setBody(body);
 		n.setTitle(title);
 		Message m=new Message();
-		m.setToken(token);
-		m.setNotification(n);
 		Request r=new Request();
-		r.setMessage(m);
 		try {
 			 ObjectMapper mapper = new ObjectMapper();
 			 return mapper.writerWithDefaultPrettyPrinter().writeValueAsString(r);
@@ -43,7 +73,11 @@ public class SendNotification {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("JSON String is "+buildUserJSON("SDFDTOKEN", "oFFERS MESSAGE", "New Offer"));
+		Message m=new Message();
+		m.setSubject("June Offer 20%");
+		m.setDescription("June Offer 20% off on all the services");
+		m.setImg_path("https://s3.amazonaws.com/divaz/siri/services/S__901_1525501267804");
+		System.out.println("JSON String is "+sendMessageToUser(m,1));
 	}
 
 	public static void sendOfferMessageToUsers(List<Customer> customers,String message,String subject){

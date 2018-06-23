@@ -1,28 +1,21 @@
 package in.eloksolutions.evas.messaging;
 
 public class Message {
-	String token;
-	Notification notification;
+	String to;
+	String data;
+	public String getTo() {
+		return to;
+	}
+	public void setTo(String to) {
+		this.to = to;
+	}
+	public String getData() {
+		return data;
+	}
+	public void setData(String data) {
+		this.data = data;
+	}
 	
-	public String getToken() {
-		return token;
-	}
 
-	public void setToken(String token) {
-		this.token = token;
-	}
-
-	public Notification getNotification() {
-		return notification;
-	}
-
-	public void setNotification(Notification notification) {
-		this.notification = notification;
-	}
-
-	@Override
-	public String toString() {
-		return "Message [token=" + token + ", notification=" + notification + "]";
-	}
 	
 }

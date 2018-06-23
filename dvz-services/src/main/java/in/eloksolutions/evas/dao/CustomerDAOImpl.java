@@ -25,6 +25,7 @@ public class CustomerDAOImpl implements CustomerDAO{
 	@Override
 	public Integer add(Customer customer,Context  ctx) {
 		GeneratedKeyHolder holder = new GeneratedKeyHolder();
+		try{
 		jdbcTemplate.update(new PreparedStatementCreator() {
 			
 			@Override
@@ -49,6 +50,15 @@ public class CustomerDAOImpl implements CustomerDAO{
 			        return statement;
 			}
 		},holder);
+		}catch(Exception ex){
+			ex.printStackTrace();
+			if(ex.getMessage().contains("Duplicate")){
+				System.out.println("Customer already exist ");
+				Customer c=findByEmailOrMobile(customer.getEmail(), customer.getPhone());
+				return c.getId();
+			}
+			throw ex;
+		}
 		return holder.getKey().intValue();
 	}
 	
@@ -76,15 +86,42 @@ public class CustomerDAOImpl implements CustomerDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
 	@Override
 	public Customer findById(Integer id, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		return  jdbcTemplate.queryForObject(
+		        "SELECT * FROM elokevasdb.customer WHERE ID=?" ,
+		        (rs, rowNum) -> new Customer(rs.getInt("id"),
+		                rs.getString("FIRST_NAME"), rs.getString("LAST_NAME"), rs.getString("EMAIL"),
+		                rs.getString("ADDRESS_1"), rs.getString("ADDRESS_2"),
+		                rs.getString("CITY"), rs.getString("STATE"),ParlourFormattor.parse(rs.getString("MY_PARALORS")),
+		                rs.getDate("CREATE_DATE"),rs.getDate("UPDATE_DATE"),rs.getString("LATITUDE"), rs.getString("LONGITUDE"),
+		                rs.getString("PHONE"), rs.getString("IMAGE_PATH"), rs.getString("DEVICE_TOKEN")
+		                ),new Object[] { id});
+	}
+	
+	@Override
+	public Customer findByEmailOrMobile(String  email,String mobile) {
+		return  jdbcTemplate.queryForObject(
+		        "SELECT * FROM elokevasdb.customer WHERE EMAIL=? OR PHONE=? LIMIT 1" ,
+		        (rs, rowNum) -> new Customer(rs.getInt("id"),
+		                rs.getString("FIRST_NAME"), rs.getString("LAST_NAME"), rs.getString("EMAIL"),
+		                rs.getString("ADDRESS_1"), rs.getString("ADDRESS_2"),
+		                rs.getString("CITY"), rs.getString("STATE"),ParlourFormattor.parse(rs.getString("MY_PARALORS")),
+		                rs.getDate("CREATE_DATE"),rs.getDate("UPDATE_DATE"),rs.getString("LATITUDE"), rs.getString("LONGITUDE"),
+		                rs.getString("PHONE"), rs.getString("IMAGE_PATH"), rs.getString("DEVICE_TOKEN")
+		                ),new Object[] { email,mobile});
 	}
 	@Override
 	public Integer update(Customer model, Context ctx) {
-		// TODO Auto-generated method stub
-		return null;
+		 return jdbcTemplate
+				.update("UPDATE elokevasdb.customer "
+						+ "SET FIRST_NAME = ? "
+						+ "LAST_NAME=? "
+						+ "IMAGE_PATH=? "
+						+ "EMAIL=? "
+						+ "WHERE ID = ?",
+						new Object[] {model.getFirstName(),model.getLastName(),model.getImagePath(),model.getEmail(),model.getId()});
 	}
 	@Override
 	public Integer delete(Customer model, Context ctx) {
@@ -97,5 +134,14 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return jdbcTemplate
 				.update("UPDATE elokevasdb.customer SET device_token = ? WHERE ID = ?",
 						new Object[] { token,userid});
+	}
+
+	@Override
+	public Integer updateMyRecentParlours(Integer userid,String myRecentParloursJSON) {
+		 return jdbcTemplate
+					.update("UPDATE elokevasdb.customer "
+							+ "SET MY_PARALORS = ? "
+							+ " WHERE ID = ?",
+							new Object[] {myRecentParloursJSON,userid});
 	}
 }

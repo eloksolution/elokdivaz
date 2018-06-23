@@ -2,6 +2,7 @@ package in.eloksolutions.evas.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import in.eloksolutions.evas.vo.Parlour;
 
@@ -14,7 +15,8 @@ public class Customer {
     String address2;
     String city;
     String state;
-    List<Parlour> myParalours;
+    Set<Parlour> myParalours;
+    String strMyParalours;
     Date createDate;
     Date updateDate;
     String latitude;
@@ -28,7 +30,7 @@ public class Customer {
 		super();
 	}
 	public Customer(int id, String firstName, String lastName, String email, String address1, String address2,
-			String city, String state, List<Parlour> myParalours, Date createDate, Date updateDate,
+			String city, String state, Set<Parlour> strMyParalours, Date createDate, Date updateDate,
 			String latitude, String longitude, String phone, String imagePath,String deviceToken) {
 		super();
 		this.id = id;
@@ -48,6 +50,7 @@ public class Customer {
 		this.imagePath = imagePath;
 		this.deviceToken=deviceToken;
 	}
+
 	public int getId() {
 		return id;
 	}
@@ -73,7 +76,7 @@ public class Customer {
 		return state;
 	}
 	
-	public List<Parlour> getMyParalours() {
+	public Set<Parlour> getMyParalours() {
 		return myParalours;
 	}
 	public void setId(int id) {
@@ -101,7 +104,7 @@ public class Customer {
 		this.state = state;
 	}
 	
-	public void setMyParalours(List<Parlour> myParalours) {
+	public void setMyParalours(Set<Parlour> myParalours) {
 		this.myParalours = myParalours;
 	}
 	public Date getCreateDate() {

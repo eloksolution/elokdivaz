@@ -27,7 +27,7 @@ public class RestServices {
 		method.addRequestHeader("private", "0009-31ccd983-5601a165-3b6f-e2a6ed7cs");
 		method.addRequestHeader("Accept", "application/json");
 		method.addRequestHeader("Host", "fcm.googleapis.com");
-		method.addRequestHeader("Authorization", "key=AIzaSyD2yWSaqd50c-H4z2wEVJ44_QLt-lcYurA");
+		method.addRequestHeader("Authorization", "key=AIzaSyBHXUcQ5cv5QTrm2KMhkV_9Cux6piqv7Xg");
         
 		StringRequestEntity requestEntity = new StringRequestEntity(
 				json,

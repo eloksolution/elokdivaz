@@ -31,17 +31,25 @@ public class Application {
             for (String beanName : beanNames) {
                 System.out.println(beanName);
             }
-            CompanyService companyService =(CompanyService)ctx.getBean("companyService");
-            List<Company> companies=companyService.findAll(null);
-            companies.forEach(company->{
-            	companyCodeMap.put(company.getCode(),company);
-            	companyIdMap.put(company.getId(),company);
-            });
+            loadCompanies(ctx);
             System.out.println("Companies Codes "+companyCodeMap);
             System.out.println("Companies Ids "+companyIdMap);
                 
         };
     }
+
+	private void loadCompanies(ApplicationContext ctx) {
+		CompanyService companyService =(CompanyService)ctx.getBean("companyService");
+		List<Company> companies=companyService.findAll(null);
+		loadCompanies(companies);
+	}
+
+	public static void loadCompanies(List<Company> companies) {
+		companies.forEach(company->{
+			companyCodeMap.put(company.getCode(),company);
+			companyIdMap.put(company.getId(),company);
+		});
+	}
 
 	public static Company getCompany(String code) {
 		return companyCodeMap.get(code);
