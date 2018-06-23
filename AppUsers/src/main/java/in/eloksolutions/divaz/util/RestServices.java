@@ -12,7 +12,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class RestServices {
-    public static String POST(URL url, String json){
+    public static String POST(URL url, String json,String companyId){
         InputStream inputStream = null;
         String result = "";
         HttpURLConnection conn = null;
@@ -25,7 +25,7 @@ public class RestServices {
             conn.setUseCaches(false);
             conn.setFixedLengthStreamingMode(json.getBytes().length);
             conn.setRequestMethod("POST");
-            conn.setRequestProperty("companyId", "2");
+            conn.setRequestProperty("companyId", companyId);
             conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
             conn.setRequestProperty("X-Requested-With", "XMLHttpRequest");
             // post the request

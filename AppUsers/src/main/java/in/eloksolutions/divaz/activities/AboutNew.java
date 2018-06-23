@@ -95,7 +95,6 @@ public class AboutNew extends AppCompatActivity {
         services.setLayoutManager(new LinearLayoutManager(dialog.getContext(),LinearLayoutManager.HORIZONTAL,true));
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(dialog.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        services.setHasFixedSize(true);
         LinearLayoutManager lmPadi = new LinearLayoutManager(context);
         services.setLayoutManager(mLayoutManager);
         services.setLayoutManager(lmPadi);

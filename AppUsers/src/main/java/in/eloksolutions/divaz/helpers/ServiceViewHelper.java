@@ -16,7 +16,8 @@ import in.eloksolutions.divaz.util.RestServices;
 public class ServiceViewHelper {
 
     private ServiceView mcontext;
-    String companyId="2";
+
+
     public ServiceViewHelper(ServiceView mcontext) {
         this.mcontext = mcontext;
     }
@@ -25,10 +26,12 @@ public class ServiceViewHelper {
         // Call after onPreExecute method
         URL url;
         String surl;
+        String companyId;
         private ProgressDialog progress;
 
-        public ServiceUpdateTask(String surl) {
+        public ServiceUpdateTask(String surl,String companyId) {
             this.surl = surl;
+            this.companyId=companyId;
         }
 
         @Override

@@ -11,12 +11,10 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.firebase.messaging.FirebaseMessaging;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import in.eloksolutions.divaz.activities.Consult;
+import in.eloksolutions.divaz.activities.ApointMentUpdate;
 import in.eloksolutions.divaz.activities.ServiceLists;
 import in.eloksolutions.divaz.dtoclasses.BookingDTO;
 import in.eloksolutions.divaz.util.RestServices;
@@ -26,16 +24,16 @@ import in.eloksolutions.divaz.util.RestServices;
  * Created by welcome on 6/28/2017.
  */
 
-public class BookingHelper extends AsyncTask<String, Void, String> {
+public class ApointMentUpdateHelper extends AsyncTask<String, Void, String> {
     URL url;
     BookingDTO bookingDTO;
     private ProgressDialog progress;
-    String gurl,json,companyId;
-    Consult booking;
+    String gurl,json,companyId,bookingId;
+    ApointMentUpdate booking;
     private static final int PERMISSION_REQUEST_CODE = 1;
     String tag="SendAcceptTask";
 
-    public BookingHelper(String json,BookingDTO bookingDTO,String companyId, String gurl, Consult booking) {
+    public ApointMentUpdateHelper(String json, BookingDTO bookingDTO, String companyId, String gurl, ApointMentUpdate booking) {
         this.json = json;
         this.gurl = gurl;
         this.booking=booking;
@@ -90,7 +88,6 @@ public class BookingHelper extends AsyncTask<String, Void, String> {
                             Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
-                FirebaseMessaging.getInstance().subscribeToTopic("company-"+companyId);
                 Intent intent=new Intent(booking, ServiceLists.class);
                 intent.putExtra("companyId",companyId);
                 booking.startActivity(intent);

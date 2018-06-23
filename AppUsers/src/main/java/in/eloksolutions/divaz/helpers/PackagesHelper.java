@@ -9,7 +9,6 @@ import java.net.URL;
 
 import in.eloksolutions.divaz.activities.Packages;
 import in.eloksolutions.divaz.dtoclasses.PackagesDTO;
-import in.eloksolutions.divaz.util.RestServices;
 
 
 /**
@@ -43,7 +42,7 @@ public class PackagesHelper extends AsyncTask<String, Void, String> {
         String result=null;
         try {
             url = new URL(gurl);
-            result = RestServices.POST(url, json);
+            //result = RestServices.POST(url, json);
             System.out.println("Response  is" + json);
             System.out.println("Response  is" + result);
         } catch (MalformedURLException e) {

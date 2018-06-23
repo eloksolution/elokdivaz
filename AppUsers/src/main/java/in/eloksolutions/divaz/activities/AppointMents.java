@@ -23,14 +23,15 @@ import in.eloksolutions.divaz.util.Config;
 
 public class AppointMents extends AppCompatActivity {
     Context context;
-    String userId, firstName, lastName;
+    String userId, companyId, lastName;
     TextView noData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_list_recycler);
         context=this;
-        getSupportActionBar().setTitle("Parlours");
+        getSupportActionBar().setTitle("AppointMents");
+        companyId=getIntent().getStringExtra("companyId");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RecyclerView services = (RecyclerView) findViewById(R.id.service_list);
         services.setHasFixedSize(true);
@@ -40,8 +41,9 @@ public class AppointMents extends AppCompatActivity {
         userId= preference.getString("userId","");
         if(userId!=null && !userId.isEmpty()) {
             String url = Config.SERVER_URL + "booking/myBookings/" + userId;
-            GetAppointMentHelpers getGroups = new GetAppointMentHelpers(context, url, services, noData);
+            GetAppointMentHelpers getGroups = new GetAppointMentHelpers(context, url, services, noData,companyId);
             System.out.println("url for Company list" + url);
+            System.out.println("url for Company list" + companyId);
             getGroups.execute();
             CardView cardView = (CardView) findViewById(R.id.csearch_card);
             cardView.setVisibility(View.VISIBLE);

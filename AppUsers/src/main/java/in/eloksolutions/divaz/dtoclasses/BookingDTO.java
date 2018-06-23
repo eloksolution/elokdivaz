@@ -10,12 +10,21 @@ public class BookingDTO {
     String id;
     String customerName;
     String customerId;
-    String orderItems;
+   // String orderItems;
     String totalPrice;
     String orderDate;
     String email;
+    String strOrderItems;
     String customerPhone;
     Date apointMentDate;
+
+    public String getStrOrderItems() {
+        return strOrderItems;
+    }
+
+    public void setStrOrderItems(String strOrderItems) {
+        this.strOrderItems = strOrderItems;
+    }
 
     public String getId() {
         return id;
@@ -41,13 +50,13 @@ public class BookingDTO {
         this.customerId = customerId;
     }
 
-    public String getOrderItems() {
+   /* public String getOrderItems() {
         return orderItems;
     }
 
     public void setOrderItems(String orderItems) {
         this.orderItems = orderItems;
-    }
+    }*/
 
     public String getTotalPrice() {
         return totalPrice;
@@ -95,11 +104,11 @@ public class BookingDTO {
                 "id='" + id + '\'' +
                 ", customerName='" + customerName + '\'' +
                 ", customerId='" + customerId + '\'' +
-                ", orderItems='" + orderItems + '\'' +
                 ", totalPrice='" + totalPrice + '\'' +
                 ", orderDate='" + orderDate + '\'' +
                 ", email='" + email + '\'' +
                 ", customerPhone='" + customerPhone + '\'' +
+                ", strOrderItems='" + strOrderItems + '\'' +
                 ", apointMentDate=" + apointMentDate +
                 '}';
     }

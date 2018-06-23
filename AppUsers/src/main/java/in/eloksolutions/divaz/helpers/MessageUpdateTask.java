@@ -10,7 +10,6 @@ import java.net.URL;
 
 import in.eloksolutions.divaz.activities.MesagesList;
 import in.eloksolutions.divaz.activities.MessageUpdate;
-import in.eloksolutions.divaz.util.RestServices;
 
 
 /**
@@ -46,7 +45,7 @@ import in.eloksolutions.divaz.util.RestServices;
             String result=null;
             try {
                 url = new URL(gurl);
-                result = RestServices.POST(url, json);
+               // result = RestServices.POST(url, json,companyId);
                 System.out.println("Response  is" + json);
                 System.out.println("Response  is" + result);
             } catch (MalformedURLException e) {

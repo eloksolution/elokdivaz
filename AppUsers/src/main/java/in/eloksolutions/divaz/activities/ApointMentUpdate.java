@@ -48,17 +48,17 @@ import in.eloksolutions.divaz.R;
 import in.eloksolutions.divaz.adapter.AndroidDataAdapterDynamic;
 import in.eloksolutions.divaz.adapter.CheckInternet;
 import in.eloksolutions.divaz.dtoclasses.BookingDTO;
-import in.eloksolutions.divaz.helpers.BookingHelper;
-import in.eloksolutions.divaz.helpers.GetServicesDailogHelpers;
+import in.eloksolutions.divaz.helpers.ApointMentUpdateHelper;
+import in.eloksolutions.divaz.helpers.GetServicesDailogUpdateHelpers;
 import in.eloksolutions.divaz.util.Config;
 
-public class Consult extends AppCompatActivity implements View.OnClickListener{
+public class ApointMentUpdate extends AppCompatActivity implements View.OnClickListener{
     TextView date,time,serviName,servicePric;
     EditText personName,email,phoneNumber;
     public Dialog dialog;
     Spinner timeHours,timeSecounds;
     String IseviceName,IservicePrice;
-    String companyId;
+    String companyId,bookingId;
     private static final int Date_id = 0;
     private static final int Time_id = 1;
     String suserName,suserId,suserMail,suserPhone;
@@ -131,6 +131,7 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
                 android.R.layout.simple_spinner_dropdown_item, timesecound);
         timeSecounds.setAdapter(adapter1);*/
         companyId = getIntent().getStringExtra("companyId");
+        bookingId = getIntent().getStringExtra("bookingId");
         if (IseviceName!=null || IservicePrice!=null) {
             serviName.setText(  "Service Name  : "+IseviceName);
             servicePric.setText("Service Price : "+IservicePrice);
@@ -178,7 +179,7 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
-                ActivityCompat.requestPermissions(Consult.this,
+                ActivityCompat.requestPermissions(ApointMentUpdate.this,
                         new String[]{Manifest.permission.WRITE_CALENDAR,Manifest.permission.READ_CALENDAR},
                         MY_PERMISSIONS_REQUEST_READ_CONTACTS);
             } else {
@@ -212,7 +213,7 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
         pickServices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                serviceDialog(Consult.this);
+                serviceDialog(ApointMentUpdate.this);
             }
         });
     }
@@ -233,12 +234,12 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
             case Date_id:
 
                 // Open the datepicker dialog
-                return new DatePickerDialog(Consult.this, date_listener, year,
+                return new DatePickerDialog(ApointMentUpdate.this, date_listener, year,
                         month, day);
             case Time_id:
 
                 // Open the timepicker dialog
-                return new TimePickerDialog(Consult.this, time_listener, hour,
+                return new TimePickerDialog(ApointMentUpdate.this, time_listener, hour,
                         minute, false);
 
         }
@@ -255,7 +256,7 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
 
             // set(year, month, date) month 0-11
             ca1.set(year, month, day);
-            java.util.Date d = new java.util.Date(ca1.getTimeInMillis());
+            Date d = new Date(ca1.getTimeInMillis());
             SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy");
 
             date.setText(formatter.format(d));
@@ -270,7 +271,7 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
             time.setText(time1);
         }
     };
-    public  void serviceDialog(final Consult context) {
+    public  void serviceDialog(final ApointMentUpdate context) {
         dialog = new Dialog(context,android.R.style.Theme_Light);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -286,7 +287,7 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
         LinearLayoutManager lmPadi = new LinearLayoutManager(context);
         services.setLayoutManager(lmPadi);
         String url= Config.SERVER_URL+"services/getAll";
-        GetServicesDailogHelpers getGroups=new GetServicesDailogHelpers(context,url,services,noData,serviName,servicePric);
+        GetServicesDailogUpdateHelpers getGroups=new GetServicesDailogUpdateHelpers(context,url,services,noData,serviName,servicePric);
         System.out.println("url for Service list"+url);
         getGroups.execute();
 
@@ -321,13 +322,13 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
 
         BookingDTO bookingDTO=buildDTOObject();
         if (checkValidation()) {
-            if (CheckInternet.checkInternetConenction(Consult.this)) {
+            if (CheckInternet.checkInternetConenction(ApointMentUpdate.this)) {
 
-                String gurl = Config.SERVER_URL + "booking/add";
+                String gurl = Config.SERVER_URL + "booking/update";
                   try {
                 String json=buildJson(bookingDTO);
                 sendCalender(bookingDTO.getApointMentDate(),bookingDTO.getCustomerName(),bookingDTO.getEmail(),bookingDTO.getCustomerPhone());
-                  String gId = new BookingHelper(json,bookingDTO,companyId, gurl,this).execute().get();
+                  String gId = new ApointMentUpdateHelper(json,bookingDTO,companyId, gurl,this).execute().get();
                   return gId;
 
                 } catch (InterruptedException e) {
@@ -336,7 +337,7 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
                     e.printStackTrace();
                 }
             } else {
-                CheckInternet.showAlertDialog(Consult.this, "No Internet Connection",
+                CheckInternet.showAlertDialog(ApointMentUpdate.this, "No Internet Connection",
                         "You don't have internet connection.");
             }
         }
@@ -408,11 +409,14 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
     private String buildJson(BookingDTO bookingDTO) {
         try {
             JSONObject jsonObject = new JSONObject();
+            jsonObject.accumulate("id",bookingId);
             jsonObject.accumulate("customerName",bookingDTO.getCustomerName());
             jsonObject.accumulate("customerId", bookingDTO.getCustomerId());
             jsonObject.accumulate("strOrderDate", bookingDTO.getOrderDate());
             jsonObject.accumulate("strOrderItems", bookingDTO.getStrOrderItems());
              jsonObject.accumulate("totalPrice",bookingDTO.getTotalPrice());
+            jsonObject.accumulate("status","2");
+
             String json = jsonObject.toString();
             System.out.println("Json is" + json);
             return json;

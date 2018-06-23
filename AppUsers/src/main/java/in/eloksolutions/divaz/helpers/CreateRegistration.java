@@ -46,7 +46,7 @@ public class CreateRegistration extends AsyncTask<String, Void, String> {
             String result=null;
             try {
                 url = new URL(gurl);
-                 result = RestServices.POST(url, json);
+                 result = RestServices.POST(url, json,null);
                 System.out.println("Response  is" + result);
             } catch (MalformedURLException e) {
                 e.printStackTrace();

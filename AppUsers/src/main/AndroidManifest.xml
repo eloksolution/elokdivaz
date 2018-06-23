@@ -74,6 +74,9 @@
             android:name="in.eloksolutions.divaz.activities.Consult"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity
+            android:name="in.eloksolutions.divaz.activities.ApointMentUpdate"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+        <activity
             android:name="in.eloksolutions.divaz.activities.OffersScreen"
             android:windowSoftInputMode="stateAlwaysHidden"></activity>
         <activity

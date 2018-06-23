@@ -1,9 +1,9 @@
 package in.eloksolutions.divaz.helpers;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -14,9 +14,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import in.eloksolutions.divaz.dataobjects.BookingOBJ;
-import in.eloksolutions.divaz.dtoclasses.BookingDTO;
-import in.eloksolutions.divaz.recyclerviews.MyRecyclerViewApointMents;
+import in.eloksolutions.divaz.activities.ApointMentUpdate;
+import in.eloksolutions.divaz.dataobjects.ServiceOBJ;
+import in.eloksolutions.divaz.dtoclasses.ServiceDTO;
+import in.eloksolutions.divaz.recyclerviews.MyRecyclerViewServicesDailogUpdate;
 import in.eloksolutions.divaz.util.RestServices;
 
 
@@ -24,20 +25,21 @@ import in.eloksolutions.divaz.util.RestServices;
  * Created by welcome on 6/30/2017.
  */
 
-public class GetAppointMentHelpers extends AsyncTask<String, Void, String> {
-    private Context mcontext;
+public class GetServicesDailogUpdateHelpers extends AsyncTask<String, Void, String> {
+    private ApointMentUpdate mcontext;
     private ProgressDialog progress;
     String surl;
     RecyclerView rvGroups;
-    TextView noData;
-    String companyId;
+    TextView noData,servicePric,serviName;
+    String companyId="2";
 
-    public GetAppointMentHelpers(Context mcontext, String surl, RecyclerView rvGroups, TextView noData,String companyId) {
+    public GetServicesDailogUpdateHelpers(ApointMentUpdate mcontext, String surl, RecyclerView rvGroups, TextView noData, TextView serviName, TextView servicePric) {
         this.mcontext = mcontext;
         this.surl=surl;
         this.rvGroups=rvGroups;
         this.noData=noData;
-        this.companyId=companyId;
+        this.serviName=serviName;
+        this.servicePric=servicePric;
     }
     @Override
     protected void onPreExecute() {
@@ -59,25 +61,25 @@ public class GetAppointMentHelpers extends AsyncTask<String, Void, String> {
     }
 
     protected void onPostExecute(String result) {
-        System.out.println("Get Appoint Result is "+result);
+        System.out.println("Get Service Result is "+result);
         progress.dismiss();
         if (result!=null && result.trim().length()>0) {
             Gson gson = new Gson();
-            Type type = new TypeToken<List<BookingDTO>>() { }.getType();
-            List<BookingDTO> fromJson = gson.fromJson(result, type);
-            ArrayList<BookingOBJ> results = new ArrayList<BookingOBJ>();
-             for (BookingDTO company : fromJson) {
+            Type type = new TypeToken<List<ServiceDTO>>() { }.getType();
+            List<ServiceDTO> fromJson = gson.fromJson(result, type);
+            ArrayList<ServiceOBJ> results = new ArrayList<ServiceOBJ>();
+             for (ServiceDTO service : fromJson) {
 
-                 BookingOBJ obj = new BookingOBJ(company.getId(),company.getApointMentDate(),company.getStrOrderItems(),company.getTotalPrice());
+                 ServiceOBJ obj = new ServiceOBJ(service.getId(),service.getName(), service.getDescription(), service.getImgePath(),service.getPrice(),service.getDiscount(),service.getImg_icon());
                 results.add(obj);
            }
             if (!results.isEmpty()) {
 
-                MyRecyclerViewApointMents mAdapter = new MyRecyclerViewApointMents(results,companyId, mcontext);
+                MyRecyclerViewServicesDailogUpdate mAdapter = new MyRecyclerViewServicesDailogUpdate(results, mcontext,serviName,servicePric);
                 rvGroups.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }else{
-               // noData.setVisibility(View.VISIBLE);
+                noData.setVisibility(View.VISIBLE);
             }
         }
     }

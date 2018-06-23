@@ -75,6 +75,7 @@ public class ServiceView extends AppCompatActivity {
 String serviceId;
     String TAG="Create Group";
     String keyName,userId,userName;
+    String companyId;
     File fileToUpload;
     ImageView serviceimg;
     Glide glide;
@@ -85,6 +86,7 @@ String serviceId;
         getSupportActionBar().setTitle("Service View");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         serviceId=getIntent().getStringExtra("serviceId");
+        companyId=getIntent().getStringExtra("companyId");
         Log.i(tag, "serviceId for serviceUpdate is"+serviceId);
         name=(TextView) findViewById(R.id.group_view_title);
         description=(TextView) findViewById(R.id.description);
@@ -145,7 +147,7 @@ String serviceId;
         String surl = Config.SERVER_URL+"services/getService/"+serviceId;
         System.out.println("url for services list"+surl);
         try {
-            String output=getGroupsValue.new ServiceUpdateTask(surl).execute().get();
+            String output=getGroupsValue.new ServiceUpdateTask(surl,companyId).execute().get();
             System.out.println("the output from services"+output);
             setValuesToTextFields(output);
         }catch (Exception e){

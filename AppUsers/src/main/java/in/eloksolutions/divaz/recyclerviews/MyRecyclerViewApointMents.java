@@ -24,20 +24,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.eloksolutions.divaz.R;
-import in.eloksolutions.divaz.activities.Consult;
+import in.eloksolutions.divaz.activities.ApointMentUpdate;
 import in.eloksolutions.divaz.activities.LoginActivity;
 import in.eloksolutions.divaz.activities.ServiceLists;
-import in.eloksolutions.divaz.activities.ServiceView;
+import in.eloksolutions.divaz.dataobjects.BookingOBJ;
 import in.eloksolutions.divaz.dataobjects.ServiceOBJ;
 import in.eloksolutions.divaz.util.Config;
 
 
-public class MyRecyclerViewServices extends RecyclerView
-        .Adapter<MyRecyclerViewServices
+public class MyRecyclerViewApointMents extends RecyclerView
+        .Adapter<MyRecyclerViewApointMents
         .DataObjectHolder> {
     private static String LOG_TAG = "MyRecyclerViewAdapter";
-    private ArrayList<ServiceOBJ> mDataset;
-    private ServiceLists context;
+    private ArrayList<BookingOBJ> mDataset;
+    private Context context;
     public Dialog dialog;
     private static MyClickListener myClickListener;
     TextView keyName;
@@ -47,11 +47,10 @@ public class MyRecyclerViewServices extends RecyclerView
     Glide glide;
 
 
-    public MyRecyclerViewServices(ArrayList<ServiceOBJ> myDataset,String companyId, ServiceLists context,RecyclerView rvGroups) {
+    public MyRecyclerViewApointMents(ArrayList<BookingOBJ> myDataset, String companyId, Context context) {
         mDataset = myDataset;
         this.context = context;
         this.companyId=companyId;
-        this.rvGroups=rvGroups;
     }
 
 
@@ -83,31 +82,31 @@ public class MyRecyclerViewServices extends RecyclerView
             Log.i(LOG_TAG, "Adding Listener");
             imageView = (ImageView) itemView.findViewById(R.id.service_img);
 
-            imageView.setOnClickListener(new View.OnClickListener() {
+            /*imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Log.i(LOG_TAG, "Adding Listener " + itemName.getText());
-                    ServiceOBJ dataObject = mDataset.get(getAdapterPosition());
+                    BookingOBJ dataObject = mDataset.get(getAdapterPosition());
                     Log.i(LOG_TAG, "data object is Listener" + dataObject);
                     Intent groupView = new Intent(view.getContext(), ServiceView.class);
                     groupView.putExtra("serviceId", dataObject.getId());
-                    groupView.putExtra("companyId", companyId);
                     context.startActivity(groupView);
                 }
-            });
+            });*/
            book.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Log.i(LOG_TAG, "Adding Listener " + itemName.getText());
-                    ServiceOBJ dataObject = mDataset.get(getAdapterPosition());
+                    BookingOBJ dataObject = mDataset.get(getAdapterPosition());
                     Log.i(LOG_TAG, "data object is Listener" + dataObject);
                     SharedPreferences preference=context.getSharedPreferences(Config.APP_PREFERENCES, Context.MODE_PRIVATE);
                     String user_id= preference.getString("userId",null);
                     if(user_id!=null && user_id.length()>0) {
-                        Intent intent = new Intent(context, Consult.class);
+                        Intent intent = new Intent(context, ApointMentUpdate.class);
                         intent.putExtra("companyId", companyId);
-                        intent.putExtra("serviceName", dataObject.getName());
-                        intent.putExtra("servicprice", dataObject.getPrice());
+                        intent.putExtra("bookingId",dataObject.getId());
+                        intent.putExtra("serviceName", dataObject.getOrderItems());
+                        intent.putExtra("servicprice", dataObject.getTotalPrice());
                         context.startActivity(intent);
                     }else {
                         Intent intent = new Intent(context, LoginActivity.class);
@@ -121,9 +120,9 @@ public class MyRecyclerViewServices extends RecyclerView
                 @Override
                 public void onClick(View view) {
                     Log.i(LOG_TAG, "Adding Listener " + itemName.getText());
-                    ServiceOBJ dataObject = mDataset.get(getAdapterPosition());
+                    BookingOBJ dataObject = mDataset.get(getAdapterPosition());
                     Log.i(LOG_TAG, "data object is Listener" + dataObject);
-                    serviceDialogRating(context, dataObject.getImgePath());
+                    //serviceDialogRating(context, dataObject.getCustomerId());
                 }
             });
 
@@ -182,7 +181,7 @@ public class MyRecyclerViewServices extends RecyclerView
     public DataObjectHolder onCreateViewHolder(ViewGroup parent,
                                                int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.services_list, parent, false);
+                .inflate(R.layout.appointment_custom_layout, parent, false);
 
         DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
         return dataObjectHolder;
@@ -190,18 +189,19 @@ public class MyRecyclerViewServices extends RecyclerView
 
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
-        if (mDataset.get(position).getName()!=null) {
-            holder.itemName.setText(mDataset.get(position).getName());
+        if (mDataset.get(position).getOrderItems()!=null) {
+            holder.itemName.setText(mDataset.get(position).getOrderItems());
         }
-        if (mDataset.get(position).getDescription()!=null) {
+        /*if (mDataset.get(position).getDescription()!=null) {
             holder.itemDescription.setText(mDataset.get(position).getDescription());
+        }*/
+        if (mDataset.get(position).getTotalPrice()!=null) {
+            holder.itemPrice.setText("₹ "+mDataset.get(position).getTotalPrice());
         }
-        if (mDataset.get(position).getPrice()!=null) {
-            holder.itemPrice.setText("₹ "+mDataset.get(position).getPrice());
-        }
-        if(mDataset.get(position).getImgePath()!=null) {
-            glide.with(context).load(Config.IMG_AWS + mDataset.get(position).getImgePath()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageView);
-            System.out.println("past from eventfromJson.Services()" + mDataset.get(position).getImgePath());
+        if(mDataset.get(position).getCustomerId()!=null) {
+            glide.with(context).load(R.drawable.sallon_two).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageView);
+           // glide.with(context).load(Config.IMG_AWS + mDataset.get(position).getTotalPrice()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageView);
+            System.out.println("past from eventfromJson.Services()" + mDataset.get(position).getCustomerId());
         }else{
             glide.with(context).load(R.drawable.sallon_two).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageView);
         }
@@ -215,7 +215,7 @@ public class MyRecyclerViewServices extends RecyclerView
     }
 
 
-    public void addItem(ServiceOBJ dataObj, int index) {
+    public void addItem(BookingOBJ dataObj, int index) {
         mDataset.add(index, dataObj);
         notifyItemInserted(index);
     }

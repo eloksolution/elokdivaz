@@ -1,5 +1,7 @@
 package in.eloksolutions.divaz.dataobjects;
 
+import java.util.Date;
+
 /**
  * Created by welcome on 2/24/2018.
  */
@@ -11,6 +13,12 @@ public class BookingOBJ {
     String orderItems;
     String totalPrice;
     String orderDate;
+
+    public BookingOBJ(String id, Date apointMentDate, String orderItems, String totalPrice) {
+        this.id=id;
+        this.orderItems=orderItems;
+        this.totalPrice=totalPrice;
+    }
 
     public String getId() {
         return id;

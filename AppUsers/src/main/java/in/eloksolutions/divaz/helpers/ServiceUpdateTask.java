@@ -25,7 +25,7 @@ import in.eloksolutions.divaz.util.RestServices;
         String gurl,json;
         ServiceUpdate services;
         String tag="SendAcceptTask";
-
+        String companyId;
         public ServiceUpdateTask(String json, String gurl,  ServiceUpdate services) {
             this.json = json;
             this.gurl = gurl;
@@ -45,7 +45,7 @@ import in.eloksolutions.divaz.util.RestServices;
             String result=null;
             try {
                 url = new URL(gurl);
-                result = RestServices.POST(url, json);
+                result = RestServices.POST(url, json,companyId);
                 System.out.println("Response  is" + json);
                 System.out.println("Response  is" + result);
             } catch (MalformedURLException e) {

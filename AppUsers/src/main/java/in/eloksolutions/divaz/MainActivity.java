@@ -279,6 +279,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.appointment) {
             Intent intent=new Intent(MainActivity.this, AppointMents.class);
             intent.putExtra("userId",suserId);
+            intent.putExtra("companyId", companyId);
             startActivity(intent);
         }
 
