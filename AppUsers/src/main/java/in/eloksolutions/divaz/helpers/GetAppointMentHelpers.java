@@ -68,7 +68,7 @@ public class GetAppointMentHelpers extends AsyncTask<String, Void, String> {
             ArrayList<BookingOBJ> results = new ArrayList<BookingOBJ>();
              for (BookingDTO company : fromJson) {
 
-                 BookingOBJ obj = new BookingOBJ(company.getId(),company.getApointMentDate(),company.getStrOrderItems(),company.getTotalPrice());
+                 BookingOBJ obj = new BookingOBJ(company.getId(),company.getCustomerName(),company.getStrOrderDate(),company.getStrOrderItems(),company.getTotalPrice());
                 results.add(obj);
            }
             if (!results.isEmpty()) {

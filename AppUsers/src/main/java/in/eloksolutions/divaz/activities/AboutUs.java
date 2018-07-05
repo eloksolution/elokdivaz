@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import in.eloksolutions.divaz.MainActivity;
 import in.eloksolutions.divaz.R;
 import in.eloksolutions.divaz.adapter.AndroidDataAdapter;
-import in.eloksolutions.divaz.adapter.AndroidVersion;
+import in.eloksolutions.divaz.adapter.ImageDetails;
 import in.eloksolutions.divaz.adapter.GalleryDataAdapter;
 import in.eloksolutions.divaz.listeners.RecyclerItemClickListener;
 
@@ -75,7 +75,7 @@ public class AboutUs extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(dialog.getContext(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        ArrayList<AndroidVersion> av = prepareData();
+        ArrayList<ImageDetails> av = prepareData();
         GalleryDataAdapter movies = new GalleryDataAdapter(dialog.getContext(), av);
         mRecyclerView.setAdapter(movies);
 
@@ -130,7 +130,7 @@ public class AboutUs extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager =
                 new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        ArrayList<AndroidVersion> av = prepareData();
+        ArrayList<ImageDetails> av = prepareData();
         AndroidDataAdapter movies = new AndroidDataAdapter(getApplicationContext(), av);
         mRecyclerView.setAdapter(movies);
         final Context ctx=this;
@@ -169,15 +169,15 @@ public class AboutUs extends AppCompatActivity {
         );
 
     }
-    private static ArrayList<AndroidVersion> prepareData() {
+    private static ArrayList<ImageDetails> prepareData() {
 
 
-        ArrayList<AndroidVersion> av = new ArrayList<>();
+        ArrayList<ImageDetails> av = new ArrayList<>();
         for (int i = 0; i < movies.length; i++) {
-            AndroidVersion mAndroidVersion = new AndroidVersion();
-            mAndroidVersion.setAndroidVersionName(movies[i]);
-            mAndroidVersion.setrecyclerViewImage(moviesImages[i]);
-            av.add(mAndroidVersion);
+            ImageDetails mImageDetails = new ImageDetails();
+            mImageDetails.setAndroidVersionName(movies[i]);
+            //mImageDetails.setrecyclerViewImage(moviesImages[i]);
+            av.add(mImageDetails);
         }
         return av;
     }

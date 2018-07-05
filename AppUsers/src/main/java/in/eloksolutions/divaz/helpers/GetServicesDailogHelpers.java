@@ -31,15 +31,16 @@ public class GetServicesDailogHelpers extends AsyncTask<String, Void, String> {
     String surl;
     RecyclerView rvGroups;
     TextView noData,servicePric,serviName;
-    String companyId="2";
+    String companyId;
 
-    public GetServicesDailogHelpers(Consult mcontext, String surl, RecyclerView rvGroups, TextView noData,TextView serviName,TextView servicePric) {
+    public GetServicesDailogHelpers(Consult mcontext, String surl, RecyclerView rvGroups, TextView noData,TextView serviName,TextView servicePric,String companyId) {
         this.mcontext = mcontext;
         this.surl=surl;
         this.rvGroups=rvGroups;
         this.noData=noData;
         this.serviName=serviName;
         this.servicePric=servicePric;
+        this.companyId=companyId;
     }
     @Override
     protected void onPreExecute() {

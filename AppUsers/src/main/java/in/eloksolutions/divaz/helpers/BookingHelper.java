@@ -2,7 +2,6 @@ package in.eloksolutions.divaz.helpers;
 
 import android.Manifest;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.support.v4.app.ActivityCompat;
@@ -17,7 +16,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import in.eloksolutions.divaz.activities.Consult;
-import in.eloksolutions.divaz.activities.ServiceLists;
+import in.eloksolutions.divaz.adapter.CheckInternet;
 import in.eloksolutions.divaz.dtoclasses.BookingDTO;
 import in.eloksolutions.divaz.util.RestServices;
 
@@ -78,7 +77,7 @@ public class BookingHelper extends AsyncTask<String, Void, String> {
                 ActivityCompat.requestPermissions(booking, new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_CODE);
             } else {
                 String phoneNo = "+91"+bookingDTO.getCustomerPhone();
-                String sms = ""+bookingDTO.getCustomerName()+"";
+                String sms = ""+bookingDTO.getCustomerName()+" Your Appointment is booked for Service  "+bookingDTO.getStrOrderItems()+" at  "+bookingDTO.getApointMentDate()+"";
                 try {
                     SmsManager smsManager = SmsManager.getDefault();
                     smsManager.sendTextMessage(phoneNo, null, sms, null, null);
@@ -90,10 +89,12 @@ public class BookingHelper extends AsyncTask<String, Void, String> {
                             Toast.LENGTH_LONG).show();
                     e.printStackTrace();
                 }
+
                 FirebaseMessaging.getInstance().subscribeToTopic("company-"+companyId);
-                Intent intent=new Intent(booking, ServiceLists.class);
+                /*Intent intent=new Intent(booking, ServiceLists.class);
                 intent.putExtra("companyId",companyId);
-                booking.startActivity(intent);
+                booking.startActivity(intent);*/
+                CheckInternet.showAlertDialogs(booking,"Thanks!",sms,companyId);
             }
 
         }else{

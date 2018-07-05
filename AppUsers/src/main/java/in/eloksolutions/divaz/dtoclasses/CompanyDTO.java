@@ -35,6 +35,7 @@ public class CompanyDTO {
 	String imgPath1;
 	String imgPath2;
 	String imgPath3;
+	String rating;
 
 	public String getId() {
 		return id;
@@ -284,6 +285,14 @@ public class CompanyDTO {
 		this.imgPath3 = imgPath3;
 	}
 
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+
 	@Override
 	public String toString() {
 		return "CompanyDTO{" +
@@ -318,6 +327,7 @@ public class CompanyDTO {
 				", imgPath1='" + imgPath1 + '\'' +
 				", imgPath2='" + imgPath2 + '\'' +
 				", imgPath3='" + imgPath3 + '\'' +
+				", rating='" + rating + '\'' +
 				'}';
 	}
 }

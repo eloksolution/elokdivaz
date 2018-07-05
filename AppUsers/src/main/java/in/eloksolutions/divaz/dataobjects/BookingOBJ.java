@@ -1,7 +1,5 @@
 package in.eloksolutions.divaz.dataobjects;
 
-import java.util.Date;
-
 /**
  * Created by welcome on 2/24/2018.
  */
@@ -12,12 +10,23 @@ public class BookingOBJ {
     String customerId;
     String orderItems;
     String totalPrice;
+    String strOrderDate;
     String orderDate;
 
-    public BookingOBJ(String id, Date apointMentDate, String orderItems, String totalPrice) {
+    public BookingOBJ(String id,String customerName, String strOrderDate, String orderItems, String totalPrice) {
         this.id=id;
         this.orderItems=orderItems;
         this.totalPrice=totalPrice;
+        this.strOrderDate=strOrderDate;
+        this.customerName=customerName;
+    }
+
+    public String getStrOrderDate() {
+        return strOrderDate;
+    }
+
+    public void setStrOrderDate(String strOrderDate) {
+        this.strOrderDate = strOrderDate;
     }
 
     public String getId() {
@@ -76,6 +85,7 @@ public class BookingOBJ {
                 ", customerId='" + customerId + '\'' +
                 ", orderItems='" + orderItems + '\'' +
                 ", totalPrice='" + totalPrice + '\'' +
+                ", strOrderDate='" + strOrderDate + '\'' +
                 ", orderDate='" + orderDate + '\'' +
                 '}';
     }

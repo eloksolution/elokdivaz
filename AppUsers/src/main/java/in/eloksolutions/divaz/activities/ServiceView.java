@@ -102,6 +102,7 @@ String serviceId;
                 Intent intent=new Intent(ServiceView.this, Consult.class);
                 intent.putExtra("serviceName",name.getText().toString());
                 intent.putExtra("servicprice",serviceRate.getText().toString());
+                intent.putExtra("companyId",companyId);
                 startActivity(intent);
 
             }
@@ -386,7 +387,7 @@ String serviceId;
             Gson gson = new Gson();
             ServiceDTO fromJsonn = gson.fromJson(result, ServiceDTO.class);
             name.setText(fromJsonn.getName());
-            serviceRate.setText("₹ "+fromJsonn.getPrice());
+            serviceRate.setText(fromJsonn.getPrice());
             description.setText(fromJsonn.getDescription());
             imagePath=fromJsonn.getImgePath();
             if(fromJsonn.getImgePath()!=null) {

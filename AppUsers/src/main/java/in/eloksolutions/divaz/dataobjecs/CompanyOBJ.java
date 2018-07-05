@@ -36,12 +36,14 @@ public class CompanyOBJ {
 	String imgPath2;
 	String imgPath3;
 	String team;
+	String rating;
 
-	public CompanyOBJ(String id, String name, String address,String imgPath1){
+	public CompanyOBJ(String id, String name, String address,String imgPath1,String rating){
 		this.id = id;
 		this.name = name;
 		this.address=address;
 		this.imgPath1=imgPath1;
+		this.rating=rating;
 	}
 	public CompanyOBJ(String id, String name, String descriptioin, String code, String address, String officePhone, String ownerPhone, String schema, String status, Date createDate, Date updatedDate, Integer updatedBy, String address_1, String address_2, String city, String state, String latitude, String longitude, String email, String firstName, String lastName, String password, String linkedin, String facebook, String whatsapp, String para1, String para2, String para3, String imgPath1, String imgPath2, String imgPath3, String team) {
 		this.id = id;
@@ -76,6 +78,7 @@ public class CompanyOBJ {
 		this.imgPath2 = imgPath2;
 		this.imgPath3 = imgPath3;
 		this.team = team;
+
 	}
 
 	public String getId() {
@@ -332,5 +335,52 @@ public class CompanyOBJ {
 
 	public void setTeam(String team) {
 		this.team = team;
+	}
+
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+
+	@Override
+	public String toString() {
+		return "CompanyOBJ{" +
+				"id='" + id + '\'' +
+				", name='" + name + '\'' +
+				", descriptioin='" + descriptioin + '\'' +
+				", code='" + code + '\'' +
+				", address='" + address + '\'' +
+				", officePhone='" + officePhone + '\'' +
+				", ownerPhone='" + ownerPhone + '\'' +
+				", schema='" + schema + '\'' +
+				", status='" + status + '\'' +
+				", createDate=" + createDate +
+				", updatedDate=" + updatedDate +
+				", updatedBy=" + updatedBy +
+				", address_1='" + address_1 + '\'' +
+				", address_2='" + address_2 + '\'' +
+				", city='" + city + '\'' +
+				", state='" + state + '\'' +
+				", latitude='" + latitude + '\'' +
+				", longitude='" + longitude + '\'' +
+				", email='" + email + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", password='" + password + '\'' +
+				", linkedin='" + linkedin + '\'' +
+				", facebook='" + facebook + '\'' +
+				", whatsapp='" + whatsapp + '\'' +
+				", para1='" + para1 + '\'' +
+				", para2='" + para2 + '\'' +
+				", para3='" + para3 + '\'' +
+				", imgPath1='" + imgPath1 + '\'' +
+				", imgPath2='" + imgPath2 + '\'' +
+				", imgPath3='" + imgPath3 + '\'' +
+				", team='" + team + '\'' +
+				", rating='" + rating + '\'' +
+				'}';
 	}
 }

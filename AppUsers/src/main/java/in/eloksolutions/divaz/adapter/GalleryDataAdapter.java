@@ -12,16 +12,21 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import java.util.ArrayList;
 
 import in.eloksolutions.divaz.R;
+import in.eloksolutions.divaz.util.Config;
 
 
 public class GalleryDataAdapter extends RecyclerView.Adapter<GalleryDataAdapter.ViewHolder> {
-    private ArrayList<AndroidVersion> arrayList;
+    private ArrayList<ImageDetails> arrayList;
     private Context mcontext;
+    Glide glide;
 
-    public GalleryDataAdapter(Context context, ArrayList<AndroidVersion> android) {
+    public GalleryDataAdapter(Context context, ArrayList<ImageDetails> android) {
         this.arrayList = android;
         this.mcontext = context;
     }
@@ -30,7 +35,11 @@ public class GalleryDataAdapter extends RecyclerView.Adapter<GalleryDataAdapter.
     @Override
     public void onBindViewHolder(GalleryDataAdapter.ViewHolder holder, int i) {
         holder.textView.setText(arrayList.get(i).getrecyclerViewTitleText());
-        holder.imageView.setImageResource(arrayList.get(i).getrecyclerViewImage());
+        if(arrayList.get(i).getRecyclerViewImage()!=null && !arrayList.get(i).getRecyclerViewImage().isEmpty()) {
+            glide.with(mcontext).load(Config.IMG_AWS + arrayList.get(i).getRecyclerViewImage()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageView);
+        }else{
+            glide.with(mcontext).load(R.drawable.beaty).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageView);
+        }
     }
 
     @Override

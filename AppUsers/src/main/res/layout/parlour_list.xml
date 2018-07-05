@@ -101,7 +101,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_gravity="center_vertical|center_horizontal"
                 android:layout_marginBottom="10dp"
-                android:text="Call Us"
+                android:text="Call us"
                 android:background="@drawable/circle"
                 android:textColor="@color/white"
                 android:textSize="20sp"

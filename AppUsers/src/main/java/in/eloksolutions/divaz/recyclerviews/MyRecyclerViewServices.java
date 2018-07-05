@@ -123,7 +123,7 @@ public class MyRecyclerViewServices extends RecyclerView
                     Log.i(LOG_TAG, "Adding Listener " + itemName.getText());
                     ServiceOBJ dataObject = mDataset.get(getAdapterPosition());
                     Log.i(LOG_TAG, "data object is Listener" + dataObject);
-                    serviceDialogRating(context, dataObject.getImgePath());
+                    serviceDialogRating(context, dataObject.getImgePath(),dataObject.getName());
                 }
             });
 
@@ -149,7 +149,7 @@ public class MyRecyclerViewServices extends RecyclerView
 
         dialog.show();
     }
-    public  void serviceDialogRating(final ServiceLists context, String id) {
+    public  void serviceDialogRating(final ServiceLists context, String id,String name) {
         dialog = new Dialog(context,android.R.style.Theme_Light);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setCancelable(false);
@@ -163,6 +163,7 @@ public class MyRecyclerViewServices extends RecyclerView
         EditText textViewTwo=(EditText) dialog.findViewById(R.id.email);
         ImageView imageView=(ImageView) dialog.findViewById(R.id.service_img);
         RatingBar ratingbar1=(RatingBar)dialog.findViewById(R.id.ratingBar1);
+        TextView serviceName=(TextView) dialog.findViewById(R.id.service_name);
         TextView textViewSix=(TextView) dialog.findViewById(R.id.submit);
         final TextView close=(TextView) dialog.findViewById(R.id.close);
         close.setOnClickListener(new View.OnClickListener() {
@@ -171,6 +172,14 @@ public class MyRecyclerViewServices extends RecyclerView
                 dialog.dismiss();
             }
         });
+        textViewSix.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                dialog.dismiss();
+            }
+        });
+        serviceName.setText(name);
         glide.with(context).load(Config.IMG_AWS + id).diskCacheStrategy(DiskCacheStrategy.ALL).into(imageView);
         dialog.show();
     }

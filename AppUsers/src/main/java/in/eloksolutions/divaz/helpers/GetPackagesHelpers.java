@@ -3,7 +3,6 @@ package in.eloksolutions.divaz.helpers;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.eloksolutions.divaz.activities.PackagesList;
+import in.eloksolutions.divaz.adapter.CheckInternet;
 import in.eloksolutions.divaz.dataobjects.PackagesOBJ;
 import in.eloksolutions.divaz.dtoclasses.PackagesDTO;
 import in.eloksolutions.divaz.recyclerviews.MyRecyclerViewpackages;
@@ -78,7 +78,7 @@ public class GetPackagesHelpers extends AsyncTask<String, Void, String> {
                 rvGroups.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }else{
-                noData.setVisibility(View.VISIBLE);
+               CheckInternet.showAlertDialog(mcontext,"No Packages Found","Choose another activity");
             }
         }
     }

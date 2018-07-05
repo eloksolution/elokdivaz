@@ -50,7 +50,7 @@ public class MyRecyclerViewServicesDailog extends RecyclerView
              {
         TextView itemName;
         TextView itemDescription,itemPrice;
-
+        Button book;
 
         public ImageView getImageView() {
             return imageView;
@@ -68,6 +68,8 @@ public class MyRecyclerViewServicesDailog extends RecyclerView
             itemName = (TextView) itemView.findViewById(R.id.service_name);
             itemDescription = (TextView) itemView.findViewById(R.id.service_of_rate);
             itemPrice=(TextView) itemView.findViewById(R.id.service_rate);
+            book=(Button) itemView.findViewById(R.id.book);
+            book.setVisibility(View.GONE);
             Log.i(LOG_TAG, "Adding Listener");
             imageView = (ImageView) itemView.findViewById(R.id.service_img);
 
@@ -78,8 +80,8 @@ public class MyRecyclerViewServicesDailog extends RecyclerView
                     ServiceOBJ dataObject = mDataset.get(getAdapterPosition());
                     Log.i(LOG_TAG, "data object is Listener" + dataObject);
                     mcontext.dialog.dismiss();
-                    serviName.setText("Service Name  :: "+dataObject.getName());
-                    servicePric.setText("Service Price :: "+dataObject.getPrice());
+                    serviName.setText(dataObject.getName());
+                    servicePric.setText(dataObject.getPrice());
                    // mcontext.servicesAdapter.addItem(dataObject.getId(), dataObject.getName(),dataObject.getImgePath());
                 }
             });

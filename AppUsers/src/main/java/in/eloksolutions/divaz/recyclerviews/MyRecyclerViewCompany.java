@@ -68,7 +68,7 @@ public class MyRecyclerViewCompany extends RecyclerView
         }
 
         ImageView imageView;
-        TextView edit;
+        TextView edit,rating;
 
         public DataObjectHolder(final View itemView) {
             super(itemView);
@@ -78,7 +78,7 @@ public class MyRecyclerViewCompany extends RecyclerView
             itemPrice=(TextView) itemView.findViewById(R.id.prlour_rating4);
             itemDescription = (TextView) itemView.findViewById(R.id.prlour_address4);
             Log.i(LOG_TAG, "Adding Listener");
-
+            rating=(TextView) itemView.findViewById(R.id.prlour_rating4);
             imageView = (ImageView) itemView.findViewById(R.id.parlour);
             cardView=(CardView) itemView.findViewById(R.id.cardlist_item4);
             imageView.setOnClickListener(new View.OnClickListener() {
@@ -152,6 +152,9 @@ public class MyRecyclerViewCompany extends RecyclerView
         }
         if (mDataset.get(position).getCreateDate()!=null) {
             holder.itemPrice.setText("Rs.  "+mDataset.get(position).getCreateDate());
+        }
+        if (mDataset.get(position).getRating()!=null) {
+            holder.itemPrice.setText(""+mDataset.get(position).getRating());
         }
         if(mDataset.get(position).getImgPath1()!=null) {
             glide.with(context).load(Config.IMG_AWS + mDataset.get(position).getImgPath1()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageView);

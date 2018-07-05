@@ -68,7 +68,7 @@ public class GetCompanyHelpers extends AsyncTask<String, Void, String> {
             ArrayList<CompanyOBJ> results = new ArrayList<CompanyOBJ>();
              for (CompanyDTO company : fromJson) {
 
-                 CompanyOBJ obj = new CompanyOBJ(company.getId(),company.getName(),company.getAddress(),company.getImgPath1());
+                 CompanyOBJ obj = new CompanyOBJ(company.getId(),company.getName(),company.getAddress(),company.getImgPath1(),company.getRating());
                 results.add(obj);
            }
             if (!results.isEmpty()) {

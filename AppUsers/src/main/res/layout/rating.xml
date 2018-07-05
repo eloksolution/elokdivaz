@@ -47,6 +47,17 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:weightSum="1">
+                <TextView
+                    android:id="@+id/service_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10sp"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/black"
+                    android:text="How is the Service ?"
+                    />
+
                 <ImageView
                     android:id="@+id/service_img"
                     android:layout_width="match_parent"
@@ -143,7 +154,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10sp"
-        android:background="@color/blue"
+        android:background="@color/colorPrimaryDark"
         android:padding="10sp"
         android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"

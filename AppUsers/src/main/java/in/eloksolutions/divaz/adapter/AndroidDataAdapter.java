@@ -18,10 +18,10 @@ import in.eloksolutions.divaz.R;
 
 
 public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.ViewHolder> {
-    private ArrayList<AndroidVersion> arrayList;
+    private ArrayList<ImageDetails> arrayList;
     private Context mcontext;
 
-    public AndroidDataAdapter(Context context, ArrayList<AndroidVersion> android) {
+    public AndroidDataAdapter(Context context, ArrayList<ImageDetails> android) {
         this.arrayList = android;
         this.mcontext = context;
     }
@@ -33,7 +33,7 @@ public class AndroidDataAdapter extends RecyclerView.Adapter<AndroidDataAdapter.
     @Override
     public void onBindViewHolder(AndroidDataAdapter.ViewHolder holder, int i) {
         holder.textView.setText(arrayList.get(i).getrecyclerViewTitleText());
-        holder.imageView.setImageResource(arrayList.get(i).getrecyclerViewImage());
+        //holder.imageView.setImageResource(arrayList.get(i).getrecyclerViewImage());
     }
 
     @Override

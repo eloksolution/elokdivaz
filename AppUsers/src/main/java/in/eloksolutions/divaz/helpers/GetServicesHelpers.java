@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -65,7 +66,12 @@ public class GetServicesHelpers extends AsyncTask<String, Void, String> {
         if (result!=null && result.trim().length()>0) {
             Gson gson = new Gson();
             Type type = new TypeToken<List<ServiceDTO>>() { }.getType();
-            List<ServiceDTO> fromJson = gson.fromJson(result, type);
+            List<ServiceDTO> fromJson = null;
+            try {
+                fromJson = gson.fromJson(result, type);
+            } catch (JsonSyntaxException e) {
+                e.printStackTrace();
+            }
             ArrayList<ServiceOBJ> results = new ArrayList<ServiceOBJ>();
              for (ServiceDTO service : fromJson) {
 

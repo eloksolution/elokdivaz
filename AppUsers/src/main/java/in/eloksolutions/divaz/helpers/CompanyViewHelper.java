@@ -28,8 +28,9 @@ public class CompanyViewHelper {
         private ProgressDialog progress;
         String companyId;
 
-        public ServiceUpdateTask(String surl) {
+        public ServiceUpdateTask(String surl,String companyId) {
             this.surl = surl;
+            this.companyId=companyId;
         }
 
         @Override

@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import in.eloksolutions.divaz.R;
@@ -30,11 +31,13 @@ public class AppointMents extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.service_list_recycler);
         context=this;
-        getSupportActionBar().setTitle("AppointMents");
+        getSupportActionBar().setTitle("Appointments");
         companyId=getIntent().getStringExtra("companyId");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         RecyclerView services = (RecyclerView) findViewById(R.id.service_list);
         services.setHasFixedSize(true);
+        RelativeLayout relativeLayout=(RelativeLayout) findViewById(R.id.relative);
+        //relativeLayout.setVisibility(View.VISIBLE);
         LinearLayoutManager lmPadi = new LinearLayoutManager(this);
         services.setLayoutManager(lmPadi);
         SharedPreferences preference=context.getSharedPreferences(Config.APP_PREFERENCES, Context.MODE_PRIVATE);

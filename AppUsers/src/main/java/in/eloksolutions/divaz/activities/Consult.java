@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -82,8 +83,7 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
     String selection = "((" + CalendarContract.Calendars.ACCOUNT_NAME + " = ?) AND ("
             + CalendarContract.Calendars.ACCOUNT_TYPE + " = ?) AND ("
             + CalendarContract.Calendars.OWNER_ACCOUNT + " = ?))";
-    String[] selectionArgs = new String[]{"gantasoft145@gmail.com", "com.google",
-            "gantasoft145@gmail.com"};
+    String[] selectionArgs;
     Uri uri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,12 +130,14 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_dropdown_item, timesecound);
         timeSecounds.setAdapter(adapter1);*/
+
         companyId = getIntent().getStringExtra("companyId");
         if (IseviceName!=null || IservicePrice!=null) {
-            serviName.setText(  "Service Name  : "+IseviceName);
-            servicePric.setText("Service Price : "+IservicePrice);
+            serviName.setText(IseviceName);
+            servicePric.setText(IservicePrice);
         }
-
+        selectionArgs=new String[]{suserMail, "com.google",
+                suserMail};
 
         TextView appointBooking=(TextView) findViewById(R.id.book_appointment);
         appointBooking.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +147,11 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
             }
 
         });
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, PERMISSION_REQUEST_CODE);
+        }else {
 
+        }
        /* RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.listView);
         mRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 1);
@@ -163,6 +169,7 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
                 serviceDialog(Consult.this);
             }
         });*/
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -231,10 +238,11 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
 
         switch (id) {
             case Date_id:
-
-                // Open the datepicker dialog
-                return new DatePickerDialog(Consult.this, date_listener, year,
+                DatePickerDialog dp=new DatePickerDialog(Consult.this, date_listener, year,
                         month, day);
+                dp.getDatePicker().setMinDate(System.currentTimeMillis());
+                // Open the datepicker dialog
+                return dp;
             case Time_id:
 
                 // Open the timepicker dialog
@@ -286,7 +294,7 @@ public class Consult extends AppCompatActivity implements View.OnClickListener{
         LinearLayoutManager lmPadi = new LinearLayoutManager(context);
         services.setLayoutManager(lmPadi);
         String url= Config.SERVER_URL+"services/getAll";
-        GetServicesDailogHelpers getGroups=new GetServicesDailogHelpers(context,url,services,noData,serviName,servicePric);
+        GetServicesDailogHelpers getGroups=new GetServicesDailogHelpers(context,url,services,noData,serviName,servicePric,companyId);
         System.out.println("url for Service list"+url);
         getGroups.execute();
 

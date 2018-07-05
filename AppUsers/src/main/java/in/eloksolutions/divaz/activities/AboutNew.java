@@ -11,14 +11,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.aakira.expandablelayout.ExpandableLayout;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 
-import java.util.ArrayList;
-
 import in.eloksolutions.divaz.R;
-import in.eloksolutions.divaz.adapter.AndroidVersion;
 import in.eloksolutions.divaz.dtoclasses.CompanyDTO;
 import in.eloksolutions.divaz.helpers.CompanyUpdateHelper;
 import in.eloksolutions.divaz.helpers.GetGalleryHelpers;
@@ -33,8 +32,9 @@ public class AboutNew extends AppCompatActivity {
     public static int [] moviesImages ={R.drawable.offersmain,R.drawable.ic_menu_home,R.drawable.gallerybeauty,R.drawable.beaty,R.drawable.booknow,R.drawable.quickbook,R.drawable.gallerybeauty};
  ExpandableLayout expandableLayout;
     TextView hoursOfOperation;
-    TextView name,location;
+    TextView name,location,rating,myParlour;
     String companyId;
+    Context context;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,10 @@ public class AboutNew extends AppCompatActivity {
         TextView myGallery=(TextView) findViewById(R.id.my_gallery);
         hoursOfOperation=(TextView) findViewById(R.id.text);
         name=(TextView) findViewById(R.id.company_name);
+        rating=(TextView) findViewById(R.id.booking_charge);
         location=(TextView) findViewById(R.id.company_location);
+        myParlour=(TextView) findViewById(R.id.my_parlour);
+        context=this;
         companyId=getIntent().getStringExtra("companyId");
         CompanyUpdateHelper getGroupsValue=new CompanyUpdateHelper(this);
         String surl = Config.SERVER_URL+"company/"+companyId;
@@ -54,6 +57,16 @@ public class AboutNew extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
+        myParlour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseMessaging.getInstance().subscribeToTopic("company-"+companyId);
+                Toast.makeText(context,
+                        "You are subscribed as a Your favarate parlopur",
+                Toast.LENGTH_LONG).show();
+
+            }
+        });
         myGallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -154,6 +167,8 @@ public class AboutNew extends AppCompatActivity {
             CompanyDTO fromJsonn = gson.fromJson(result, CompanyDTO.class);
             name.setText(fromJsonn.getName());
             location.setText(fromJsonn.getAddress());
+            rating.setText("Parlour Rating :: "+fromJsonn.getRating());
+
 /*            imagePath=fromJsonn.getImgPath();
             if(fromJsonn.getImgPath()!=null) {
                 glide.with(ProfileView.this).load(Config.IMG_AWS +fromJsonn.getImgPath()).diskCacheStrategy(DiskCacheStrategy.ALL).into(serviceimg);
@@ -165,16 +180,16 @@ public class AboutNew extends AppCompatActivity {
         }
 
     }
-    private static ArrayList<AndroidVersion> prepareData() {
+    /*private static ArrayList<ImageDetails> prepareData() {
 
 
-        ArrayList<AndroidVersion> av = new ArrayList<>();
+        ArrayList<ImageDetails> av = new ArrayList<>();
         for (int i = 0; i < movies.length; i++) {
-            AndroidVersion mAndroidVersion = new AndroidVersion();
-            mAndroidVersion.setAndroidVersionName(movies[i]);
-            mAndroidVersion.setrecyclerViewImage(moviesImages[i]);
-            av.add(mAndroidVersion);
+            ImageDetails mImageDetails = new ImageDetails();
+            mImageDetails.setAndroidVersionName(movies[i]);
+            mImageDetails.setRecyclerViewImage(moviesImages[i]);
+            av.add(mImageDetails);
         }
         return av;
-    }
+    }*/
 }

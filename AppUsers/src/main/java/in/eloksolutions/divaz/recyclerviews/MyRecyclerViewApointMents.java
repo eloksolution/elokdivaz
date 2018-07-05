@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -57,8 +56,8 @@ public class MyRecyclerViewApointMents extends RecyclerView
 
     public class DataObjectHolder extends RecyclerView.ViewHolder
              {
-        TextView itemName;
-        TextView itemDescription,itemPrice;
+        TextView personName;
+        TextView itemName,itemPrice,date, time;
 
 
         public ImageView getImageView() {
@@ -70,17 +69,18 @@ public class MyRecyclerViewApointMents extends RecyclerView
         }
 
         ImageView imageView;
-        Button book,rating;
+                 ImageView book,rating;
 
         public DataObjectHolder(final View itemView) {
             super(itemView);
+            personName = (TextView) itemView.findViewById(R.id.person_name);
             itemName = (TextView) itemView.findViewById(R.id.service_name);
-            itemDescription = (TextView) itemView.findViewById(R.id.service_of_rate);
-            itemPrice=(TextView) itemView.findViewById(R.id.service_rate);
-            book=(Button) itemView.findViewById(R.id.book);
-            rating=(Button) itemView.findViewById(R.id.trate);
+            itemPrice=(TextView) itemView.findViewById(R.id.total);
+            date = (TextView) itemView.findViewById(R.id.date);
+            book=(ImageView) itemView.findViewById(R.id.book);
+            rating=(ImageView) itemView.findViewById(R.id.trate);
             Log.i(LOG_TAG, "Adding Listener");
-            imageView = (ImageView) itemView.findViewById(R.id.service_img);
+            imageView = (ImageView) itemView.findViewById(R.id.serive_image);
 
             /*imageView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -96,7 +96,7 @@ public class MyRecyclerViewApointMents extends RecyclerView
            book.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.i(LOG_TAG, "Adding Listener " + itemName.getText());
+                    Log.i(LOG_TAG, "Adding Listener " + personName.getText());
                     BookingOBJ dataObject = mDataset.get(getAdapterPosition());
                     Log.i(LOG_TAG, "data object is Listener" + dataObject);
                     SharedPreferences preference=context.getSharedPreferences(Config.APP_PREFERENCES, Context.MODE_PRIVATE);
@@ -106,6 +106,7 @@ public class MyRecyclerViewApointMents extends RecyclerView
                         intent.putExtra("companyId", companyId);
                         intent.putExtra("bookingId",dataObject.getId());
                         intent.putExtra("serviceName", dataObject.getOrderItems());
+                        intent.putExtra("serviceDate", dataObject.getStrOrderDate());
                         intent.putExtra("servicprice", dataObject.getTotalPrice());
                         context.startActivity(intent);
                     }else {
@@ -119,7 +120,7 @@ public class MyRecyclerViewApointMents extends RecyclerView
             rating.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Log.i(LOG_TAG, "Adding Listener " + itemName.getText());
+                    Log.i(LOG_TAG, "Adding Listener " + personName.getText());
                     BookingOBJ dataObject = mDataset.get(getAdapterPosition());
                     Log.i(LOG_TAG, "data object is Listener" + dataObject);
                     //serviceDialogRating(context, dataObject.getCustomerId());
@@ -181,7 +182,7 @@ public class MyRecyclerViewApointMents extends RecyclerView
     public DataObjectHolder onCreateViewHolder(ViewGroup parent,
                                                int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.appointment_custom_layout, parent, false);
+                .inflate(R.layout.appointment_list, parent, false);
 
         DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
         return dataObjectHolder;
@@ -190,13 +191,19 @@ public class MyRecyclerViewApointMents extends RecyclerView
     @Override
     public void onBindViewHolder(DataObjectHolder holder, int position) {
         if (mDataset.get(position).getOrderItems()!=null) {
-            holder.itemName.setText(mDataset.get(position).getOrderItems());
+            holder.personName.setText(mDataset.get(position).getCustomerName());
+            Log.i("hh","The out put value of customer name"+mDataset.get(position).getCustomerName());
         }
-        /*if (mDataset.get(position).getDescription()!=null) {
-            holder.itemDescription.setText(mDataset.get(position).getDescription());
-        }*/
+        if (mDataset.get(position).getOrderItems()!=null) {
+            holder.itemName.setText(mDataset.get(position).getOrderItems());
+            holder.itemName.setSelected(true);
+        }
         if (mDataset.get(position).getTotalPrice()!=null) {
             holder.itemPrice.setText("₹ "+mDataset.get(position).getTotalPrice());
+        }
+        if (mDataset.get(position).getStrOrderDate()!=null) {
+            holder.date.setText(""+mDataset.get(position).getStrOrderDate());
+
         }
         if(mDataset.get(position).getCustomerId()!=null) {
             glide.with(context).load(R.drawable.sallon_two).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.imageView);

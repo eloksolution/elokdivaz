@@ -57,7 +57,7 @@ public class ApointMentUpdate extends AppCompatActivity implements View.OnClickL
     EditText personName,email,phoneNumber;
     public Dialog dialog;
     Spinner timeHours,timeSecounds;
-    String IseviceName,IservicePrice;
+    String IseviceName,IservicePrice,IserviceDate;
     String companyId,bookingId;
     private static final int Date_id = 0;
     private static final int Time_id = 1;
@@ -101,9 +101,15 @@ public class ApointMentUpdate extends AppCompatActivity implements View.OnClickL
         Log.i(TAG,"The Shared Preferences Values is ::: "+suserId+suserMail+suserName+suserPhone);
         IseviceName=getIntent().getStringExtra("serviceName");
         IservicePrice=getIntent().getStringExtra("servicprice");
+        IserviceDate=getIntent().getStringExtra("serviceDate");
         cr = getContentResolver();
         SimpleDateFormat formatter = new SimpleDateFormat("E, dd MMM yyyy");
-        Date dates = new Date();
+        Date dates= null;
+        try {
+            dates = new SimpleDateFormat("E, dd MMM yyyy HH:mm").parse(IserviceDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         System.out.println(formatter.format(dates));
         uri = CalendarContract.Calendars.CONTENT_URI;
         date = (TextView) findViewById(R.id.date);
@@ -133,8 +139,8 @@ public class ApointMentUpdate extends AppCompatActivity implements View.OnClickL
         companyId = getIntent().getStringExtra("companyId");
         bookingId = getIntent().getStringExtra("bookingId");
         if (IseviceName!=null || IservicePrice!=null) {
-            serviName.setText(  "Service Name  : "+IseviceName);
-            servicePric.setText("Service Price : "+IservicePrice);
+            serviName.setText(IseviceName);
+            servicePric.setText(IservicePrice);
         }
 
 
@@ -232,10 +238,11 @@ public class ApointMentUpdate extends AppCompatActivity implements View.OnClickL
 
         switch (id) {
             case Date_id:
-
-                // Open the datepicker dialog
-                return new DatePickerDialog(ApointMentUpdate.this, date_listener, year,
+                DatePickerDialog dp=new DatePickerDialog(ApointMentUpdate.this, date_listener, year,
                         month, day);
+                dp.getDatePicker().setMinDate(System.currentTimeMillis());
+                // Open the datepicker dialog
+                return dp;
             case Time_id:
 
                 // Open the timepicker dialog

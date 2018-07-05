@@ -135,6 +135,7 @@
                                 android:background="@drawable/btn"
                                 android:textSize="20sp"
                                 android:padding="10sp"
+                                android:id="@+id/my_parlour"
                                 android:gravity="right"
                                 android:layout_gravity="right"
                                 android:textColor="@color/white"
@@ -170,59 +171,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     />
-                <TextView
-                    android:id="@+id/excelent"
-                    android:padding="@dimen/padding"
-                    android:textSize="16sp"
-                    android:text="Excellent(41.6%)"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_border"
-                    android:background="@color/background" />
-                <TextView
-                    android:id="@+id/good"
-                    android:padding="@dimen/padding"
-                    android:textSize="16sp"
-                    android:text="Good(10.6%)"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_border"
-                    android:background="@color/background" />
-                <TextView
-                    android:id="@+id/average"
-                    android:padding="@dimen/padding"
-                    android:textSize="16sp"
-                    android:text="Average(10.6%)	"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_border"
-                    android:background="@color/background" />
-                <TextView
-                    android:id="@+id/poor"
-                    android:padding="@dimen/padding"
-                    android:paddingBottom="1dp"
-                    android:textSize="16sp"
-                    android:text="Poor(1.6%)	"
-                    android:layout_gravity="center_horizontal"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    />
+
 
             </LinearLayout>
             <View

@@ -10,13 +10,21 @@ public class BookingDTO {
     String id;
     String customerName;
     String customerId;
-   // String orderItems;
+    String strOrderDate;
     String totalPrice;
     String orderDate;
     String email;
     String strOrderItems;
     String customerPhone;
     Date apointMentDate;
+
+    public String getStrOrderDate() {
+        return strOrderDate;
+    }
+
+    public void setStrOrderDate(String strOrderDate) {
+        this.strOrderDate = strOrderDate;
+    }
 
     public String getStrOrderItems() {
         return strOrderItems;
@@ -109,6 +117,7 @@ public class BookingDTO {
                 ", email='" + email + '\'' +
                 ", customerPhone='" + customerPhone + '\'' +
                 ", strOrderItems='" + strOrderItems + '\'' +
+                ", strOrderDate='" + strOrderDate + '\'' +
                 ", apointMentDate=" + apointMentDate +
                 '}';
     }

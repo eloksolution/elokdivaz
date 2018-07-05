@@ -31,15 +31,15 @@ import in.eloksolutions.divaz.activities.Consult;
 import in.eloksolutions.divaz.activities.ContactUs;
 import in.eloksolutions.divaz.activities.LoginActivity;
 import in.eloksolutions.divaz.activities.MainActivityThemeChange;
+import in.eloksolutions.divaz.activities.MyCompanyList;
 import in.eloksolutions.divaz.activities.OffersList;
 import in.eloksolutions.divaz.activities.PackagesList;
 import in.eloksolutions.divaz.activities.ProfileView;
-import in.eloksolutions.divaz.activities.RecentParlours;
 import in.eloksolutions.divaz.activities.ServiceLists;
-import in.eloksolutions.divaz.adapter.AndroidVersion;
 import in.eloksolutions.divaz.adapter.BeatyGridview;
 import in.eloksolutions.divaz.adapter.CheckInternet;
 import in.eloksolutions.divaz.adapter.GalleryDataAdapter;
+import in.eloksolutions.divaz.adapter.ImageDetails;
 import in.eloksolutions.divaz.dtoclasses.CompanyDTO;
 import in.eloksolutions.divaz.helpers.CompanyViewHelper;
 import in.eloksolutions.divaz.util.Config;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
     Intent mainIntent;
     String suserName,suserId,suserMail,suserPhone;
     public static final String[] movies =  {"", "", "", "", "",""};
-    public static int [] moviesImages ={R.drawable.services,R.drawable.packages,R.drawable.about,R.drawable.beaty,R.drawable.booknow,R.drawable.quickbook,R.drawable.gallerybeauty};
+    public static String [] companyImages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,46 +81,49 @@ public class MainActivity extends AppCompatActivity
         String surl = Config.SERVER_URL+"company/"+companyId;
         System.out.println("url for services list"+surl);
         try {
-            String output=getGroupsValue.new ServiceUpdateTask(surl).execute().get();
+            String output=getGroupsValue.new ServiceUpdateTask(surl,companyId).execute().get();
             System.out.println("the output from services"+output);
             setValuesToTextFields(output);
         }catch (Exception e){
             e.printStackTrace();
         }
-        final RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.service_list);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,true));
-        RecyclerView.LayoutManager mLayoutManager =
-                new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        final ArrayList<AndroidVersion> av = prepareData();
-        GalleryDataAdapter movies = new GalleryDataAdapter(getApplicationContext(), av);
-        mRecyclerView.setAdapter(movies);
 
-        final int speedScroll = 3000;
-        final Handler handler = new Handler();
-        final Runnable runnable = new Runnable() {
-            int count = 0;
-            @Override
-            public void run() {
-                if(count < av.size()){
-                    mRecyclerView.scrollToPosition(++count);
+            final RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.service_list);
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, true));
+            RecyclerView.LayoutManager mLayoutManager =
+                    new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+            mRecyclerView.setLayoutManager(mLayoutManager);
+
+            final ArrayList<ImageDetails> av = prepareData();
+
+            GalleryDataAdapter movies = new GalleryDataAdapter(getApplicationContext(), av);
+            mRecyclerView.setAdapter(movies);
+
+            final int speedScroll = 3000;
+            final Handler handler = new Handler();
+            final Runnable runnable = new Runnable() {
+                int count = 0;
+
+                @Override
+                public void run() {
+                    if (count < av.size()) {
+                        mRecyclerView.scrollToPosition(++count);
                    /* Animation animation = AnimationUtils.loadAnimation(MainActivity.this,
                             (count < av.size()) ? R.anim.left_right
                                     : R.anim.left_right);
                     mRecyclerView.startAnimation(animation);*/
 
-                    handler.postDelayed(this,speedScroll);
-                    if(count == av.size()){
-                        count=-1;
+                        handler.postDelayed(this, speedScroll);
+                        if (count == av.size()) {
+                            count = -1;
+                        }
                     }
+
+
                 }
+            };
 
-
-
-            }
-        };
-
-        handler.postDelayed(runnable,speedScroll);
+            handler.postDelayed(runnable, speedScroll);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -271,7 +274,9 @@ public class MainActivity extends AppCompatActivity
             Intent intent=new Intent(MainActivity.this, CompanyList.class);
             startActivity(intent);
         } else if (id == R.id.recent) {
-            Intent intent=new Intent(MainActivity.this, RecentParlours.class);
+            Intent intent=new Intent(MainActivity.this, MyCompanyList.class);
+            intent.putExtra("userId",suserId);
+            intent.putExtra("companyId", companyId);
             startActivity(intent);
         } else if (id == R.id.profile) {
             Intent intent=new Intent(MainActivity.this, ProfileView.class);
@@ -287,27 +292,33 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-    private static ArrayList<AndroidVersion> prepareData() {
 
-         ArrayList<AndroidVersion> av = new ArrayList<>();
-        for (int i = 0; i < movies.length; i++) {
-            AndroidVersion mAndroidVersion = new AndroidVersion();
-            mAndroidVersion.setAndroidVersionName(movies[i]);
-            mAndroidVersion.setrecyclerViewImage(moviesImages[i]);
-            av.add(mAndroidVersion);
-        }
-        return av;
-    }
     public void setValuesToTextFields(String result) {
         System.out.println("json xxxx from groupview" + result);
         if (result != null) {
             Gson gson = new Gson();
             CompanyDTO fromJsonn = gson.fromJson(result, CompanyDTO.class);
             toolbar.setTitle(fromJsonn.getName());
+            System.out.println("Comapasny Images" + fromJsonn.getImgPath1()+fromJsonn.getImgPath2()+fromJsonn.getImgPath3());
+
+            companyImages= new String[]{""+fromJsonn.getImgPath1(),""+fromJsonn.getImgPath2(),""+fromJsonn.getImgPath3()};
+            System.out.println("Comapasny Images" + fromJsonn.getImgPath1()+fromJsonn.getImgPath2()+fromJsonn.getImgPath3());
 
         }
+
     }
 
+    private static ArrayList<ImageDetails> prepareData() {
+
+        ArrayList<ImageDetails> av = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            ImageDetails mImageDetails = new ImageDetails();
+            mImageDetails.setAndroidVersionName(movies[i]);
+            mImageDetails.setRecyclerViewImage(companyImages[i]);
+            av.add(mImageDetails);
+        }
+        return av;
+    }
 
 
     @Override

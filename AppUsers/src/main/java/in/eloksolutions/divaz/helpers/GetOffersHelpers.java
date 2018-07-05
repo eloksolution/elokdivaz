@@ -3,7 +3,6 @@ package in.eloksolutions.divaz.helpers;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import in.eloksolutions.divaz.activities.OffersList;
+import in.eloksolutions.divaz.adapter.CheckInternet;
 import in.eloksolutions.divaz.dataobjects.OfferOBJ;
 import in.eloksolutions.divaz.dtoclasses.OfferDTO;
 import in.eloksolutions.divaz.recyclerviews.MyRecyclerViewOffers;
@@ -78,7 +78,8 @@ public class GetOffersHelpers extends AsyncTask<String, Void, String> {
                 rvGroups.setAdapter(mAdapter);
                 mAdapter.notifyDataSetChanged();
             }else{
-                noData.setVisibility(View.VISIBLE);
+               // noData.setVisibility(View.VISIBLE);
+                CheckInternet.showAlertDialog(mcontext,"No Offers Found","Choose Another Service");
             }
         }
     }

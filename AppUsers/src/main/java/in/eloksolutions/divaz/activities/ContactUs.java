@@ -1,11 +1,14 @@
 package in.eloksolutions.divaz.activities;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.telephony.PhoneNumberUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -48,6 +51,17 @@ String companyId;
         }catch (Exception e){
             e.printStackTrace();
         }
+        whatsAppNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendIntent = new Intent("android.intent.action.MAIN");
+                sendIntent.setComponent(new ComponentName("com.whatsapp", "com.whatsapp.Conversation"));
+                sendIntent.putExtra("jid", PhoneNumberUtils.stripSeparators(""+whatsAppNumber.getText().toString()) + "@s.whatsapp.net");
+//mobile num without + symbol and with county code(91)
+                startActivity(sendIntent);
+
+            }
+        });
     }
     public void setValuesToTextFields(String result) {
         System.out.println("json xxxx from groupview" + result);
